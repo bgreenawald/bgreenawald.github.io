@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+
+<script src="assets/js/jquery.min.js"></script>		
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>	
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+			<style>
+				#result {
+				position: absolute;
+				 width: 100%;
+				 max-width: 85%;
+				 cursor: pointer;
+				 overflow-y: auto;
+				 overflow-x: auto;
+				 max-height:100%;
+				 box-sizing: border-box;
+				 z-index: 1001;
+				 display: block;
+				}
+			</style> 
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Hyperspace</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="generic.html" class="active">Generic</a></li>
+						<li><a href="elements.html">Elements</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<div class="field">
+								<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control" />
+							</div>
+							<br>
+							<div class="field">
+									<ul id="result"></ul>
+							</div>
+						</div>					
+					</section>
+
+				<!-- All Blog Posts -->
+
+					<section id ="secondary" class = "wrapper">
+						<h2>All Blog Posts</h2>
+						
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt" style="position: fixed; bottom: 0; width: 100%;">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
+
+
+<script>
+$(window).load(function(){
+	$('#search').keyup(function(){
+			var searchField = $('#search').val();
+			var regex = new RegExp(searchField, "i");
+			var output = '<div class="table-wrapper"><table class = "alt"><tbody>';
+			var count = 1;
+			$.getJSON('data.json', function(data) {
+				$.each(data, function(key, val){
+					if ((val.name.search(regex) != -1) || (val.content.search(regex) != -1)) {
+						output += '<tr><a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a></tr>';
+					}
+				});
+				output += "</tbody></table></div>";
+				$('#result').html(output);
+			}); 
+	});
+});
+		</script>
+		
