@@ -6,6 +6,18 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+/*
+Variables
+*/
+
+:root{
+	--main-color: #466365;
+	--dark-color: #231f20;
+	--secondary-color: #01172f;
+	--light-color: #c9e4e7;
+	--white: #ffffff;
+}
+
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -1622,7 +1634,7 @@
 	}
 
 	body {
-		background: #01172f;
+		background: var(--sidebar-color);
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1721,10 +1733,10 @@
 		}
 
 			h1.major:after {
-				background-image: -moz-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: -webkit-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: -ms-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: linear-gradient(to right, #01172f, #c9e4e7);
+				background-image: -moz-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -webkit-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -ms-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: linear-gradient(to right, var(--sidebar-color), #c9e4e7);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -1976,7 +1988,7 @@
 		button.special,
 		.button.special {
 			background-color: #ffffff;
-			color: #01172f !important;
+			color: var(--sidebar-color) !important;
 		}
 
 			input[type="submit"].special:after,
@@ -2406,7 +2418,7 @@
 		}
 
 	select option {
-		background-color: #01172f;
+		background-color: var(--sidebar-color);
 		color: #ffffff;
 	}
 
@@ -2563,19 +2575,19 @@
 			}
 
 				.wrapper.style1 .icon.major:before {
-					color: #01172f;
+					color: var(--sidebar-color);
 				}
 
 				.wrapper.style1-alt .icon.major:before {
-					color: #01172f;
+					color: var(--sidebar-color);
 				}
 
 				.wrapper.style2 .icon.major:before {
-					color: #466365;
+					color: var(--secondary-color);;
 				}
 
 				.wrapper.style2-alt .icon.major:before {
-					color: #466365;
+					color: var(--secondary-color);;
 				}
 
 				.wrapper.style3 .icon.major:before {
@@ -3250,23 +3262,23 @@
 			}
 
 		.wrapper.alt {
-			background-color: #231f20;
+			background-color: var(--main-color);;
 		}
 
 		.wrapper.style1 {
-			background-color: #231f20;
+			background-color: var(--main-color);;
 		}
 
 		.wrapper.style1-alt {
-			background-color: #01172f;
+			background-color: var(--sidebar-color);
 		}
 
 		.wrapper.style2 {
-			background-color: #466365;
+			background-color: var(--secondary-color);;
 		}
 
 		.wrapper.style2-alt {
-			background-color: #466365;
+			background-color: var(--secondary-color);;
 		}
 
 		.wrapper.style3 {
@@ -3381,7 +3393,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: #01172f;
+		background-color: var(--sidebar-color);
 		cursor: default;
 		padding: 1.75em 2em;
 	}
@@ -3535,7 +3547,7 @@
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: #01172f;
+		background: var(--sidebar-color);
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3772,14 +3784,14 @@
 			}
 
 			#sidebar nav a:before {
-				background: #466365;
+				background: var(--secondary-color);;
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: -webkit-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: -ms-linear-gradient(to right, #01172f, #c9e4e7);
-				background-image: linear-gradient(to right, #01172f, #c9e4e7);
+				background-image: -moz-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -webkit-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -ms-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: linear-gradient(to right, var(--sidebar-color), #c9e4e7);
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
