@@ -12,8 +12,11 @@ Variables
 
 :root{
 	--main-color: #466365;
-	--dark-color: #231f20;
-	--secondary-color: #01172f;
+	--main-color2: #5e8f92;
+	--dark-color: #131011;
+	--dark-color2: #272224;
+	--secondary-color: #052e5a;
+	--secondary-color2: #305983;
 	--light-color: #c9e4e7;
 	--white: #ffffff;
 }
@@ -1634,7 +1637,7 @@ Variables
 	}
 
 	body {
-		background: var(--sidebar-color);
+		background: var(--dark-color);
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -1733,10 +1736,10 @@ Variables
 		}
 
 			h1.major:after {
-				background-image: -moz-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: -webkit-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: -ms-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -moz-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: -webkit-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: -ms-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: linear-gradient(to right, var(--dark-color), var(--light-color));
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -1988,7 +1991,7 @@ Variables
 		button.special,
 		.button.special {
 			background-color: #ffffff;
-			color: var(--sidebar-color) !important;
+			color: var(--dark-color) !important;
 		}
 
 			input[type="submit"].special:after,
@@ -2418,7 +2421,7 @@ Variables
 		}
 
 	select option {
-		background-color: var(--sidebar-color);
+		background-color: var(--dark-color);
 		color: #ffffff;
 	}
 
@@ -2494,7 +2497,7 @@ Variables
 		input[type="radio"]:checked + label:before {
 			background: #ffffff;
 			border-color: #ffffff;
-			color: #c9e4e7;
+			color: var(--light-color);
 			content: '\f00c';
 		}
 
@@ -2575,11 +2578,11 @@ Variables
 			}
 
 				.wrapper.style1 .icon.major:before {
-					color: var(--sidebar-color);
+					color: var(--dark-color);
 				}
 
 				.wrapper.style1-alt .icon.major:before {
-					color: var(--sidebar-color);
+					color: var(--dark-color2);
 				}
 
 				.wrapper.style2 .icon.major:before {
@@ -2587,15 +2590,15 @@ Variables
 				}
 
 				.wrapper.style2-alt .icon.major:before {
-					color: var(--secondary-color);;
+					color: var(--secondary-color2);;
 				}
 
 				.wrapper.style3 .icon.major:before {
-					color: #c9e4e7;
+					color: var(--light-color);
 				}
 
 				.wrapper.style3-alt .icon.major:before {
-					color: #c9e4e7;
+					color: var(--light-color);
 				}
 
 /* Image */
@@ -3262,31 +3265,31 @@ Variables
 			}
 
 		.wrapper.alt {
-			background-color: var(--main-color);;
+			background-color: var(--main-color);
 		}
 
 		.wrapper.style1 {
-			background-color: var(--main-color);;
+			background-color: var(--main-color2);
 		}
 
 		.wrapper.style1-alt {
-			background-color: var(--sidebar-color);
+			background-color: var(--dark-color);
 		}
 
 		.wrapper.style2 {
-			background-color: var(--secondary-color);;
+			background-color: var(--secondary-color);
 		}
 
 		.wrapper.style2-alt {
-			background-color: var(--secondary-color);;
+			background-color: var(--secondary-color2);
 		}
 
 		.wrapper.style3 {
-			background-color: #c9e4e7;
+			background-color: var(--light-color);
 		}
 
 		.wrapper.style3-alt {
-			background-color: #c9e4e7;
+			background-color: var(--light-color);
 		}
 
 		.wrapper.fullscreen {
@@ -3393,7 +3396,7 @@ Variables
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
-		background-color: var(--sidebar-color);
+		background-color: var(--dark-color);
 		cursor: default;
 		padding: 1.75em 2em;
 	}
@@ -3547,7 +3550,7 @@ Variables
 
 	#sidebar {
 		padding: 2.5em 2.5em 0.5em 2.5em ;
-		background: var(--sidebar-color);
+		background: var(--dark-color);
 		cursor: default;
 		height: 100vh;
 		left: 0;
@@ -3788,10 +3791,10 @@ Variables
 			}
 
 			#sidebar nav a:after {
-				background-image: -moz-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: -webkit-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: -ms-linear-gradient(to right, var(--sidebar-color), #c9e4e7);
-				background-image: linear-gradient(to right, var(--sidebar-color), #c9e4e7);
+				background-image: -moz-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: -webkit-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: -ms-linear-gradient(to right, var(--dark-color), var(--light-color));
+				background-image: linear-gradient(to right, var(--dark-color), var(--light-color));
 				-moz-transition: max-width 0.2s ease;
 				-webkit-transition: max-width 0.2s ease;
 				-ms-transition: max-width 0.2s ease;
@@ -3880,7 +3883,7 @@ Variables
 
 						#sidebar nav a:after {
 							background-image: none;
-							background-color: #c9e4e7;
+							background-color: var(--light-color);
 						}
 
 		}
