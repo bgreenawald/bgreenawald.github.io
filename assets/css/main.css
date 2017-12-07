@@ -1695,7 +1695,7 @@
 	}
 
 	p {
-		margin: 0 0 2em 0;
+		margin: 2em 2em 2em 2em;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -3039,7 +3039,7 @@
 				-webkit-transition: opacity 1s ease;
 				-ms-transition: opacity 1s ease;
 				transition: opacity 1s ease;
-				background: rgba(49, 36, 80, 0.9);
+				background: rgba(1, 23, 47, 0.9);
 				content: '';
 				display: block;
 				height: 100%;
@@ -3772,7 +3772,7 @@
 			}
 
 			#sidebar nav a:before {
-				background: #3c2c62;
+				background: #466365;
 			}
 
 			#sidebar nav a:after {
