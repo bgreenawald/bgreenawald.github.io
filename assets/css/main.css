@@ -2611,7 +2611,7 @@ Variables
 	}
 
 		.image img {
-			border-radius: 0.25em;
+			border-radius: 1em;
 			display: block;
 		}
 
