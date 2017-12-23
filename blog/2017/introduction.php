@@ -3,7 +3,7 @@
 $name = "Introduction Blog";
 # Write the content of the blog here
 $content = "This is the content of the first blog post.";
-$date = "11-17-2017";
+$date = "11/17/2017"
 ?>
 
 
@@ -15,7 +15,7 @@ $date = "11-17-2017";
 -->
 <html>
 	<head>
-		<title>Generic - Hyperspace by HTML5 UP</title>
+		<title>Ben Greenawald</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="title" content="<?php echo $name;?>"/>
@@ -30,14 +30,6 @@ $date = "11-17-2017";
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
-				<nav>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
-					</ul>
-				</nav>
 			</header>
 
 		<!-- Wrapper -->
@@ -59,13 +51,16 @@ $date = "11-17-2017";
 			<footer id="footer" class="wrapper alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
 
 		<!-- Scripts -->
 			<script src="../../assets/js/jquery.min.js"></script>
+			<script>
+                $(function(){$('#header').load('../../header.html');});
+            </script>
 			<script src="../../assets/js/jquery.scrollex.min.js"></script>
 			<script src="../../assets/js/jquery.scrolly.min.js"></script>
 			<script src="../../assets/js/skel.min.js"></script>
