@@ -13,6 +13,15 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<style>
+			#navbar {
+				background-color: #5e8f92;
+			}
+
+			#optiongroup {
+				background-color: black;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -22,7 +31,7 @@
 					<nav>
 						<ul>
 							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">Who I Am</a></li>
+							<li><a href="#one">This Site</a></li>
 							<li><a href="#two">Get In Touch</a></li>
 						</ul>
 					</nav>
@@ -46,6 +55,23 @@
 								<li><a href="content/human_being.html" class="button scrolly">Human Being</a></li>
 								<li><a href="search.html" class="button scrolly">Blogger?</a></li>
 							</ul>
+							<div>
+								<select id="navbar" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+									<option value="" disabled selected>Navigate the Site</option>
+									<optgroup id="optiongroup" label="About Me">
+										<option value="content/data_scientist.html">Data Scientist</option>
+										<option value="content/software_developer.html">Software Developer</option>
+										<option value="content/human_being.html">Human Being</option>
+									</optgroup>
+									<optgroup id="optiongroup" label="Blog">
+										<option value="search.html">Blog Main Page</option>
+									</optgroup>
+									<optgroup id="optiongroup" label="Miscellaneous">
+										<option value="content/guitar.html">Guitar Practice Routine</option>
+										<option value="content/favorite_quotes.html">Favorite Quotes</option>
+									</optgroup>
+								</select>
+							</div>
 						</div>
 						
 					</section>
@@ -53,59 +79,35 @@
 				<!-- One  -->
 					<section id="one" class="wrapper style2">
 							<div class="inner">
-								<p><img src = "images/lnkedinpic.png" align=right style="padding:5px;"></p>
-								<h2>A summary</h2>
-								<p>At the risk of plagarising my own LinkedIn summary, let me try and give a brief summary of what I'm all about. But first, 
-									let me give you an idea of why I am making this site. The ultimate goal behind this site is three fold: 
-									<ol>
+								<!--<p><img src = "images/lnkedinpic.png" align=right style="padding:5px;"></p>-->
+								<h2>What this site is</h2>
+					
+									I want to begin by giving you an idea of why I am making this site. The ultimate goal of this site is three fold: 
+									<p><ol>
 										<li>
 											<strong>Create a central hub for me.</strong> As I grow older and my digital presence increases, it is increasingly difficult to 
 											keep a consistent and up to date picture of myself across various platforms. This site is meant to serve as the most
 											up to date and thorough resource for the various goings on in my life.
 										</li>
 										<li>
-											<strong>Sharing my thoughts.</strong> I, like many people, think often. Because I am the only one that has lived my life, I am the only
-											one that has the ability to share my thoughts. It is a growing belief of mine that because of the ease at which a person
-											is able to generate and host content (thanks Github), it is the responsiblity of the individual to share the thoughts and 
-											experiences that only they have. I have decided to take a swing at fulfilling that responsiblity here.
+											<strong>Sharing my thoughts.</strong> I, like many people, think often. Because I am the only one that has lived my life, I am the only 
+											one that has the ability to share my thoughts. It is a growing belief of mine that because of the ease at which a person is able to generate
+											 and host content (thanks, Github), it is the responsibility of the individual to share the thoughts and experiences that only they have. 
+											 I have decided to take a swing at fulfilling that responsibility here.
 										</li>
 										<li>
 											<strong>Keep my web development skills sharp(ish).</strong> I have been studying computer science and developing software for over 4 years, and
-											the prospect of front end software development still makes me cringe. If you've ever wondered what my Achilles heal is, you're looking
-											at it. Me from 5 years ago would never have imagined that my Kryptonite would be Internet markup language, but here was are. That being
-											said, I acknowledge that the skill is valuable, so I am using this site as a means to facing my fear of the front end, in a nice, static
-											setting.
-						
+											the prospect of front-end software development still makes me cringe. 
+										   If you've ever wondered what my Achilles heel is, you're looking at it. Me from 5 years ago would never have imagined that my Kryptonite would be Internet markup language, but here was are.
+										   That being said, I acknowledge that the skill is valuable, so I am using this site as a means of facing my fear of the front end, in a nice, static setting.
 										</li>
-									</ol>
-									
+									</ol>	
+									With that in mind, I now encourage you to explore this site and get to know a little more about me.
+
+									For a good place to start, read my first <a href="blog/2017/introduction.php">blog post</a>, which goes into a little more detail of who I am and what this site is all about. 			
 								</p>
 							</div>
 						</section>
-					<!-- <section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Software Developer</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Human Being</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</div>
-						</section> -->
 					</section>  
 
 				<!-- Two -->
@@ -118,28 +120,9 @@
 								If you want to know more about me or just connect with a like minded human, feel free to reach out via email or the social media platforms listed below!
 							</p>
 							<div class="split style1">
-							<!--	<section>
-									<form method="post" action="#">
-										<div class="field half first">
-											<label for="name">Name</label>
-											<input type="text" name="name" id="name" />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="text" name="email" id="email" />
-										</div>
-										<div class="field">
-											<label for="message">Message</label>
-											<textarea name="message" id="message" rows="5"></textarea>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-                                </section> -->
                                 <object data="Resume_2017.pdf" type="application/pdf" width="750px" height="750px">
-                                    <embed src="https://github.com/bgreenawald/Job-Search/blob/master/Resume_2017.pdf" type="application/pdf">
-                                        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/bgreenawald/Job-Search/blob/master/Resume_2017.pdf">Download PDF</a>.</p>
+                                    <embed src="Resume_2017.pdf" type="application/pdf">
+                                        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="Resume_2017.pdf">Download PDF</a>.</p>
                                     </embed>
                                 </object>
 								<section>
