@@ -12,6 +12,7 @@ for subdir, dirs, files in os.walk("blog"):
             
             # For each file, get the necesary info and append to our dict
             text = file_name.read()
+
             name = re.findall("name = .+;", text)
             name = name[0].replace("name = \"", "").replace("\";", "")
 
@@ -25,6 +26,6 @@ for subdir, dirs, files in os.walk("blog"):
             file_name.close()
 
 # Write the file to the json object
-with open("data2.json", "w+") as file:
+with open("data.json", "w+") as file:
     file.write(json.dumps(dicts))
     file.close()

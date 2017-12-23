@@ -3,7 +3,7 @@
 $name = "Introduction Blog";
 # Write the content of the blog here
 $content = "This is the content of the first blog post.";
-$date = "11/17/2017"
+$date = "11/17/2017";
 ?>
 
 
