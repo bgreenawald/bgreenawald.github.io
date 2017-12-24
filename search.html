@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 
-<script src="assets/js/jquery.min.js"></script>		
+<script src="assets/js/jquery.min.js"></script>
 <!--
 	Hyperspace by HTML5 UP
 	html5up.net | @ajlkn
@@ -8,11 +8,11 @@
 -->
 <html>
 	<head>
-		<title>Generic - Hyperspace by HTML5 UP</title>
+		<title>Blog Main</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>	
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
@@ -30,52 +30,84 @@
 				 z-index: 1001;
 				 display: block;
 				}
-			</style> 
+				#searchbar{
+					background-color: #466365;
+				}
+			</style>
 	</head>
 	<body>
 
 		<!-- Header -->
 			<header id="header">
-				<a href="index.html" class="title">Hyperspace</a>
-				<nav>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="generic.html" class="active">Generic</a></li>
-						<li><a href="elements.html">Elements</a></li>
-					</ul>
-				</nav>
+				<a href="index.html" class="title">Ben Greenawald</a>
+					<nav>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="search.html">Blog</a></li>
+							<li>
+								<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+									<option value="" disabled selected>Navigate the Site</option>
+									<optgroup label="About Me">
+										<option value="content/data_scientist.html">Data Scientist</option>
+										<option value="content/software_developer.html">Software Developer</option>
+										<option value="content/human_being.html">Human Being</option>
+									</optgroup>
+									<optgroup label="Blog">
+										<option value="search.html">Blog Main Page</option>
+									</optgroup>
+									<optgroup label="Potpourri">
+										<option value="content/guitar.html">Guitar Practice Routine</option>
+										<option value="content/favorite_quotes.html">Favorite Quotes</option>
+									</optgroup>
+								</select>
+							</li>
+						</ul>
+					</nav>
+
 			</header>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
 
-				<!-- Main -->
-					<section id="main" class="wrapper">
-						<div class="inner">
-							<div class="field">
-								<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control" />
+				<section class="wrapper style1">
+					<div class="inner">
+						<h2>Recent Posts</h2>
+						<ol>
+							<li>
+								<a href = "blog/2017/introduction.php">Introduction Blog - 12/23/2017</a>
+							</li>
+						</ol>
+						<div class="field">
+								<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control" style="background-color: #5e8f92;"/>
 							</div>
 							<br>
 							<div class="field">
 									<ul id="result"></ul>
 							</div>
-						</div>					
-					</section>
+							<br>
+					</div>
+				</section>
 
 				<!-- All Blog Posts -->
 
-					<section id ="secondary" class = "wrapper">
-						<h2>All Blog Posts</h2>
-						
+					<section class = "wrapper style2">
+						<div class = "inner">
+							<h2>All Blog Posts</h2>
+							<ul>
+								<li>
+									<a href = "blog/2017/introduction.php">Introduction Blog - 12/23/17</a>
+								</li>
+							</ul>
+						</div>
 					</section>
 
 			</div>
 
 		<!-- Footer -->
-			<footer id="footer" class="wrapper alt" style="position: fixed; bottom: 0; width: 100%;">
+		<footer id="footer" class="wrapper alt">
 				<div class="inner">
 					<ul class="menu">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+						<li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 					</ul>
 				</div>
 			</footer>
@@ -88,28 +120,32 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script>
+					$(window).load(function(){
+						$('#search').keyup(function(){
+								var searchField = $('#search').val();
+								var regex = new RegExp(searchField, "i");
+								if (searchField != ""){
+									var output = '<div class="table-wrapper"><table class = "alt"><tbody>';
+									var count = 1;
+									$.getJSON('data.json', function(data) {
+										$.each(data, function(key, val){
+											if ((val.name.search(regex) != -1) || (val.content.search(regex) != -1)) {
+												output += '<tr><a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a></tr>';
+											}
+										});
+										output += "</tbody></table></div><br>";
+										$('#result').html(output);
+									});
+								}
+								else
+								{
+									output = "";
+									$('#result').html(output);
+								}
+						});
+					});
+			</script>
 	</body>
 </html>
 
-
-<script>
-$(window).load(function(){
-	$('#search').keyup(function(){
-			var searchField = $('#search').val();
-			var regex = new RegExp(searchField, "i");
-			var output = '<div class="table-wrapper"><table class = "alt"><tbody>';
-			var count = 1;
-			$.getJSON('data.json', function(data) {
-				$.each(data, function(key, val){
-					if ((val.name.search(regex) != -1) || (val.content.search(regex) != -1)) {
-						output += '<tr><a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a></tr>';
-					}
-				});
-				output += "</tbody></table></div>";
-				$('#result').html(output);
-			}); 
-	});
-});
-		</script>
-		
