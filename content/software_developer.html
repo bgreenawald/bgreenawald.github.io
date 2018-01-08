@@ -50,10 +50,95 @@
 
 								<div>
 									<i><h2>UVA Scheduler</h2></i>
+									<p>This is the story of how I went from a cloud computing homework assignment to a free Echo Dot (sort of). It was
+										my final undergraduate semester at UVA and I was taking
+										a course on Cloud Computing. For one of our homework
+										assignments, we were to develop an app for Amazon's Alexa
+										to assist students in scheduling courses. A user could ask
+										the app basic questions about a class and receive information
+										about when that class was being held and who was teaching it.
+										For the assignment, the Alexa API talked to an AWS Lambda
+										function (written in Python) which then talked to a simulated
+										MySQL database hosted by our professor. It was a really well-done assignment and certainly got our hands wet with AWS and
+										Alexa.</p>
+
+										<p>A few months after submission, I came across a promotion
+										where there were giving away free Echo Dots and decided, with
+										a few minor modifications, to submit the assignment. The app
+										was almost in perfect working order, the back end just needed to be modified. Instead of pointing it towards the toy database, I needed
+										to point it towards an up to date listing of classes being offered at UVA. UVA itself did not seem to have an easily accessible database like this, however, one of the professors at UVA had written a site that displays all of the class information pretty nicely, with consistent formatting and predictable URLs. So I ended up having it scrape this site instead of accessing a database. I realize the performance hit taken by doing this, but finding the class database
+										seemed like it was going to be a pain, and I was honestly in it
+										mostly for the experience and Echo Dot.</p>
+
+										<p>At this point, the pipeline was, a user makes a query to their
+										Alexa product about a certain UVA class. This query is sent to an
+										AWS Lambda endpoint (still written in Python). The Lambda function scrapes the UVA class website (called louslist.com) and
+										after some formatting, returns the response to the user. With
+										the app complete, I submitted and after some drama with the app's
+										name (turns out names can't sound like people's names so although Sammy Scheduler had a nice alliterative ring to it, it was indeed not valid), I submitted the app and received my Echo Dot (sort of). The Dot I was given has some sort of known Wifi bug so I need to call in
+										and get a new one, but that is just not a top priority at the moment. I
+										also realized that although the app is pretty cool, it is so much more
+										efficient to just schedule through louslist.com directly or from some
+										of the students made scheduling apps that I don't see a huge use
+										case for an app like this, but it was a good experience with the Alexa
+										API and AWS Lambda. Although I did find out that the next month,
+										Amazon ran the same promotion the next month except now they
+										offered an Echo Dot AND a pair of Alexa socks. So I guess the real
+										moral of the story is.....procrastinators prosper?</p>
 								</div>
 
 								<div>
 									<i><h2>UVA Grades App</h2></i>
+									<p>This project is really the first personal project that I worked on. Midway through my second year in undergrad, I found out that
+										students could access grade data from the University through
+										the Freedom of Information Act. Indeed, with the completion of
+										a single form, I was emailed 10 CSV files containing exactly what
+										grades had been given out in every undergraduate class for the past
+										5 years (as in, each row had class, professor name, section number, how many A's were given, how many B's, how many students dropped, GPA, etc.). I found this information incredibly cool and potentially quite
+										useful to other students, so I decided to try and create a nice
+										interface for this data. Some enterprising UVA students had already
+										found great success create an app to help students schedule classes
+										at UVA so the market for such student-created apps was definitely
+										there.</p>
+
+										<p>Two challenges immediately presented themselves. The first pertained to what technology to select for such a task as I had no
+										experience hosting web apps and was overwhelmed by the number of different options available. I had really been itching to learn R, so I ended up choosing to develop in R using the Shiny framework for
+										developing web apps. This also allowed me to use ggplot, the visualization library in R to show users graphs of the data.
+										The second issue was that I've always
+										had a minor weak spot when it comes to designing aesthetically
+										pleasing, highly user-friendly apps. I acknowledge how important
+										these aspects of an app are, but I generally prefer to focus on functionality, thus I enlisted the help of a friend in the UVA McIntire School of Commerce with an eye for design to help me out. I would
+										be the developer and she the designer.</p>
+
+										<p>With preliminary issues resolved, we dove into development.
+										No surprise here, but a plethora of new issues quickly presented
+										themselves after we started development. Firstly, how do we
+										consolidate the 10 or so different CSVs into a single amalgamation
+										of data that can be used by the program? I decided to write a
+										separate script that performed this task once so that the program
+										did not have to merge the CSV files every time it ran. Next, was how
+										to deal with professors who taught more than one section of the
+										same class within the semester? This led to more that one row in the
+										data, however, it seemed like these should only be one observation.
+										We decided on a row level merge for cases like this, where the
+										individual letter grades were summed to form a single observation
+										and GPA's were recomputed.</p>
+
+										<p>Then we had to decide how to present this information to
+										the user. After consulting with some friends, we decided to allow
+										users to see a GPA over time graph for a given class by professor,
+										and also a more detailed breakdown of the grade distribution.
+										After a couple of iterations, we were closing in on an MVP. There
+										were a few minor bugs that we wanted to address before release
+										and we decided to reconvene after our respective summer internships
+										to iron out the kinks. Unfortunately, during this time, someone
+										released a very similar app that had grades for not only UVA but
+										other VA schools as well. After confirming that the app did
+										essentially the same thing that ours did, we decided to learn our
+										lessons and scrap the project. I still gained valuable experience
+										with developing apps with users in mind and also got in-depth
+										experience in R and Shiny. We also both learned about the importance of getting a product to market as quickly as possible.
+										</p>
 								</div>
 
 								<div>
