@@ -30,8 +30,8 @@
 				 z-index: 1001;
 				 display: block;
 				}
-				#searchbar{
-					background-color: #466365;
+				select.decorated option:hover {
+    				box-shadow: 0 0 10px 100px rgb(12, 16, 17) inset;
 				}
 			</style>
 	</head>
@@ -45,7 +45,7 @@
 							<li><a href="index.html">Home</a></li>
 							<li><a href="search.html">Blog</a></li>
 							<li>
-								<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+								<select id="searchbar" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="background-color: #171313;">
 									<option value="" disabled selected>Navigate the Site</option>
 									<optgroup label="About Me">
 										<option value="content/data_scientist.html">Data Scientist</option>
@@ -72,14 +72,12 @@
 				<section class="wrapper style1">
 					<div class="inner">
 						<h2>Recent Posts</h2>
-						<ol>
-							<li>
-								<a href = "blog/2017/introduction.html">Introduction Blog - 12/23/2017</a>
-							</li>
-							<li>
-								<a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a>
-							</li>
-						</ol>
+
+						<h3><a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a></h3>
+
+						<h3><a href = "blog/2017/introduction.html">Introduction Blog - 12/23/2017</a></h3>
+						<hr>
+
 						<div class="field">
 								<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control" style="background-color: #5e8f92;"/>
 							</div>
