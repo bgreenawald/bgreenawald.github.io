@@ -2425,6 +2425,10 @@ Variables
 		color: #ffffff;
 	}
 
+	select option:hover{
+		background-color: var(--main-color);
+	}
+
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -2734,7 +2738,7 @@ Variables
 
 			ul.actions li {
 				display: inline-block;
-				padding: 0 1em 0 0;
+				padding: 1em 1em 0 0;
 				vertical-align: middle;
 			}
 
