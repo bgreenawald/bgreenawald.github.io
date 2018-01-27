@@ -194,7 +194,7 @@
 										chart. The app was to be developed and published to CRAN by the end
 										of the summer session which was about 3 weeks.</p>
 
-										<p> The coding of the logic was actually the easiest part.
+										<p><img style="float: left; margin: 10px 15px 10px 0px;" src="../images/gantt.png">The coding of the logic was actually the easiest part.
 										The algorithm for critical path is pretty straightforward.
 										As far as the Gantt chart, people had already written code
 										that was roughly what we had in mind, so starting with that
@@ -214,7 +214,7 @@
 										experience and we got accepted on our third try. One rather amusing roadblock was when on our second try, the package got rejected because the reviewer
 										disliked my choice of adjective in the project the description.</p>
 
-										<p> I also got the chance to feel (yes, feel) first-hand the importance
+										<p><img style="float: right; margin: 0px 0px 10px 10px;" src="../images/network.png">I also got the chance to feel (yes, feel) first-hand the importance
 										of writing good tests. I will not soon forget the rush of embarrassment
 										that overcame me when only a few days after release, I got an email
 										from a user pointing out a pretty rudimentary bug that blocked a simple,
@@ -290,6 +290,60 @@
 								</div>
 								<hr>
 								<div>
+									<i><h2>UVA Grades App</h2></i>
+									<p>This project is really the first personal project that I worked on. Midway through my second year in undergrad, I found out that
+										students could access grade data from the University through
+										the Freedom of Information Act. Indeed, with the completion of
+										a single form, I was emailed 10 CSV files containing exactly what
+										grades had been given out in every undergraduate class for the past
+										5 years (as in, each row had class, professor name, section number, how many A's were given, how many B's, how many students dropped, GPA, etc.). I found this information incredibly cool and potentially quite
+										useful to other students, so I decided to try and create a nice
+										interface for this data. Some enterprising UVA students had already
+										found great success create an app to help students schedule classes
+										at UVA so the market for such student-created apps was definitely
+										there.</p>
+
+										<p><img style="float: left; margin: 10px 15px 10px 0px;" src="../images/grades.png">Two challenges immediately presented themselves. The first pertained to what technology to select for such a task as I had no
+										experience hosting web apps and was overwhelmed by the number of different options available. I had really been itching to learn R, so I ended up choosing to develop in R using the Shiny framework for
+										developing web apps. This also allowed me to use ggplot, the visualization library in R to show users graphs of the data.
+										The second issue was that I've always
+										had a minor weak spot when it comes to designing aesthetically
+										pleasing, highly user-friendly apps. I acknowledge how important
+										these aspects of an app are, but I generally prefer to focus on functionality, thus I enlisted the help of a friend in the UVA McIntire School of Commerce with an eye for design to help me out. I would
+										be the developer and she the designer.</p>
+
+										<p>With preliminary issues resolved, we dove into development.
+										No surprise here, but a plethora of new issues quickly presented
+										themselves after we started development. Firstly, how do we
+										consolidate the 10 or so different CSVs into a single amalgamation
+										of data that can be used by the program? I decided to write a
+										separate script that performed this task once so that the program
+										did not have to merge the CSV files every time it ran. Next, was how
+										to deal with professors who taught more than one section of the
+										same class within the semester? This led to more that one row in the
+										data, however, it seemed like these should only be one observation.
+										We decided on a row level merge for cases like this, where the
+										individual letter grades were summed to form a single observation
+										and GPA's were recomputed.</p>
+
+										<p><img style="float: right; margin: 0px 0px 10px 10px;" src="../images/grades2.png">Then we had to decide how to present this information to
+										the user. After consulting with some friends, we decided to allow
+										users to see a GPA over time graph for a given class by professor,
+										and also a more detailed breakdown of the grade distribution.
+										After a couple of iterations, we were closing in on an MVP. There
+										were a few minor bugs that we wanted to address before release
+										and we decided to reconvene after our respective summer internships
+										to iron out the kinks. Unfortunately, during this time, someone
+										released a very similar app that had grades for not only UVA but
+										other VA schools as well. After confirming that the app did
+										essentially the same thing that ours did, we decided to learn our
+										lessons and scrap the project. I still gained valuable experience
+										with developing apps with users in mind and also got in-depth
+										experience in R and Shiny. We also both learned about the importance of getting a product to market as quickly as possible.
+										</p>
+								</div>
+								<hr>
+								<div>
 									<i><h2>UVA Scheduler</h2></i>
 									<p>This is the story of how I went from a cloud computing homework assignment to a free Echo Dot (sort of). It was
 										my final undergraduate semester at UVA and I was taking
@@ -326,60 +380,6 @@
 										Amazon ran the same promotion the next month except now they
 										offered an Echo Dot AND a pair of Alexa socks. So I guess the real
 										moral of the story is.....procrastinators prosper?</p>
-								</div>
-								<hr>
-								<div>
-									<i><h2>UVA Grades App</h2></i>
-									<p>This project is really the first personal project that I worked on. Midway through my second year in undergrad, I found out that
-										students could access grade data from the University through
-										the Freedom of Information Act. Indeed, with the completion of
-										a single form, I was emailed 10 CSV files containing exactly what
-										grades had been given out in every undergraduate class for the past
-										5 years (as in, each row had class, professor name, section number, how many A's were given, how many B's, how many students dropped, GPA, etc.). I found this information incredibly cool and potentially quite
-										useful to other students, so I decided to try and create a nice
-										interface for this data. Some enterprising UVA students had already
-										found great success create an app to help students schedule classes
-										at UVA so the market for such student-created apps was definitely
-										there.</p>
-
-										<p>Two challenges immediately presented themselves. The first pertained to what technology to select for such a task as I had no
-										experience hosting web apps and was overwhelmed by the number of different options available. I had really been itching to learn R, so I ended up choosing to develop in R using the Shiny framework for
-										developing web apps. This also allowed me to use ggplot, the visualization library in R to show users graphs of the data.
-										The second issue was that I've always
-										had a minor weak spot when it comes to designing aesthetically
-										pleasing, highly user-friendly apps. I acknowledge how important
-										these aspects of an app are, but I generally prefer to focus on functionality, thus I enlisted the help of a friend in the UVA McIntire School of Commerce with an eye for design to help me out. I would
-										be the developer and she the designer.</p>
-
-										<p>With preliminary issues resolved, we dove into development.
-										No surprise here, but a plethora of new issues quickly presented
-										themselves after we started development. Firstly, how do we
-										consolidate the 10 or so different CSVs into a single amalgamation
-										of data that can be used by the program? I decided to write a
-										separate script that performed this task once so that the program
-										did not have to merge the CSV files every time it ran. Next, was how
-										to deal with professors who taught more than one section of the
-										same class within the semester? This led to more that one row in the
-										data, however, it seemed like these should only be one observation.
-										We decided on a row level merge for cases like this, where the
-										individual letter grades were summed to form a single observation
-										and GPA's were recomputed.</p>
-
-										<p>Then we had to decide how to present this information to
-										the user. After consulting with some friends, we decided to allow
-										users to see a GPA over time graph for a given class by professor,
-										and also a more detailed breakdown of the grade distribution.
-										After a couple of iterations, we were closing in on an MVP. There
-										were a few minor bugs that we wanted to address before release
-										and we decided to reconvene after our respective summer internships
-										to iron out the kinks. Unfortunately, during this time, someone
-										released a very similar app that had grades for not only UVA but
-										other VA schools as well. After confirming that the app did
-										essentially the same thing that ours did, we decided to learn our
-										lessons and scrap the project. I still gained valuable experience
-										with developing apps with users in mind and also got in-depth
-										experience in R and Shiny. We also both learned about the importance of getting a product to market as quickly as possible.
-										</p>
 								</div>
 								<hr>
 								<div>
