@@ -6,18 +6,21 @@
         <li>
             <select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="background-color: #171313;">
                 <option value="" disabled selected>Navigate the Site</option>
-                <optgroup label="About Me">
+                <optgroup id="optiongroup" label="About Me">
                     <option value="../../content/data_scientist.html">Data Scientist</option>
                     <option value="../../content/software_developer.html">Software Developer</option>
                     <option value="../../content/human_being.html">Human Being</option>
                 </optgroup>
                 <optgroup id="optiongroup" label="Writing">
-                        <option value="../../search.html">Blog Main Page</option>
-                        <option value="../../content/writing.html">Writing</option>
-                        <option value="../../content/lyrics.html">Lyrics</option>
+                    <option value="../../search.html">Blog Main Page</option>
+                    <option value="../../content/writing.html">Writing</option>
                 </optgroup>
-                <optgroup label="Potpourri">
+                <optgroup id="optiongroup" label="Music">
+                    <option value="../../content/lyrics.html">Lyrics</option>
+                    <option value="../../content/compositions.html">Compositions</option>
                     <option value="../../content/guitar.html">Guitar Practice Routine</option>
+                </optgroup>
+                <optgroup id="optiongroup" label="Miscellaneous">
                     <option value="../../content/favorite_quotes.html">Favorite Quotes</option>
                 </optgroup>
             </select>
