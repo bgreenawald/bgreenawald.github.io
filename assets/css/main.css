@@ -2425,6 +2425,9 @@ Variables
 		color: #ffffff;
 	}
 
+	select optgroup {
+		background-color: var(--dark-color)
+	}
 	select option:hover{
 		background-color: var(--main-color);
 	}
@@ -3276,7 +3279,7 @@ Variables
 		}
 
 		.wrapper.style1-alt {
-			background-color: var(--dark-color);
+			background-color: var(--dark-color2);
 		}
 
 		.wrapper.style2 {
