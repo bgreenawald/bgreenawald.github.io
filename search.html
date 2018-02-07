@@ -75,6 +75,8 @@
 					<div class="inner">
 						<h2>Recent Posts</h2>
 
+                        <h3><a href = "blog/2018/capstone1.html">Capstone Semester One Wrap Up (Part 1) - 2/6/2018</a></h3>
+                        
 						<h3><a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a></h3>
 
 						<h3><a href = "blog/2017/introduction.html">Introduction Blog - 12/23/2017</a></h3>
@@ -85,9 +87,14 @@
 							</div>
 							<br>
 							<div class="field">
-									<ul id="result"></ul>
+                                <nav id="result">
+                                </nav>
 							</div>
 							<br>
+                        <br>
+                        <br>
+                    <br>
+                    
 					</div>
 				</section>
 
@@ -103,6 +110,9 @@
 								<li>
 									<a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a>
 								</li>
+                                <li>
+                                    <a href = "blog/2018/capstone1.html">Capstone Semester One Wrap Up (Part 1) - 2/6/2018</a>
+                                </li>
 							</ul>
 						</div>
 					</section>
@@ -132,15 +142,15 @@
 								var searchField = $('#search').val();
 								var regex = new RegExp(searchField, "i");
 								if (searchField != ""){
-									var output = '<div class="table-wrapper"><table class = "alt"><tbody>';
+									var output = "<ul style='height: 100px; overflow: hidden; overflow-y: scroll;'>";
 									var count = 1;
 									$.getJSON('data.json', function(data) {
 										$.each(data, function(key, val){
 											if ((val.name.search(regex) != -1) || (val.content.search(regex) != -1)) {
-												output += '<tr><a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a></tr>';
+												output += '<a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a>';
 											}
 										});
-										output += "</tbody></table></div><br>";
+                                        output += "</ul>";
 										$('#result').html(output);
 									});
 								}

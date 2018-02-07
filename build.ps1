@@ -1,8 +1,9 @@
 ﻿$message=$args[0]
 
 # Remove current pdf
-Remove-Item Resume_2017.pdf
-
+if(Test-Path Resume_2018.pdf){
+    Remove-Item Resume_2018.pdf
+}
 # Change to job search directory
 cd "C:\Users\bgree\Documents\Job-Search"
 
@@ -10,7 +11,7 @@ cd "C:\Users\bgree\Documents\Job-Search"
 git pull
 
 # Copy it over
-Copy-Item Resume_2017.pdf C:\xampp\htdocs\bgreenawald.github.io\Resume_2017.pdf
+Copy-Item Resume_2018.pdf C:\xampp\htdocs\bgreenawald.github.io\Resume_2018.pdf
 
 # Change back
 cd "C:\xampp\htdocs\bgreenawald.github.io\"
