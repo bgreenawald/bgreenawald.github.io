@@ -4,7 +4,7 @@
 Remove-Item Resume_2017.pdf
 
 # Change to job search directory
-cd "C:\Users\Ben\Documents\Job-Search"
+cd "C:\Users\bgree\Documents\Job-Search"
 
 # Pull the current version of the resume
 git pull
