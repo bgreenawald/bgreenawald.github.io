@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<!--
+Hyperspace by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>Ben Greenawald</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="header">
+        </header>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <section id="main" class="wrapper style1">
+                <div class="inner">
+                    <h1 class="major"><!-- titleBegin -->Capstone Semester One Wrap Up (Part 2)<!-- titleEnd --></h1>
+                    <!-- contentBegin -->
+
+                    <p>Welcome back to the second part of the wrap up of the capstone work completed during my first semester
+                        of my Master's in Data Science Program. At this point, we have defined the problem and collected the data,
+                        so now it's time for the fun stuff.
+                    </p>
+
+                    <h3>To Preprocess, or not to Preprocess</h3>
+
+                    <p>In some ways, that isn't even the right question to ask. Of course
+                    we are going to have to preprocess, but how much and in what ways
+                    are key for us. We are touting these models as "language agnostic,"
+                    and the agnosticism must start at the preprocessing stage. So at
+                    this stage in our project, we have about 70,000 different documents,
+                    representing 20 different groups with an even split of violent and
+                    non-violent groups and at the end of the preprocessing pipeline, we
+                    should have a "clean" set of document that are ready to be feature
+                    engineered.</p>
+
+                    <p>Step one is quite clear: remove the junk. Junk is junk regardless
+                    of what language it is in so we can safely remove it. By junk, we
+                    mean anything that is not an Arabic character or numeric character.
+                    This was quite cleanly achieved through the use of regular expressions. There also becomes the question of how to deal
+                    with numbers. Numbers obviously signal something in a document,
+                    but exactly what is often unclear. And when all number are included,
+                    the feature space literally becomes infinite (in theory), but even in
+                    practice becomes quite large. Instead, we opt to give numbers special
+                    characters, namely, NUM. This really does finish out the preprocessing of individual documents.</p>
+
+                    <p>The next step is to determine what documents belong in a ready
+                    to go corpora for this research. Short documents (i.e, a couple of words), add computation time without significantly adding to the
+                    corpora since it is hard to express intent in only a couple of words.
+                    After looking at the word distribution of all documents, we find that
+                    the median number of words in a document is about 200, with the
+                    mean tending towards 100. The min is 0 words and the max is over
+                    50,000. After a fair bit of deliberation, we somewhat arbitrarily decided at a cutoff of 90 words for a document to be included in the
+                    corpus. After removing the runts of the group, we are left with about
+                    55,000 documents, more than enough to get us started.</p>
+
+                    <h3>The Features are Coming</h3>
+
+                    <p>Obviously, raw text is meaningless to any sort of machine learning model. One of the principal natural language processing (NLP) problems is how to convert
+                    from raw text to numbers that we can feed into our models. There
+                    have been great strides forward in NLP in areas such as sentiment
+                    analysis (how is the author feeling) and part-of-speech tagging
+                    (identifying the part of speech for any given word). Unfortunately,
+                    we cannot use any of that. Knowing enough about a language to
+                    identify author sentiment is far beyond that language-neutral approach that we seek. Thus, we have to go back the basics. The
+                    primary features extraction techniques that we use are TF-IDF
+                    weights and word embeddings.</p>
+
+                    <p>Without this post becoming an NLP lesson, I will touch on what
+                    these weights mean. TF-IDF (text frequency-inverse document frequency) weights map documents to feature vectors which attempt to quantify what words a document uses, how often it uses
+                    those words, and how effective those words are identifying the
+                    document. This last caveat ensures that common words, like "the" in
+                    English, aren't given high weights because even though they appear very often within any given document, they appear with the similar frequencies in almost every document, so they are ineffective at
+                    identifying any one document. Word embeddings are a very different
+                    approach. Instead of mapping documents to features vectors, they map words to feature vectors where the feature vector for any given
+                    word attempts to quantify the context with which that word appears. <i><strong>Caution, technical terms ahead.</strong></i> For
+                    the more technical reader who desires specifics, we actually used
+                    sublinear TF-IDF weights and the word2vec implementation of word embeddings. We trained our own word embeddings as opposed to
+                    using pre-trained since our use case is quite specific. The TF-IDF weights were calculated using Java and the word embeddings are a feature of the Keras deep learning library in Python. For the TF-IDF weights, we chose the top 10,000 features according to the information gain of the features.</p>
+
+                    <h3>Models on Models on Models</h3>
+
+                    <p>After months of work, we finally get to the easy part, taking all
+                    of the data and plugging it into our models to finally get some results! Because this is research and we don't know what models
+                    will perform best, we decided to use all of them. While I am obviously kidding, we did cast our net pretty wide in terms
+                    of models. We consider a number of baseline models like logistic
+                    regression, random forests, support vector machines, and gradient
+                    boosted trees. These models all take in the TF-IDF weights as features. Our "novel" models are deep learning models such as
+                    convolutional neural networks and LSTM networks. Even though these are relatively mature infrastructures, we consider them "novel" because a) they haven't been around nearly as long as the
+                    baselines and b) we expect them to outperform the baselines.</p>
+
+                    <p>The logistic regression was run using custom Java code. After
+                    this, we hit a bit of a problem. All of the other baseline models are
+                    very easily implemented in Python using the sklearn library, but the
+                    TF-IDF weights are calculated and exist in Java. We need to find a way to export these feature vectors and import them to Python.
+                    Now, these TF-IDF weights exist in a matrix (well, not exactly. They're stored as dictionaries, but close enough), so exporting them as a csv should be trivial. However, the space of it all coming into play. Each document is at least a 10,000 x 200 matrix containing double values and there are about 55,000 documents. You're looking
+                    at quite a few gigs of memory to store matrices that mostly contain
+                    0's (TF-IDF matrices are usually extremely sparse). Instead, we used
+                    a sparse matrix representation for the matrices. Specifically, each matrix was represented as a giant list of coordinates where each coordinate specified what value should exist at that coordinate.
+                    From here, we could have converted to binary files to save a little more space, but even without that, the exported feature files were
+                    only about a gigabyte total. Reading in these coordinate-value files
+                    is pretty simple using scipy's implementation of sparse matrices.</p>
+
+                    <p>With our features now over in Python, we can just plug and play
+                    the rest of our baseline models. For each, we did a grid search to help
+                    narrow down on some reasonable values for the hyperparameters. As for the neural networks, we used Keras with a Tensorflow backend
+                    to implement the networks. Regrettably, I have not had a huge part in the neural networks (at least not yet), as the original architectures
+                    were based on code from a past project and thus did not need a whole lot. We have a couple more architectures in mind that I would
+                    have the chance to be more involved in.</p>
+
+                    <h3>"Houston, we have a (bias) problem"</h3>
+
+                    <p>We are now almost in a position to talk about some preliminary results. We first need to briefly discuss our validation metrics. We
+                    had two different validation techniques. The first was a standard
+                    cross-validation technique and the second was a leave-one-group-out
+                    cross-validation (LOGO-CV) which involves leaving all documents from a single group out from training and use those documents
+                    for testing. We care more about the LOGO-CV results since they
+                    are more real to the application of this capstone. In terms of metrics,
+                    we looked at both accuracy and the F-1 score for both violent and non-violent groups. </p>
+
+                    <p> Now for the results. I won't go into exact values here since they will be listed out in the
+                    paper. The initial results were roughly as expected. The results of the
+                    standard cross-validation were ridiculously high, like almost 100%. Upon further investigation, we found out that this was because the
+                    model was actually picking up on a group's name in the learning phase so when it saw that group in test, it already knew the classification. The LOGO-CV results saw a pretty huge drop-off.
+                    For some groups, it was getting close to 100% still, and for others, it
+                    completely misclassified every document. All of the groups that it was getting 0% on were non-violent groups. What this means was that the models were essentially almost always guessing "violent".
+                    There are some ideas we have for mitigation of that will be included in the next section.</p>
+
+                    <p>These results were roughly consistent
+                    across models. Of the baseline models, logistic regression did the overall best. Overall, the two neural network models did the best,
+                    but the logistic regression was relatively competitive. These results
+                    are to be expected. Since neural networks are good at self-generating
+                    features, we expect them to perform well in situations where we
+                    only provide generic features. The logistic regression also isn't all
+                    that much of a surprise since logistic regression seems to just do
+                    at least ok at most tasks.</p>
+
+                    <h3>So, what's next?</h3>
+
+                    <p>That's approximately what we did during the first semester.
+                    so where do we go from here? The first thing that needs to be
+                    addressed, and something that we already have started to address
+                    as I write this is the imbalance in predictive accuracy between violent and non-violent groups. One of the root causes of this initially
+                    was one of our groups, Al-Boraq. This was the group whose documents we got from a research group that had collected forum
+                    posts for Al-Boraq. What this meant is that we have ~55,000 documents for Al-Boraq and ~15,000 documents for every other group. This is a very lopsided distribution that needs to be addressed.
+                    So the first step will be to downsample Al-Boraq randomly.</p>
+
+                    <p>Another step will be to do random oversampling in order to obtain perfectly even class distributions (i.e, the exact same number
+                    of violent and non-violent documents). Implementation-wise, this is a
+                    very simple change and will likely have a sizable effect. Another potential, but less feasible option, would be to diversify the corpus by
+                    getting documents from even more groups. Given the time-frame, this is unlikely to happen.</p>
+
+                    <p>We also may have to reconcile the fact that there is a fair bit of irreducible error in our data, where some documents are almost
+                    carbon copies of others but are labeled as both violent and non-violent. There are two obvious examples of this. Violent religious groups will often quote non-violent religious scholars in order
+                    to legitimize their cause. On the other hand, non-violent news
+                    organizations may post direct quotes from violent groups when
+                    reporting on them. It's hard to say how frequent these cases are,
+                    but they are almost impossible to rectify.</p>
+
+                    <p>Other than solving this issue, we have a few other ideas in mind
+                    for this semester. The first is to implement a few other neural network architectures, mainly GRUs and RCNN (recurrent convolutional neural networks) to see if they improve on the
+                    results of the other neural networks. Another really cool, but
+                    likely overly ambitious, idea would be to reverse engineer the
+                    CNN. This idea has been implemented with images, where you
+                    can see what inputs cause certain output neurons to fire by
+                    tracing the network backward. To our knowledge, this has not
+                    been done with text, so it may be too arduous.</p>
+
+                    <h3>Cool, but what have I learned?</h3>
+
+                    <p>After a grueling two blogs posts, we are almost there.
+                    But I would be remiss if I didn't go through a couple of things
+                    that I have learned so far. I'm more exausted writing this than you
+                    are reading, so I'm lazily just going to put these lessons in list form.
+                    <ul style="padding: 0em 5em">
+                    <li>
+                    Research is a whole different beast from anything else that I have done, for better or (more often than not) worse. Doing any sort of
+                    research project comes with a couple of intrinsic evils that I have yet
+                    to come across in my academic career. The first is, as opposed to the nice, structured problems that you come across in classes, your research just might not work. You could spend weeks working on some part of your project to have it yield no benefit whatsoever.
+                    This is certainly something I will need to get used to because such
+                    things happen in industry all of the time, but it certainly is frustrating the first time you come across it. Also, the lack of
+                    specifications can be rather tumultuous. If you are working on a
+                    project for an end user, you can narrow in your specifications by
+                    prototyping and then interviewing the end user. In research, the end user
+                    is.........well, nobody. We have a sponsor but the overall end goal is to expand human knowledge in a certain domain. But how that is done
+                    is open-ended. The specifications are chosen by you and are altered
+                    based on what works and what doesn't. The ambiguity can be quite
+                    burdensome in terms of scheduling how long any given part of the
+                    project will take. If you can't tell, I think doing research has been an
+                    invaluable experience, but I don't think it's for me.
+                    </li>
+                    <li>
+                    Auditing is super important, especially as the project gets more complicated. Auditing is kind of the same as test cases in coding,
+                    but they are distinct because they can't really be automated or
+                    even anticipated. In coding, the testing pipeline is "this is what
+                    my app needs to do, I can write some tests ahead of time to validate
+                    those features and then develop until the product can pass all of the
+                    tests." Such a pipeline does not translate to large research projects. You can, and should, write test cases for your code, but research, and
+                    data science in general, needs something else. Many times, you will perform some sort of analysis and get results, and the auditing is
+                    going in and making sure that your analytical procedure is valid
+                    and that your results are reasonable. This can be a tedious process
+                    because it should really be done after any bit of analysis, but can't
+                    really be automated. You just have to do it.
+                    </li>
+                    </ul>
+
+                    <p>That's it for now. I will make another post later on in the semester wrapping up
+                    the project, as well as linking our published paper.<p>
+            <!-- contentEnd -->
+
+            <!-- dateBegin 2/6/2018 dateEnd -->
+            <!-- pathBegin blog/2018/capstone1.html pathEnd -->
+
+            <div class="row">
+                <div class="6u 12u$(medium)">
+                    <ul class="actions">
+                        <li><a href="capstone1.html" class="button">Previous</a></li>
+                        <!--<li><a href="capstone2.html" class="button">Next</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    </div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper alt">
+    <div class="inner">
+        <ul class="menu">
+            <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script>
+    $(function(){$('#header').load('../../header2.html');});
+</script>
+<script src="../../assets/js/jquery.scrollex.min.js"></script>
+<script src="../../assets/js/jquery.scrolly.min.js"></script>
+<script src="../../assets/js/skel.min.js"></script>
+<script src="../../assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="../../assets/js/main.js"></script>
+
+</body>
+</html>
