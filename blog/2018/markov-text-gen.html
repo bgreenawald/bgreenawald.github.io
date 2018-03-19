@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<!--
+Hyperspace by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+    <head>
+        <title>Ben Greenawald</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115980248-1');
+		</script>
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="header">
+        </header>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <section id="main" class="wrapper style1">
+                <div class="inner">
+                    <h1 class="major"><!-- titleBegin -->Fun with Simple Data Science: Markov Text Generation<!-- titleEnd --></h1>
+                    <!-- contentBegin -->
+
+                    <p>This post is going to be a little bit different, and I hope this is a series that I can do more with. When most people think of data science, they think cutting edge deep learning and AI methodologies, and because of that it can seem a bit out of reach. People often forget that you can do some really fun stuff with data science using really simple, intuitive techniques. I want to do some posts on doing cool, data science-y things using simple concepts. This post is going to focus on generating text using a Markov Chain. This is inspired by the "Random Kanye" project, where people create models to generate random Kanye West tweets.</p>
+
+                    <p>I'm only going to briefly go over the statistics behind Markov Chains here, but for a really good background on this, listen to the "Random Kanye" episode of the <i>Linear Digressions</i> podcast (my current obsession). Basically, a Markov process is any process where the next state of the process is only dependent on the current state, not any of the past states. So, in the context of text generation, if I began the sentence "I am from the United _____", you could probably guess that the next word in that sentence is "States" and you could probably do it based only on the word "United." Certainly, the other words help, but if I just said "United _____", you would probably still guess with reasonable certainty that the next word is "States." This particular example displays the Markov property, since the next word depended only on the previous word, not any of the prior words. Now, a reasonable thing to point out would be that this doesn't always work. If I gave you the subset of a sentence, "the _____", you would be hardpressed to come up with the next word, since without context, almost any word can come after the word "the."</p>
+
+                    <p>We can reconcile this by getting a large enough set of text and coming up with a probabilistic distribution for what words follow what other words. Essentially what this means is, scan over a large body of text looking at each pair of consecutive words, and keep track of how often words follow other words. So using the Random Kanye example from before, we might go through all his tweets and find out that the most common word that follows the word "the" is "best" (i.e, I am the best), while the next most common word is "greatest" (i.e, I am the greatest rapper). We would have a sense of how often each of these words follows the word "the". We would also have a sense of how often every other word in the vocabulary followed the world "the". Once we know how often every word in the vocabulary follows the world "the", we can easily turn this into a probability distribution by dividing by the total number of times we saw the word "the". So if we want to make a new Kanye tweet that starts with the word "the", we would just pick the next word in the tweet randomly accordingly to this probability distribution that we just defined. We would have a similar distribution for every word in the vocabulary, allowing us to probabilistically generate tweets from Kanye.</p>
+
+                    <p>Hopefully, this give you some sense of how we can use a Markov chain to generate new text from some corpus of training text. It turns out this works fairly well, and if you trained such a model on a large enough set of Kanye tweets, you would get decent results. It is important to note that since we are using Markov chains, these sentences have no memory. So while it often does an ok job, there is also a good chance that you just get incoherent rambling. Personally, I think these are the most fun because they are often hilarious. Now, the real fun in doing something like this is choosing your data source. In "Random Kanye," the data source was Kanye tweets, but there is nothing limiting us to doing one sensible source. We can arbitrarily combine different data sources, and our model will treat them as one source, giving some pretty hilarious results.  For this post, we are going to combine the tweets of Donald Trump with the Bible. I'm not trying to be political in any way here, I just genuinely thought this combination would absurd. I am going to step through some of the code here, but by no means all of it. All of the code and data for this project is available <a href="https://github.com/bgreenawald/Markov-Text-Generation" >here</a>.</p>
+
+                    <p>The first step is to get the data. I found a collection of about 30,000 <a href="https://github.com/mkearney/trumptweets">Trump tweets</a> starting as long ago as 2009, and also found a text version of the <a href="http://www.gutenberg.org/ebooks/10>">Guttenburg Bible</a>. I will largely omit the preprocessing details, but the pipeline was basically: remove any non-English characters, make all text lowercase, and replace endline characters will a special token. After this, I had a collection of preprocessed lines where each line was either a verse from Bible or a tweet from Donald Trump. I went ahead and pickled this list so I wouldn't have to keep redoing the preprocessing steps. For those unfamiliar, pickling is just Python's way of saving Python object for later use.</p>
+
+                    <p>Now that we have the data, the real fun can begin. First, we have to create the vocabulary. This just involves reading in every sentences, splitting on spaces, and saving all of the words to a list.</p>
+<pre class="prettyprint"><code class="language-python">
+# Create the vocabulary
+vocab = []
+for line in text_full.split("\n"):
+    for word in line.split(" "):
+        vocab.append(word)
+        </code></pre>
+                    <p>This showed that the corpus had 1366285 total words, but after casting our list to a set (to remove duplicates), there were only 43714 unique words. Then, I create a mapping that maps every word to a number, and another that maps numbers to words.</p>
+                    <pre class="prettyprint"><code class="language-python">
+# Create a dict mapping vocab to index
+vocab_to_id = {}
+id_to_vocab = {}
+for index, word in enumerate(vocab):
+    vocab_to_id[word] = index
+    id_to_vocab[index] = word
+                    </code></pre>
+                    <p>Finally, we can actually create our term frequency matrix. If <i>n</i> is the size of our vocabulary, this matrix is <i>n x n</i>, where each entry if how often the colum  word followed the row word. So if you found the number representing the word "the" (this number comes from the dictionary code above), and the number for the world "president" (call these number <i>x</i>, <i>y</i> respectivly), then the <i>x,y</i> entry of the term frequency matrix is how often the word "president" came after the word "the." The code to make this matrix is below.</p>
+                    <pre class="prettyprint"><code class="language-python">
+# Fill up the tf matrix
+for line in text_full.split("\n"):
+    words = line.split(" ")
+    for i in range(len(words) - 1):
+        id1 = vocab_to_id[words[i]]
+        id2 = vocab_to_id[words[i + 1]]
+        tf[id1, id2] += 1
+                    </code></pre>
+                    <p>One useful implementation detail here is that your life will be a whole lot easier if at this point you convert the term frequency matrix to a sparse marix. Remember, this term frequency matrix is huge, but most of the entries are 0 since there are only so many valid pairing in the English language. Instead of making Python store this entire, mostly empty matrix, we can use a sparse matrix to save a ton of space. I personally use the scipy <i>coo</i> implementation, shown below. </p>
+                    <pre class="prettyprint"><code class="language-python">
+mat = sp.coo_matrix(tf)
+                    </code></pre>
+                    <p>Again, this is not required, but my relatively powerful laptop could not handle the code unless I did this, so it is effectively mandatory. </p>
+
+                    <p>A fun little aside, before we actually make new text, is to see what are the most common word pairings. I won't go through the code for this, but after finding the top 10 biggest elements matrix, I found that the 10 most common consecutive pairings of words are
+                    <ol style="padding: 0em 5em">
+                        <li>of the</li>
+                        <li>the lord</li>
+                        <li>and the</li>
+                        <li>in the</li>
+                        <li>to the</li>
+                        <li>and he</li>
+                        <li>i will</li>
+                        <li>for the</li>
+                        <li>shall be</li>
+                        <li>all the</li>
+                    </ol>
+
+                    <p>As expected, these are pretty generic pairings of words. "The lord" is interesting because it is definitely Bible specific, but it is more common then even a pairing like "and the" that would appear in both the Bible and Trump tweets.</p>
+
+                    <p>Now, we are almost ready to actually make new text. The final step is to convert the term frequency matrix to a probability distribution (called a Markov or probability transition matrix). This is simply done by dividing every element in a row by the sum of the row.</p>
+                    <pre class="prettyprint"><code class="language-python">
+# Normalize the matrix
+mat_norm = normalize(mat, norm='l1', axis=1)
+                    </code></pre>
+
+                    <p>So now, we generate new text. To do this, we choose a start word, and using our probability transition matrix, keep adding words to the sentence until we hit an endline.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+sentence = start_word
+while start_word != "endline":
+    row_ind = vocab_to_id[start_word]
+    prob_dist = np.array(mat_norm.getrow(row_ind).todense())[0]
+    next_ind = np.random.choice(range(len(vocab)), p=prob_dist)
+    start_word = id_to_vocab[next_ind]
+    sentence += " " + start_word
+                    </code></pre>
+                    </p>
+
+        <p>Below are a couple of examples that I thought were fun. Using the code on Github, you can easily re-run this with whatever start word you desire.</p>
+
+                    <strong>Start word: 'the'</strong>
+                    <ul style="padding: 0em 5em">
+                    <li>the nations shall many women working on the people when israel which are known loser who hath sent benaiah the white as i hope of macedonia and invent to the appearance they not nor taking over theaters this is mccarthyism</li>
+                    <li>the original costume was susan berry</li>
+                    <li>the midst of seventy years agothis is mad sometimes referred to be long massive tax just named eutychus being stubborn can call it</li>
+                    <li>the bar them that thou with his works nay but you have sinned against the lord</li>
+                    </ul>
+
+                    <strong>Start word: 'who'</strong>
+                    <ul style="padding: 0em 5em">
+                    <li>who escaped alone and treasuries shelemiah shemariah and moab and this country is the one came up he defrauded us is through phenice and thou shalt not hearken unto aaron the obamacare</li>
+                    <li>who was a son of them thou shalt thou art not the word again despite obamas terrible</li>
+                    </ul>
+
+                    <strong>Start word: 'hillary'</strong>
+                    <ul style="padding: 0em 5em">
+                    <li>hillary lying vanities but the goodness thou shalt hearken ye that were in all this day in twelve hours left to go way but of the lord of israel and her head</li>
+                    </ul>
+
+                    <p>So we can see a couple of interesting observations. The first is that because each word choice is random, we can use the same start word multiple times and get very different sentences. The second is that because this process has no memory, the sentence can start off very biblical and midway just switch to being quite Trumpian. This is the primary weakness for using Markov chains for text generation, but it's also why they are so much fun.</p>
+
+                    <p>This wraps up this little diversion. Hopefully, this demonstrates how using very simple statistical techniques can do something extremely complex like text generation (although arguably it doesn't very well, but still). I encourage you to use the code on Github to try new start words to make sentences. The pipeline I made it also fairly generic, so it can accommodate any text you throw at it. The next combinations I intend to try Trump tweets and the Quron and Trump tweets and the Torah to see how swapping the religious text alters the results. Hope you enjoyed!<p>
+
+
+            <!-- contentEnd -->
+            <h3>3/18/2018</h3>
+            <!-- dateBegin 3/18/2018 dateEnd -->
+            <!-- pathBegin blog/2018/markov-text-gen.html pathEnd -->
+
+            <div class="row">
+                <div class="6u 12u$(medium)">
+                    <ul class="actions">
+                        <li><a href="capstone2.html" class="button">Previous</a></li>
+                        <!--<li><a href="capstone2.html" class="button">Next</a></li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </section>
+
+    </div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper alt">
+    <div class="inner">
+        <ul class="menu">
+            <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../../assets/js/jquery.min.js"></script>
+<script>
+    $(function(){$('#header').load('../../header2.html');});
+</script>
+<script src="../../assets/js/jquery.scrollex.min.js"></script>
+<script src="../../assets/js/jquery.scrolly.min.js"></script>
+<script src="../../assets/js/skel.min.js"></script>
+<script src="../../assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="../../assets/js/main.js"></script>
+
+</body>
+</html>

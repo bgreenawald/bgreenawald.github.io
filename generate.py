@@ -13,10 +13,10 @@ for subdir, dirs, files in os.walk("blog"):
             # For each file, get the necesary info and append to our dict
             text = file_name.read()
 
-            name = re.findall("titleBegin [\"\<\>a-zA-Z ,.\n\/?\-()0-9!']+ titleEnd", text)
+            name = re.findall("titleBegin [\"\<\>a-zA-Z ,.\n\/?\-()0-9!:']+ titleEnd", text)
             name = name[0].replace("titleBegin -->", "").replace("<!-- titleEnd", "")
 
-            content = re.findall("contentBegin [\"\<\>a-zA-Z ,.\n\/?\-()0-9!\t'=:%~]+ contentEnd", text)
+            content = re.findall("contentBegin [\"\<\>a-zA-Z ,.\n\/?\-()0-9!\t'=:%~_#\[\]\\\{\}\+]+ contentEnd", text)
             try:
                 content = content[0].replace("contentBegin -->", "").replace("<!-- contentEnd", "")
             except IndexError:
