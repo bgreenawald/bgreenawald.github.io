@@ -1,8 +1,4 @@
-﻿param(
-[string]$message
-)
-
-# Remove current pdf
+﻿# Remove current pdf
 if(Test-Path Resume_2018.pdf){
     Remove-Item Resume_2018.pdf
 }
@@ -21,7 +17,3 @@ cd "C:\xampp\htdocs\bgreenawald.github.io\"
 # Run the blog build script
 python generate.py
 
-# Add and push
-git add . 
-git commit -m $message
-git push
