@@ -1,4 +1,6 @@
-﻿$message=$args[0]
+﻿param(
+[string]$message
+)
 
 # Remove current pdf
 if(Test-Path Resume_2018.pdf){
