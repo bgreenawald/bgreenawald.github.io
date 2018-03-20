@@ -46,7 +46,7 @@
 			gtag('config', 'UA-115980248-1');
 			</script>
 	</head>
-	<body>
+	<body onload="inOrder()">
 
 		<!-- Header -->
 			<header id="header">
@@ -106,7 +106,14 @@
 				<!-- All Blog Posts -->
 
 					<section class = "wrapper style2">
-						<div class = "inner" id = "allPosts">
+						<div class = "inner">
+							<h2>All Blog Posts</h2>
+							<ul class="actions small">
+									<li><a onclick="inOrder()" class="button special small">Newest to oldest</a></li>
+									<li><a onclick="reverse()" class="button small">Oldest to newest</a></li>
+								</ul>
+							<nav id = "allPosts">
+							</nav>
 						</div>
 					</section>
 
@@ -188,20 +195,31 @@
 						return 0;
 					}
 			</script>
-			<!-- Load all function -->
+			<!-- Load all functions -->
 			<script>
-				var output = "";
-				output += "<h2>All Blog Posts</h2>";
-				output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
-				$.getJSON("data.json", function(json){
-					json.sort(compare);
-					$.each(json, function(key, val){
-						output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
+				function inOrder(){
+					var output = "";
+					output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
+					$.getJSON("data.json", function(json){
+						json.sort(compare);
+						$.each(json, function(key, val){
+							output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
+						});
+						document.getElementById("allPosts").innerHTML = output;
 					});
-					document.getElementById("allPosts").innerHTML = output;
-				});
-			</script>
-
+				}
+				function reverse(){
+					var output = "";
+					output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
+					$.getJSON("data.json", function(json){
+						json.sort(compareReversed);
+						$.each(json, function(key, val){
+							output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
+						});
+						document.getElementById("allPosts").innerHTML = output;
+					});
+				}
+				</script>
 			<!-- Load most recent -->
 			<script>
 				var outputRec = "";
