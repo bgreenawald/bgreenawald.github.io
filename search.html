@@ -205,15 +205,15 @@
 			<!-- Load most recent -->
 			<script>
 				var outputRec = "";
-				outputRec += "<h2>Recent Posts</h2>";
+				outputRec += "<h2>Recent Posts</h2><ol>";
 				$.getJSON("data.json", function(jsonRec){
 					jsonRec.sort(compare);
 					$.each(jsonRec, function(keyRec, valRec){
-						if(keyRec < 5){
-							outputRec += "<h3><a href = "+valRec.location+">"+valRec.name+" - "+valRec.date+"</a></h3>";
+						if(keyRec < 3){
+							outputRec += "<li><h3><a href = "+valRec.location+">"+valRec.name+" - "+valRec.date+"</a></h3></li>";
 						}
 					});
-					outputRec += "<table>";
+					outputRec += "</ol><table>";
 					document.getElementById("recent").innerHTML = outputRec;
 				});
 			</script>
