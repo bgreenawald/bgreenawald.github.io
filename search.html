@@ -82,19 +82,9 @@
 
 				<section class="wrapper style1">
 					<div class="inner">
-						<h2>Recent Posts</h2>
 
-                        <h3><a href = "blog/2018/markov-text-gen.html">Fun with Simple Data Science: Markov Text Generation</a></h3>
-                        
-                        <h3><a href = "blog/2018/capstone2.html">Capstone Semester One Wrap Up (Part 2) - 2/10/2018</a></h3>
-
-						<h3><a href = "blog/2018/capstone2.html">Capstone Semester One Wrap Up (Part 2) - 2/10/2018</a></h3>
-
-                        <h3><a href = "blog/2018/capstone1.html">Capstone Semester One Wrap Up (Part 1) - 2/6/2018</a></h3>
-
-						<h3><a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a></h3>
-
-						<h3><a href = "blog/2017/introduction.html">Introduction Blog - 12/23/2017</a></h3>
+                        <nav id="recent">
+						</nav>
 						<hr>
 
 						<div class="field">
@@ -116,25 +106,7 @@
 				<!-- All Blog Posts -->
 
 					<section class = "wrapper style2">
-						<div class = "inner">
-							<h2>All Blog Posts</h2>
-							<ul>
-                                <li>
-                                    <a href = "blog/2018/markov-text-gen.html">Fun with Simple Data Science: Markov Text Generation</a>
-                                </li>
-								<li>
-                                    <a href = "blog/2018/capstone2.html">Capstone Semester One Wrap Up (Part 2) - 2/10/2018</a>
-								</li>
-                                <li>
-                                    <a href = "blog/2018/capstone1.html">Capstone Semester One Wrap Up (Part 1) - 2/6/2018</a>
-								</li>
-								<li>
-									<a href = "blog/2017/resolutions.html">New Years Resolutions - 12/26/2017</a>
-								</li>
-								<li>
-									<a href = "blog/2017/introduction.html">Introduction Blog - 12/23/17</a>
-								</li>
-							</ul>
+						<div class = "inner" id = "allPosts">
 						</div>
 					</section>
 
@@ -157,6 +129,7 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+			<!-- Search function -->
 			<script>
 					$(window).load(function(){
 						$('#search').keyup(function(){
@@ -182,6 +155,67 @@
 								}
 						});
 					});
+			</script>
+			<!-- Sort functions -->
+			<script>
+				function compare(a,b){
+						var aParts = a.date.split('/');
+						var bParts = b.date.split('/');
+						var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
+						var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
+
+						if( aDate < bDate){
+							return 1;
+						}
+						if (aDate > bDate){
+							return -1;
+						}
+						return 0;
+					}
+
+					function compareReversed(a,b){
+						var aParts = a.date.split('/');
+						var bParts = b.date.split('/');
+						var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
+						var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
+
+						if( aDate < bDate){
+							return -1;
+						}
+						if (aDate > bDate){
+							return 1;
+						}
+						return 0;
+					}
+			</script>
+			<!-- Load all function -->
+			<script>
+				var output = "";
+				output += "<h2>All Blog Posts</h2>";
+				output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
+				$.getJSON("data.json", function(json){
+					json.sort(compare);
+					$.each(json, function(key, val){
+						output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
+					});
+					document.getElementById("allPosts").innerHTML = output;
+				});
+			</script>
+
+			<!-- Load most recent -->
+			<script>
+				var outputRec = "";
+				outputRec += "<h2>Recent Posts</h2>";
+				$.getJSON("data.json", function(jsonRec){
+					jsonRec.sort(compare);
+					$.each(jsonRec, function(keyRec, valRec){
+						if(keyRec < 5){
+							outputRec += "<h3><a href = "+valRec.location+">"+valRec.name+" - "+valRec.date+"</a></h3>";
+						}
+					});
+					outputRec += "<table>";
+					document.getElementById("recent").innerHTML = outputRec;
+				});
 			</script>
 	</body>
 </html>
