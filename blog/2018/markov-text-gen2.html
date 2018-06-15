@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Ben Greenawald</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-115980248-1');
+        </script>
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="header">
+        </header>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <section id="main" class="wrapper style1">
+                <div class="inner">
+                    <h1 class="major"><!-- titleBegin -->Fun with Simple Data Science: Markov Text Generation (Part 2)<!-- titleEnd --></h1>
+                    <!-- contentBegin -->
+
+                    <p>In the previous post, we explored how to use Markov chains to generate new text, and did so through the lens of combining to different corpora of text (Trump tweets and the Bible). In this post, which is going to be a short follow-up, we are going to address one fundamental issue with the original post: that there was no sense of memory in the model. </p>
+
+                    <p>By definition, Markov chains cannot have memory. As a brief review, the definition of a Markov process is one in which the next state of the system relies only on the current state, not on any of the past states. This presents a bit of an issue with text generation since human text is definitely not Markovian. In order to predict what a person is going to say next, you need at least a couple of words of context, usually closer to a full sentence. This issue was in full display in the sentences the model was creating. A sentence would often start in the tone of the Bible and then suddenly switch over to being Trumpian, or vice-versa. Take for examples "who was a son of them thou shalt thou art not the word again despite obamas terrible." This entire sentence reads like a grammatically atrocious Bible verse up until the last two words, where somehow Obama gets thrown into the mix. To get more cohesion into these sentences, we need to introduce some form of memory.</p>
+
+                    <p>As stated, we really can't do this within the framework of a traditional Markov model, we're going to have to improvise a little. I should note that most of what's going on in this post was just me messing around with extending the model and doesn't have the same solid mathematical backing as the previous post. Nevertheless, let's just jump into it.</p>
+
+                    <p>The task at hand is to take the code used from the previous post and extend it to use not one, but <i>n</i> words in order to predict the next word. Now the data science savvy amongst you are immediately jumping to "sequence to sequence RNN models." This is certainly the preferred method and would likely get us much better results, but I wanted to try something a bit different. Since this is "Fun with Simple Data Science," I wanted to try and improve the results using only the concept of probability distributions introduced last time. Using an example, let's look at the ideal way to go about this problem. Keeping with the Trump tweet example, let's say we had the starter text "I am the _____" and want to predict the next word. To answer this, I would need to answer three questions: what words usually come 3 words after the word "I", what words usually come 2 words after the word "am", and what words usually come 1 word after the word "the." I would combine the answers to these three subquestions and use that to generate my prediction. Here in lies a problem. The code we have can only look ahead one word. So we simplify the problem a little bit and just say, what words usually come after "I", "am", and "the" separately, and combine this information to generate the final prediction.</p>
+
+                    <p>With this methodology, we can now take any number of words as an initial input and just get the probability distribution for each word. Now the question becomes how do we combine <i>n</i> probability distributions into a single probability distribution. The answer is that we're going to do a weighted sum of the probability distributions. Formally, the final probability distribution <i>w</i> that we will use to generate our predictions is $$w = w_0 * word_0 + w_1 * word_1 + .... + w_n * word_n$$ The question of what weights to use is an interesting one and one that I don't necessarily have a good answer for. I chose to just test out a few different ones and see what gave the best results. </p>
+
+                    <p>I tested three different weighting schemes. The first was uniform weighting, where each word was given an equal vote when deciding the next word.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+weights = np.zeros(len(start_words)) + 1
+weights = weights / len(start_words)
+                    </code></pre>
+
+                    <p>The next was an exponential decay, where the most recent word was given the highest weight, and as you went further back, words got exponentially less of a vote.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+weights = [0] * len(start_words)
+for i in range(len(start_words)):
+    weights[i] = math.pow(gamma, i)
+
+weights.reverse()
+weights = np.array(weights)/sum(weights)
+                    </code></pre>
+
+                    <p>Finally, I did a random weighting where weights were just chosen randomly.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+weights = np.array(random.sample(range(0,100), len(start_words)))
+weights = weights / sum(weights)
+                    </code></pre>
+
+                    <p>With the weights well defined, we can now start generating text. The code, shown below, is similar to how we generated text last time. We take in <i>n</i> words, and for each word get the probability distribution for that word and multiply it by the corresponding weight. Doing this for every word and summing the results gives us the probability distribution for the next word, which we predict and append to our result sentence. Now the word we just generated is used in the next prediction, along with the previous <i>n - 1</i> words. Continue this process until we hit an endline, and output that as the result.</p> 
+
+                    <pre class="prettyprint"><code class="language-python">
+# Number of steps to look back
+lookback = len(start_words)
+
+while current_word != "endline":
+    # Get the last "n" words, where "n" is the lookback amount
+    lookback_words = start_words[-(lookback):]
+
+    # Start with the furthest back word and use it's distribution as the start
+    row_ind = vocab_to_id[start_words[-len(start_words)]]
+    prob_dist = weights[0] * np.array(mat_norm.getrow(row_ind).todense())[0]
+
+    # For all the rest of the words, add the weighted probability distribution to the result
+    for i, word in enumerate(lookback_words[1:]):
+        row_ind = vocab_to_id[word]
+        prob_dist += weights[i + 1] * np.array(mat_norm.getrow(row_ind).todense())[0]
+
+    # Make sure we don't have repeats
+    current_word = start_words[-1]
+    while current_word in lookback_words:
+        next_ind = np.random.choice(range(len(vocab)), p=prob_dist)
+        current_word = id_to_vocab[next_ind]
+
+    # Append the predicted word the results
+    start_words.append(current_word)
+                    </code></pre>
+
+                    <p>Now for the fun part. The results for a couple of different initial phrases are shown below. The results also compare each of the three weighting schemes.</p>
+
+                    <table class="alt">
+                        <tr>
+                            <th>Starting Words</th>
+                            <th class="tg-l711">Weights</th>
+                            <th class="tg-us36">Generated Text</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="6">donald trump is</td>
+                            <td rowspan="2">decaying</td>
+                            <td >donald trump is thinking an big guy leads to finally someone realize you for years the holy one that o trump house thou shalt j trump jeb used the wilderness a trump you believe</td>
+                        </tr>
+                        <tr>
+                            <td>donald trump is u the re tax their credit trump for</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">uniform</td>
+                            <td>donald trump is at the trump president j jimmy trumps son</td>
+                        </tr>
+                        <tr>
+                            <td>donald trump is we are ye might j trump when ill be trump only run the trump house youll j trump you your words money trump no shepherd he of the your arguing enemies shall be take great thx</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">random</td>
+                            <td>donald trump is have you i run donald trump international unlike anything worth trump</td>
+                        </tr>
+                        <tr>
+                            <td>donald trump is now hear the children pot of trump for</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="6">though shalt not</td>
+                            <td rowspan="2">decaying</td>
+                            <td >though shalt not bless the king hand of illegals to bring ye another will draw</td>
+                        </tr>
+                        <tr>
+                            <td>though shalt not sincerely increase supposing the world they say again thou being wilt twelve men they cause some i of am the best interviews and delaying his the bramble and abigail the nabals wife looked bare all my lips soul</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">uniform</td>
+                            <td>though shalt not i in will he i is want to big we i too he turned a their way kings counsel</td>
+                        </tr>
+                        <tr>
+                            <td>though shalt not save thou shalt gleaned he they that thou me art and i will cast they sank i the have jesus remained u debate would have love they the every tea party i had prayed brought my he i that despiseth atlantic thou make livest these things ten list the on foxandfriends this great i feel say the i will save bless alive thee he the rested themselves what in greensboro your north it country charles he missouri hath trump you they a lacked mother opportunity in any case i disgraceful always we on actually the prophets and im love from</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">random</td>
+                            <td>though shalt not go use twitter trump</td>
+                        </tr>
+                        <tr>
+                            <td>though shalt not he then let us the freeing super up tuesday morning on television a it is not enough repeal signatures fools big league crowd thou shalt love roast with and an i emotional apprenticenbc still her daughters times fools in feedeth thy among thorns all thy the matters who dennis opposes nd choice worst ye thing say who unto them absalom</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="6">i am the</td>
+                            <td rowspan="2">decaying</td>
+                            <td >i am the heavenly have forsaken covenanted with no a samaritan as that trust forsake ye begin to the ships asher and they went in out time gave an iraq will it appoint is you trump wins will written heal like neither can could only in truth not their healthcare would plan will be totally proved did are change bring back will i need your to hand pretending of not spare them look and thou he wonder of where to hear used the win will went and he testifieth thou disquieted shalt win</td>
+                        </tr>
+                        <tr>
+                            <td>i am the have young havent did was being offered merciful and man feareth have god and with thee o hosted by andrewejohnson</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">uniform</td>
+                            <td>i am the ephraimites best which was great</td>
+                        </tr>
+                        <tr>
+                            <td>i am the never have smote i them could not try cannot to get trump it am persuaded the law kindred for yourselves therefore said thus love congratulate have him a full of would a prenup</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">random</td>
+                            <td>i am the pray will say rebuke am will might say think always made for sat follow gave wonder will love have know just shall was see have just scatter will say looked gave have i said am testified therefore let have unto am may understanding hope have will hate say said daughter shall did have wish love cant let that say go may take am will should dont wrote rejoice will am sent thank will delivered came run should say will am tell his pray saw am will pray know cannot am have had love appointed was will agree find pray go loved completely am agree said had might truly see send will am watched have know am wonder cut will want have shall again would tell will vote need play will darius totally speak may beheld them hope will am</td>
+                        </tr>
+                        <tr>
+                            <td>i am the three will vote was able to shur and never have consulted with will also have to comprehend</td>
+                        </tr>
+                    </table>
+
+                    <p>We wrap up with a couple of observations. First off,  it seems that in general, this method produces longer phrases than the original model. My guess is that this is due to a much more noise in the final probability distributions, making it less likely to hit the "endline" character at any given time. Secondly, it does not appear that increasing the lookback really did anything to rectify the problem we were trying to solve, which was cohesion in our predictions. It still seems to be the case that the predictions are tonally and thematically all over the place. I attribute this to an overall small lookback and the fact that the algorithm we use doesn't really tackle the problem in the way that we would like. Nevertheless, any model that dictates "though shalt not go use twitter trump" can't be seen as too huge a failure.</p>
+                    
+                    <p>The code for this project can be found <a href="https://github.com/bgreenawald/Markov-Text-Generation" >here</a>.</p>
+
+                    <!-- contentEnd -->
+                    <h3>6/15/2018</h3>
+                    <!-- dateBegin 6/15/2018 dateEnd -->
+                    <!-- pathBegin blog/2018/markov-text-gen2.html pathEnd -->
+
+                    <div class="row">
+                        <div class="6u 12u$(medium)">
+                            <ul class="actions">
+                                <li><a href="markov-text-gen.html" class="button">Previous</a></li>
+                                <!--<li><a href="capstone2.html" class="button">Next</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){$('#header').load('../../header2.html');});
+        </script>
+        <script src="../../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../../assets/js/skel.min.js"></script>
+        <script src="../../assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="../../assets/js/main.js"></script>
+
+    </body>
+</html>
