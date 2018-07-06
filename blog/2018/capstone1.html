@@ -14,16 +14,24 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-		gtag('config', 'UA-115980248-1');
-		</script>
+            gtag('config', 'UA-115980248-1');
+        </script>
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
 
         <!-- Header -->
         <header id="header">
@@ -38,10 +46,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <h1 class="major"><!-- titleBegin -->Capstone Semester One Wrap Up (Part 1)<!-- titleEnd --></h1>
                     <!-- contentBegin -->
                     <p>One of the principal components (pun intended) of my Master's
-                    program at UVA is the completion of a Capstone research project.
-                    Now that I am halfway through the program, I feel it is a good time
-                    to do an overview of the project, explain what work we have
-                    completed so far, and a few things I've picked up along the way.</p>
+                        program at UVA is the completion of a Capstone research project.
+                        Now that I am halfway through the program, I feel it is a good time
+                        to do an overview of the project, explain what work we have
+                        completed so far, and a few things I've picked up along the way.</p>
 
                     <h3>Overview</h3>
 
@@ -120,116 +128,118 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <li>
                             <i>How are documents labeled?</i> All documents within a group are given the same label. So if ISIS is labeled as violent, all documents from ISIS are considered violent documents
                         </li>
-                    <li>
-                        <i>Is that realistic?</i> Probably not, but it's a start. Future work, either by us or other researchers, should focus on creating a more
-                        granular definition of violence that can allow documents to be
-                        judged at a more individual level. This will introduce far less bias
-                        as groups change from non-violent to violent, or vice-versa, pretty frequently.
-                    </li>
-                    <li>
-                        <i>What does it mean for an analysis to be language agnostic?</i> The analysis should not do anything that is specific to a language
-                        and cannot be extended to another language. For example, part of speech tagging tools are not language agnostic as they do not
-                        exist readily for all languages. However, stop-word analysis is valid since this really just requires finding what words are used
-                        extremely often, which can be done with any language.
-                    </li>
-                    <li>
-                        <i>Can a person be a group?</i> Yes, after much debate we decided
-                        that an individual person can be a 'value-based group' if they are
-                        expressing values under their name, like religious scholars.
-                    </li>
-                    <li>
-                        <i>How about news organizations?</i> We ended up also letting news
-                        organizations be value-based groups, but only the opinion and op-ed
-                        sections where people are expressing their values.
-                    </li>
+                        <li>
+                            <i>Is that realistic?</i> Probably not, but it's a start. Future work, either by us or other researchers, should focus on creating a more
+                            granular definition of violence that can allow documents to be
+                            judged at a more individual level. This will introduce far less bias
+                            as groups change from non-violent to violent, or vice-versa, pretty frequently.
+                        </li>
+                        <li>
+                            <i>What does it mean for an analysis to be language agnostic?</i> The analysis should not do anything that is specific to a language
+                            and cannot be extended to another language. For example, part of speech tagging tools are not language agnostic as they do not
+                            exist readily for all languages. However, stop-word analysis is valid since this really just requires finding what words are used
+                            extremely often, which can be done with any language.
+                        </li>
+                        <li>
+                            <i>Can a person be a group?</i> Yes, after much debate we decided
+                            that an individual person can be a 'value-based group' if they are
+                            expressing values under their name, like religious scholars.
+                        </li>
+                        <li>
+                            <i>How about news organizations?</i> We ended up also letting news
+                            organizations be value-based groups, but only the opinion and op-ed
+                            sections where people are expressing their values.
+                        </li>
                     </ul>
 
-            <h3>Getting the Data Otherwise Known as our Entire Semester</h3>
+                    <h3>Getting the Data Otherwise Known as our Entire Semester</h3>
 
-            <p>
-                You know that mantra that 90% of a data scientist's work is data
-                wrangling/preprocessing? Well, I'd like to submit my Fall 2017 into
-                evidence. I wrote more web scrappers this past semester than I
-                thought I would in my entire life, but we'll get more into that in
-                a bit. First, let's talk about how we even found data. Actually, we need to go back even further. How do we even decide what data we needed? Luckily for me, most of the work answering these questions
-                fell to one of the other members of my team. This member identified
-                various Arabic speaking groups throughout the globe who seemed
-                to be large and influential enough to have some sort of website
-                findable by Google. After identifying these groups, he scoured the
-                web until he was able to find either official sites for these groups,
-                or just sites that hosted their content. For example, he found a
-                site that took newsletters ISIS released and upload those. In
-                one case, another member of our groups found a University that
-                had scrapped the dark web for a number of years and hosted a
-                number of those results for free. We found one forum that fit out
-                criteria and were able to use it.</p>
+                    <p>
+                        You know that mantra that 90% of a data scientist's work is data
+                        wrangling/preprocessing? Well, I'd like to submit my Fall 2017 into
+                        evidence. I wrote more web scrappers this past semester than I
+                        thought I would in my entire life, but we'll get more into that in
+                        a bit. First, let's talk about how we even found data. Actually, we need to go back even further. How do we even decide what data we needed? Luckily for me, most of the work answering these questions
+                        fell to one of the other members of my team. This member identified
+                        various Arabic speaking groups throughout the globe who seemed
+                        to be large and influential enough to have some sort of website
+                        findable by Google. After identifying these groups, he scoured the
+                        web until he was able to find either official sites for these groups,
+                        or just sites that hosted their content. For example, he found a
+                        site that took newsletters ISIS released and upload those. In
+                        one case, another member of our groups found a University that
+                        had scrapped the dark web for a number of years and hosted a
+                        number of those results for free. We found one forum that fit out
+                        criteria and were able to use it.</p>
 
-            <p>Then came the web scrapers. Ohhhhh the web scrapers. Given
-                that I had the most background with programming, I was tasked
-                with scraping all of the websites. I was given a list of URLs, and
-                that's it. From there, I had free reign. Now, in order to scrape all
-                of the blogs and forums in a scalable way, I researched for some
-                pre-built scraping tools or libraries I could utilize. Now, don't get me
-                wrong, there are a lot of mature and thorough tools for scraping
-                websites, Scrapy being an especially good one, but they all ended
-                up being useless for me. The reason for this is simple: they require
-                the sites they scrape to be somewhat well written and predictable.
-                Turns out, terrorists write shitty websites. Who knew?! I don't know
-                if it's lack of technical prowess or just designing poorly fits in their
-                evil brand, but the result is the same.  A series of poorly written sites
-                that require hacked together, custom web scrappers to scrape. Ugh.</p>
+                    <p>Then came the web scrapers. Ohhhhh the web scrapers. Given
+                        that I had the most background with programming, I was tasked
+                        with scraping all of the websites. I was given a list of URLs, and
+                        that's it. From there, I had free reign. Now, in order to scrape all
+                        of the blogs and forums in a scalable way, I researched for some
+                        pre-built scraping tools or libraries I could utilize. Now, don't get me
+                        wrong, there are a lot of mature and thorough tools for scraping
+                        websites, Scrapy being an especially good one, but they all ended
+                        up being useless for me. The reason for this is simple: they require
+                        the sites they scrape to be somewhat well written and predictable.
+                        Turns out, terrorists write shitty websites. Who knew?! I don't know
+                        if it's lack of technical prowess or just designing poorly fits in their
+                        evil brand, but the result is the same.  A series of poorly written sites
+                        that require hacked together, custom web scrappers to scrape. Ugh.</p>
 
-            <p>I ended up going with the tried and true: requests and BeautifulSoup (and in one case, a library to bypass CloudFlare
-                because terrorists really need DDoS protection). Basically, I
-                had to look for patterns in the URL, or for embedded URLs in
-                a webpage, and also some good markers to extract out the
-                relevant text from the potpourri of text that BeautifulSoup
-                pulls out. All in all, it was just a huge, tedious, pain in the
-                butt. I spend about 10 hours over the course of a weekend,
-                hold up in a library, doing nothing but writing and running
-                web scrapers. </p>
+                    <p>I ended up going with the tried and true: requests and BeautifulSoup (and in one case, a library to bypass CloudFlare
+                        because terrorists really need DDoS protection). Basically, I
+                        had to look for patterns in the URL, or for embedded URLs in
+                        a webpage, and also some good markers to extract out the
+                        relevant text from the potpourri of text that BeautifulSoup
+                        pulls out. All in all, it was just a huge, tedious, pain in the
+                        butt. I spend about 10 hours over the course of a weekend,
+                        hold up in a library, doing nothing but writing and running
+                        web scrapers. </p>
 
-            <p>I'm going to stop here for now. But please read on to part 2 to
-                find out more, including how we preprocessed the data, feature engineering (or
-                lack thereof), and some preliminary results.</p>
-            <!-- contentEnd -->
-            <h3>2/6/2018</h3>
-            <!-- dateBegin 2/6/2018 dateEnd -->
-            <!-- pathBegin blog/2018/capstone1.html pathEnd -->
+                    <p>I'm going to stop here for now. But please read on to part 2 to
+                        find out more, including how we preprocessed the data, feature engineering (or
+                        lack thereof), and some preliminary results.</p>
+                    <!-- contentEnd -->
+                    <h3>2/6/2018</h3>
+                    <!-- dateBegin 2/6/2018 dateEnd -->
+                    <!-- pathBegin blog/2018/capstone1.html pathEnd -->
 
-            <div class="row">
-                <div class="6u 12u$(medium)">
-                    <ul class="actions">
-                        <li><a href="../2017/resolutions.html" class="button">Previous</a></li>
-                        <li><a href="capstone2.html" class="button">Next</a></li>
-                    </ul>
+                    <div class="row">
+                        <div class="6u 12u$(medium)">
+                            <ul class="actions">
+                                <li><a href="../2017/resolutions.html" class="button">Previous</a></li>
+                                <li><a href="capstone2.html" class="button">Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/capstone1.html" data-width="100%" data-numposts="5"></div>
                 </div>
-            </div>
+            </section>
+
         </div>
-        </section>
 
-    </div>
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </footer>
 
-<!-- Footer -->
-<footer id="footer" class="wrapper alt">
-    <div class="inner">
-        <ul class="menu">
-            <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
-</footer>
+        <!-- Scripts -->
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){$('#header').load('../../header2.html');});
+        </script>
+        <script src="../../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../../assets/js/skel.min.js"></script>
+        <script src="../../assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="../../assets/js/main.js"></script>
 
-<!-- Scripts -->
-<script src="../../assets/js/jquery.min.js"></script>
-<script>
-    $(function(){$('#header').load('../../header2.html');});
-</script>
-<script src="../../assets/js/jquery.scrollex.min.js"></script>
-<script src="../../assets/js/jquery.scrolly.min.js"></script>
-<script src="../../assets/js/skel.min.js"></script>
-<script src="../../assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="../../assets/js/main.js"></script>
-
-</body>
+    </body>
 </html>

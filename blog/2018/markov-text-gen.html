@@ -11,16 +11,24 @@
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
-		gtag('config', 'UA-115980248-1');
-		</script>
+            gtag('config', 'UA-115980248-1');
+        </script>
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
 
         <!-- Header -->
         <header id="header">
@@ -46,7 +54,7 @@
                     <p>The first step is to get the data. I found a collection of about 30,000 <a href="https://github.com/mkearney/trumptweets">Trump tweets</a> starting as long ago as 2009, and also found a text version of the <a href="http://www.gutenberg.org/ebooks/10>">Guttenburg Bible</a>. I will largely omit the preprocessing details, but the pipeline was basically: remove any non-English characters, make all text lowercase, and replace endline characters will a special token. After this, I had a collection of preprocessed lines where each line was either a verse from Bible or a tweet from Donald Trump. I went ahead and pickled this list so I wouldn't have to keep redoing the preprocessing steps. For those unfamiliar, pickling is just Python's way of saving Python object for later use.</p>
 
                     <p>Now that we have the data, the real fun can begin. First, we have to create the vocabulary. This just involves reading in every sentences, splitting on spaces, and saving all of the words to a list.</p>
-<pre class="prettyprint"><code class="language-python">
+                    <pre class="prettyprint"><code class="language-python">
 # Create the vocabulary
 vocab = []
 for line in text_full.split("\n"):
@@ -113,70 +121,71 @@ while start_word != "endline":
                     </code></pre>
                     </p>
 
-        <p>Below are a couple of examples that I thought were fun. Using the code on Github, you can easily re-run this with whatever start word you desire.</p>
+                <p>Below are a couple of examples that I thought were fun. Using the code on Github, you can easily re-run this with whatever start word you desire.</p>
 
-                    <strong>Start word: 'the'</strong>
-                    <ul style="padding: 0em 5em">
+                <strong>Start word: 'the'</strong>
+                <ul style="padding: 0em 5em">
                     <li>the nations shall many women working on the people when israel which are known loser who hath sent benaiah the white as i hope of macedonia and invent to the appearance they not nor taking over theaters this is mccarthyism</li>
                     <li>the original costume was susan berry</li>
                     <li>the midst of seventy years agothis is mad sometimes referred to be long massive tax just named eutychus being stubborn can call it</li>
                     <li>the bar them that thou with his works nay but you have sinned against the lord</li>
-                    </ul>
+                </ul>
 
-                    <strong>Start word: 'who'</strong>
-                    <ul style="padding: 0em 5em">
+                <strong>Start word: 'who'</strong>
+                <ul style="padding: 0em 5em">
                     <li>who escaped alone and treasuries shelemiah shemariah and moab and this country is the one came up he defrauded us is through phenice and thou shalt not hearken unto aaron the obamacare</li>
                     <li>who was a son of them thou shalt thou art not the word again despite obamas terrible</li>
-                    </ul>
+                </ul>
 
-                    <strong>Start word: 'hillary'</strong>
-                    <ul style="padding: 0em 5em">
+                <strong>Start word: 'hillary'</strong>
+                <ul style="padding: 0em 5em">
                     <li>hillary lying vanities but the goodness thou shalt hearken ye that were in all this day in twelve hours left to go way but of the lord of israel and her head</li>
-                    </ul>
+                </ul>
 
-                    <p>So we can see a couple of interesting observations. The first is that because each word choice is random, we can use the same start word multiple times and get very different sentences. The second is that because this process has no memory, the sentence can start off very biblical and midway just switch to being quite Trumpian. This is the primary weakness for using Markov chains for text generation, but it's also why they are so much fun.</p>
+                <p>So we can see a couple of interesting observations. The first is that because each word choice is random, we can use the same start word multiple times and get very different sentences. The second is that because this process has no memory, the sentence can start off very biblical and midway just switch to being quite Trumpian. This is the primary weakness for using Markov chains for text generation, but it's also why they are so much fun.</p>
 
-                    <p>This wraps up this little diversion. Hopefully, this demonstrates how using very simple statistical techniques can do something extremely complex like text generation (although arguably it doesn't very well, but still). I encourage you to use the code on Github to try new start words to make sentences. The pipeline I made it also fairly generic, so it can accommodate any text you throw at it. The next combinations I intend to try Trump tweets and the Quron and Trump tweets and the Torah to see how swapping the religious text alters the results. Hope you enjoyed!<p>
+                <p>This wraps up this little diversion. Hopefully, this demonstrates how using very simple statistical techniques can do something extremely complex like text generation (although arguably it doesn't very well, but still). I encourage you to use the code on Github to try new start words to make sentences. The pipeline I made it also fairly generic, so it can accommodate any text you throw at it. The next combinations I intend to try Trump tweets and the Quron and Trump tweets and the Torah to see how swapping the religious text alters the results. Hope you enjoyed!<p>
 
 
-            <!-- contentEnd -->
-            <h3>3/18/2018</h3>
-            <!-- dateBegin 3/18/2018 dateEnd -->
-            <!-- pathBegin blog/2018/markov-text-gen.html pathEnd -->
+                <!-- contentEnd -->
+                <h3>3/18/2018</h3>
+                <!-- dateBegin 3/18/2018 dateEnd -->
+                <!-- pathBegin blog/2018/markov-text-gen.html pathEnd -->
 
-            <div class="row">
-                <div class="6u 12u$(medium)">
-                    <ul class="actions">
-                        <li><a href="capstone2.html" class="button">Previous</a></li>
-                        <li><a href="markov-text-gen2.html" class="button">Next</a></li>
-                    </ul>
+                <div class="row">
+                    <div class="6u 12u$(medium)">
+                        <ul class="actions">
+                            <li><a href="capstone2.html" class="button">Previous</a></li>
+                            <li><a href="markov-text-gen2.html" class="button">Next</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+
+                <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/markov-text-gen.html" data-width="100%" data-numposts="5"></div>
+            </section>
+
         </div>
-        </section>
 
-    </div>
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </div>
+        </footer>
 
-<!-- Footer -->
-<footer id="footer" class="wrapper alt">
-    <div class="inner">
-        <ul class="menu">
-            <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
-</footer>
+        <!-- Scripts -->
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){$('#header').load('../../header2.html');});
+        </script>
+        <script src="../../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../../assets/js/skel.min.js"></script>
+        <script src="../../assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="../../assets/js/main.js"></script>
 
-<!-- Scripts -->
-<script src="../../assets/js/jquery.min.js"></script>
-<script>
-    $(function(){$('#header').load('../../header2.html');});
-</script>
-<script src="../../assets/js/jquery.scrollex.min.js"></script>
-<script src="../../assets/js/jquery.scrolly.min.js"></script>
-<script src="../../assets/js/skel.min.js"></script>
-<script src="../../assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="../../assets/js/main.js"></script>
-
-</body>
+    </body>
 </html>
