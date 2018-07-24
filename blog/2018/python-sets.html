@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Ben Greenawald</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="../../assets/css/main.css" />
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-115980248-1');
+        </script>
+
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <!-- Header -->
+        <header id="header">
+        </header>
+
+        <!-- Wrapper -->
+        <div id="wrapper">
+
+            <!-- Main -->
+            <section id="main" class="wrapper style1">
+                <div class="inner">
+                    <h1 class="major"><!-- titleBegin -->Why You Should Really Be Using Sets (Python Tips)<!-- titleEnd --></h1>
+                    <!-- contentBegin -->
+                    <p>In this post, we're going to be talking through a potentially lesser-known data structure within Python, the humble set. This is going to be much more relevant to those approaching Python from a Data Science background as opposed to those with a Computer Science background. I have the luxury of both perspectives and can say that sets came up quite a bit in CS, but are not mentioned nearly enough in the Data Science community and I worry that many Data Scientists learning Python may overlook this extremely powerful tool. We'll start by identifying what a set is, mention a few use cases for a set, then compare the performance of sets versus other solutions.</p>
+
+                    <h2>What is a Set?</h2>
+                    
+                    <p>So first things first, what is a set? Sets are a mathematical construct arriving from discrete mathematics (I first ran into sets in my Discrete Math for Computer Scientists course). Sets are an <i>unordered</i> collection of <i>distinct</i> objects. So [1,2,3] is a set while [1,2,2,3] is not a set since '2' appears twice. Further, the set of [1,2,3] is equal to the set of [3,2,1] since elements are not ordered. Python supports two kinds of sets: 'set' and 'frozenset.' A 'frozenset' is simply the immutable version of the 'set.' We will be focusing just on the normal set today. Creating a set in Python is easy. Just pass in a list to the set function.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+python_set = set([1,2,3,3])
+# Will return [1,2,3]
+                    </code></pre>
+
+                    <p>It may seem that sets are somewhat niche given that they are unordered and without duplicates. In data science we often find ourselves dealing with collections that do have some underlying order and will indeed have duplicates. But you will find that sets arise more often then you would think, especially in exploratory analysis. Just last week I found myself needing to know if a large group of user_ids contained any duplicates (in fact, this is what inspired me to write this post). There are certainly many ways to approach this sort of problem. A naive approach might be "iterate over the list and add each id to a new list, checking before each insertion if the element is already in the new list. This would look something like</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+new_list = []
+for id in user_ids:
+	if id in new_list:
+		return False
+	new_list.append(id)
+return True
+                    </code></pre>
+
+                    <p>However, using sets, we can solve this same problem elegantly (and as we'll see later, much faster) in one line</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+return len(new_list) == len(set(new_list))
+                    </code></pre>
+
+                    <p>Now those familiar with the data science Python stack may have come across the numpy solution to this problem, the 'unique' method. That would look something like </p>
+
+                    <pre class="prettyprint"><code class="language-python">
+return len(new_list) == len(numpy.unique(new_list))
+                    </code></pre>
+                    
+                    <h2>Set Performance</h2>
+                    
+                    <p>The inevitable next question is why you would use sets. The big draw to sets is their performance. Let's consider two use cases for sets: creating a list of unique elements and seeing if an element is contained within a collection. Starting with creating a list of unique elements, we consider a couple of different methods for attaining this. For all methods, we start by using numpy to create a list of integers with duplicates using</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+num_list = np.random.choice(1000, x)
+                    </code></pre>
+                    
+                    <p>This creates a list of 'x' integers in [0, 1,000). 'x' is going to vary to demonstrate different sized list on performance. We will again start with the naive method of adding each element to a list, one at a time, after checking that the list does not already contain the element. </p>
+                    
+                                        <pre class="prettyprint"><code class="language-python">
+no_dups = []
+for num in num_list:
+    if num not in no_dups:
+        no_dups.append(num)
+                    </code></pre>
+                    
+                    <p>Next, we will add all elements to a new list, maintaining duplicates. We will then transform this new collection to a set.</p>
+                    
+                    <pre class="prettyprint"><code class="language-python">
+no_dups = []
+for num in num_list:
+    no_dups.append(num)
+no_dups = set(no_dups)
+                    </code></pre>
+                    
+                    <p>The reason we add each element to a new list is to make the test more consistent with the naive method. Finally, we test the numpy version.</p>
+                    
+                    <pre class="prettyprint"><code class="language-python">
+no_dups = []
+for num in num_list:
+    no_dups.append(num)
+no_dups = np.unique(no_dups)
+                    </code></pre>
+                    
+                    <p>Using the 'timeit' library in Python, we run each of these methods ten times for varying sizes of list and track the total amount of time taken. The results are shown in the table below (time in seconds).</p>
+                    
+                    <table>
+                        <tr>
+                            <th>Size of List</th>
+                            <th>Naive</th>
+                            <th>Set</th>
+                            <th>Numpy</th>
+                        </tr>
+                        <tr>
+                            <td >1000</td>
+                            <td >0.0425</td>
+                            <td class="tg-031e">0.0013</td>
+                            <td class="tg-yw4l">0.0102</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">10000</td>
+                            <td class="tg-031e">0.756</td>
+                            <td class="tg-031e">0.0128</td>
+                            <td class="tg-yw4l">0.0211</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">50000</td>
+                            <td class="tg-031e">3.9523</td>
+                            <td class="tg-031e">0.0748</td>
+                            <td class="tg-yw4l">0.104</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">100000</td>
+                            <td class="tg-031e">8.0989</td>
+                            <td class="tg-031e">0.1481</td>
+                            <td class="tg-yw4l">0.2109</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">500000</td>
+                            <td class="tg-031e">40.3273</td>
+                            <td class="tg-031e">0.82735</td>
+                            <td class="tg-yw4l">1.1591</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">1000000</td>
+                            <td class="tg-031e">83.1135</td>
+                            <td class="tg-031e">1.8269</td>
+                            <td class="tg-yw4l">2.5075</td>
+                        </tr>
+                    </table>
+
+                    <p>One thing is immediately apparent: the naive method stinks. As the size of the list gets larger, sets blow them out of the water. Generally, numpy performs comparably, but always slightly worse. My guess is that under the hood, numpy is using sets, but the additional layer of abstraction causes a slight performance hit.</p>
+                    
+                    <p>The next task is seeing if a given element is part of a collection. There are many cases that need solutions to this task. For example, seeing an email has already been registered given a large list of registered emails. To test this, we will create a list of the numbers between 0 and 10,000, counting by 5. Then we will randomly generate numbers in the range 0 to 100,000 and one by one test if they are in the set. First, generate the list of numbers. We will be testing the 'list' object versus the 'set' object versus the 'numpy' array. It is import to note that they will all be identical in terms of contents.</p>
+
+                    <pre class="prettyprint"><code class="language-python">
+num_list = range(100000)
+num_list_set = set(num_list) 
+num_list_numpy = numpy.unique(num_list)
+                    </code></pre>
+                    
+                    <p>We generate a list of random numbers of varying sizes using</p>
+                    
+                    <pre class="prettyprint"><code class="language-python">
+test_list = np.random.choice(100000, x)
+                    </code></pre>
+                    
+                    <p>Which will create a list of size 'x' containing random integers in [0, 100000]. For each list  'cur_list' defined above, we will test the inclusion of each element in 'test_list' using </p>
+                    
+                    <pre class="prettyprint"><code class="language-python">
+for elem in test_list:
+	if elem in cur_list:
+		pass
+                    </code></pre>
+                    
+                    <p>We don't actually want to do anything with the results, we just want the inclusion checked, so we put a 'pass' inside the conditional. We will run each 5 times to get a more consistent measure. The results are shown in the table below.</p>
+
+                    
+                    <table class="tg">
+                        <tr>
+                            <th class="tg-031e"></th>
+                            <th class="tg-031e">Normal</th>
+                            <th class="tg-031e">Set</th>
+                            <th class="tg-031e">Numpy</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">1000</td>
+                            <td class="tg-031e">1.191</td>
+                            <td class="tg-031e">0.0003</td>
+                            <td class="tg-031e">0.0216</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">5000</td>
+                            <td class="tg-031e">6.3247</td>
+                            <td class="tg-031e">0.003</td>
+                            <td class="tg-031e">0.1167</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">10000</td>
+                            <td class="tg-031e">13.1409</td>
+                            <td class="tg-031e">0.0058</td>
+                            <td class="tg-031e">0.2513</td>
+                        </tr>
+                    </table>
+                    
+                                        
+                    <p>The results here are even more lopsided than before. The regular list does terribly, the numpy array does comparatively better, but the set is the clear winner.</p>
+                    
+                    <h2>Conclusion</h2>
+                    
+                    <p>In this post, we learned what sets were, discussed a few ways that they can come up in everyday programming, and showed that, when applicable, sets blew regular lists and numpy arrays out of the water in terms of performance. And the beauty is that converting from lists or numpy arrays to sets is trivial. I hope I have laid out a compelling argument for sets. They are an easy and elegant way to heavily boost Python performance in certain situations.</p>
+                    
+                    <!-- contentEnd -->
+                    <h3>7/23/2018</h3>
+                    <!-- dateBegin 7/23/2018 dateEnd -->
+                    <!-- pathBegin blog/2018/python-sets.html pathEnd -->
+
+                    <div class="row">
+                        <div class="6u 12u$(medium)">
+                            <ul class="actions">
+                                <li><a href="markov-text-gen2.html" class="button">Previous</a></li>
+                                <!--<li><a href="python_sets.html" class="button">Next</a></li>-->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/markov-text-gen2.html" data-width="100%" data-numposts="5"></div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="../../assets/js/jquery.min.js"></script>
+        <script>
+            $(function(){$('#header').load('../../header2.html');});
+        </script>
+        <script src="../../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../../assets/js/skel.min.js"></script>
+        <script src="../../assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="../../assets/js/main.js"></script>
+
+    </body>
+</html>
