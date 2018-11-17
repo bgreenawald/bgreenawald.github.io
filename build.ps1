@@ -17,7 +17,7 @@ cd "C:\Users\bgree\Documents\Job-Search"
 git pull
 
 # Copy it over
-Copy-Item Resume_2018.pdf C:\xampp\htdocs\bgreenawald.github.io\Resume_2018.pdf
+Copy-Item Ben_Greenawald_resume.pdf C:\xampp\htdocs\bgreenawald.github.io\Resume.pdf
 
 # Change back
 cd "C:\xampp\htdocs\bgreenawald.github.io\"
