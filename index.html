@@ -110,9 +110,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </select>
                     </div>
 
-
-
-
+                    <br>        
+                    <br>
+                    <br>
+                    <h2><i>Random Quote of the Day</i></h2>
+                    <p id="quote"></p>
 
                 </div>
 
@@ -185,10 +187,7 @@ USA</span>
                     </ul>
                 </section>
             </div>
-            </div>
         </section>
-
-    </div>
 
 <!-- Footer -->
 <footer id="footer" class="wrapper alt">
@@ -210,5 +209,31 @@ USA</span>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
+<script>
+function diff_date(date1){
+    var date1 = new Date(date1);
+    var date2 = new Date();
+    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+    return diffDays;
+}      
+
+function load_quotes(){
+    var index = diff_date("11/17/2018");
+    $.get("quotes.json", function(data){
+        var quote = data[index];
+        console.log(quote);
+        var quote_html = quote.quote;
+        
+        if(quote.title != "Miscellaneous"){
+            quote_html += " from <i> " + quote.title + "</i>";
+        }
+        $("#quote").html(quote_html);
+    });
+    
+}
+    
+load_quotes();
+</script>
 </body>
 </html>
