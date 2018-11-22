@@ -25,6 +25,7 @@ cd "C:\xampp\htdocs\bgreenawald.github.io\"
 # Run the blog build script
 python generate.py
 
-# Push to git
+# Update git
 git add .
 git commit -m "'$m'"
+git push
