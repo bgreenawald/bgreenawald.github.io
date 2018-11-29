@@ -226,8 +226,18 @@ function load_quotes(){
         var quote_html = quote.quote;
         
         if(quote.title != "Miscellaneous"){
-            quote_html += " from <i> " + quote.title + "</i>";
+            if(quote.type != "other"){
+                quote_html += " | From the " + quote.type + "<i> " + quote.title + "</i>";
+            } else {
+                quote_html += " | From <i> " + quote.title + "</i>";                
+            }
         }
+        
+        // Add the author if present
+        if(quote.author != 'None') {
+            quote_html += " by " + quote.author;
+        }
+
         $("#quote").html(quote_html);
     });
     

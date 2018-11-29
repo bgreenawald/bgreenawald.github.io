@@ -60,15 +60,21 @@ remove_multiple_spaces = re.compile("[ ]+")
 # selection section
 all_quotes = []
 for section in quote_body.find_all('section')[1:]:
+    content_type = section.get('id') if section.get('id') else 'None'
+    content_type = content_type if content_type != "self" else 'other'
     # For section, iterate over all subsections
     for subsection in section.find_all('section'):
         # Extract out the origin of the quote, or make it 'Miscellaneous'
         title = subsection.h2.text if subsection.h2 else "Miscellaneous"
+        # Extract out the title of the quote, else make is 'None'
+        author = subsection.h3.text if subsection.h3 else "None"
         # Iterate over all of the quotes with the appropriate classname
         for quote in subsection.find_all('li', class_="random"):
             # Store the origin of the quote
             cur_quote = {}
             cur_quote["title"] = title
+            cur_quote["author"] = author
+            cur_quote["type"] = content_type.replace("_", " ")
             
             # Clean up the quote and store
             str_quote = " ".join([str(x) for x in quote.contents])
