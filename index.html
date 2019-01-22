@@ -210,19 +210,18 @@ USA</span>
 <script src="assets/js/main.js"></script>
 
 <script>
-function diff_date(date1){
+function diff_date(date1, limit){
     var date1 = new Date(date1);
     var date2 = new Date();
     var timeDiff = Math.abs(date2.getTime() - date1.getTime());
     var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
-    return diffDays;
+    return diffDays % limit;
 }      
 
 function load_quotes(){
-    var index = diff_date("11/17/2018");
     $.get("quotes.json", function(data){
+        var index = diff_date("11/17/2018", data.length);
         var quote = data[index];
-        console.log(quote);
         var quote_html = quote.quote;
         
         if(quote.title != "Miscellaneous"){
