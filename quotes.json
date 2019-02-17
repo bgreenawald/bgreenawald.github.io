@@ -1,241 +1,7 @@
 [
     {
         "author": "None",
-        "quote": "We're not doomed. In the great, grand scheme of things, we're just tiny specks that will one day be forgotten. So it doesn't matter what we did in the past, or how we'll be remembered. The only thing that matters is right now, this moment, this one spectacular moment we are sharing together. <i>Bojack Horseman</i>",
-        "title": "Bojack Horseman",
-        "type": "television show"
-    },
-    {
-        "author": "Mark Manson",
-        "quote": "Happiness is a constant work-in-progress, because solving problems is a constant work-in-progress\u2014the solutions to today\u2019s problems will lay the foundation for tomorrow\u2019s problems, and so on. True happiness occurs only when you find the problems you enjoy having and enjoy solving. <i>Page 31</i>",
-        "title": "The Subtle Art of Not Giving a F*ck",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "If you are depressed, you are living in the past. If you are anxious, you are living in the future. If you are at peace, you are living in the present. <i>Lao Tzu</i>",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "Kurt Vonnegut",
-        "quote": "The most important thing I learned on Tralfamadore was that when a person dies he only appears to die. He is still very much alive in the past, so it is very silly for people to cry at his funeral. All moments, past, present, and future, always have existed, always will exist. The Tralfamadorians can look at all the different moments just the way we can look at a stretch of the Rocky Mountains, for instance. They can see how permanent all the moments are, and they can look at any moment that interests them. It is just an illusion we have here on Earth that one moment follows another one, like beads on a string, and that once a moment is gone it is gone forever. \u201cWhen a Tralfamadorian sees a corpse, all he thinks is that the dead person is in bad condition in that particular moment, but that the same person is just fine in plenty of other moments. Now, when I myself hear that somebody is dead, I simply shrug and say what the Tralfamadorians say about dead people, which is \u2018So it goes.\u2019 <i>Page 33</i>",
-        "title": "Slaughterhouse-Five",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "The worst thing you can do with your life is spend it with the wrong human being. <i>Daniel Sloss</i>",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "John Green",
-        "quote": "Anyone can look at you. It's quite rare to find someone who sees the same world you see. <i>Page 9</i>",
-        "title": "Turtles All The Way Down",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Are you falling in love with her? <strong>Does that make me a freak?</strong> No, no. I think it's - I think anybody that falls in love is a freak. It's a crazy thing to do in the first place. It's kind of a form of socially acceptable insanity. <i>Amy. <strong>Theodore</strong></i>",
-        "title": "Her",
-        "type": "movie"
-    },
-    {
-        "author": "W. G. Sebald and Michael Hulse",
-        "quote": "They just want to be in a place where they have the world behind them, and before them nothing but emptiness. <i>Page 52</i>",
-        "title": "The Rings of Saturn",
-        "type": "book"
-    },
-    {
-        "author": "Kurt Vonnegut",
-        "quote": "Trout, incidentally, had written a book about a money tree. It had twenty-dollar bills for leaves. Its flowers were government bonds. Its fruit was diamonds. It attracted human beings who killed each other around the roots and made very good fertilizer. So it goes. <i>Page 212</i>",
-        "title": "Slaughterhouse-Five",
-        "type": "book"
-    },
-    {
-        "author": "Exurb1a",
-        "quote": "In the beginning there was Nothing but Nothing is unstable so Something came about.",
-        "title": "The Bridge to Lucy Dunne",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Well, look around. Art. It seems to me there's so much more to the world than the average eye is allowed to see. I believe, if you look hard, there are more wonders in this universe than you could ever have dreamed of. <i>Vincent Van Gogh</i>",
-        "title": "Doctor Who",
-        "type": "television show"
-    },
-    {
-        "author": "None",
-        "quote": "BoJack, when I was your age, I got sad. A lot. I didn't come from such a great home, but one day, I started running, and that seemed to make sense, so then I just kept running. BoJack, when you get sad, you run straight ahead and you keep running forward, no matter what. There are people in your life who are gonna try to hold you back, slow you down, but you don't let them. Don't you stop running and don't you ever look behind you. There's nothing for you behind you. All that exists is what's ahead. <i>Secretariat</i>",
-        "title": "Bojack Horseman",
-        "type": "television show"
-    },
-    {
-        "author": "Mark Manson",
-        "quote": "We all have our chosen methods to numb the pain of our problems, and in moderate doses there is nothing wrong with this. But the longer we avoid and the longer we numb, the more painful it will be when we finally do confront our issues. <i>Page 33</i>",
-        "title": "The Subtle Art of Not Giving a F*ck",
-        "type": "book"
-    },
-    {
-        "author": "Nancy Farmer",
-        "quote": "\u201cI think that people have an instinct for a family. You look until you find a mother, a father, a sister, a brother. They don\u2019t have to be blood relatives. They just have to love you. And when you find them, you don\u2019t have to look anymore.\u201d <i>Page 152</i>",
-        "title": "The Lord of Opium",
-        "type": "book"
-    },
-    {
-        "author": "Khaled Hosseini",
-        "quote": "All day, this poem about Kabul has been bouncing around in my head. Saib-e-Tabrizi wrote it back in the seventeenth century, I think. I used to know the whole poem, but all I can remember now is two lines: \u201cOne could not count the moons that shimmer on her roofs, Or the thousand splendid suns that hide behind her walls. <i>Page 172</i>",
-        "title": "A Thousand Splendid Suns",
-        "type": "book"
-    },
-    {
-        "author": "John Green",
-        "quote": "Most adults are just hollowed out. You watch them try to fill themselves up with booze or money or God or fame or whatever the worship, and it all rots them from the inside until nothing is left but the money or booze or God they thought would save them. <i>Page 145</i>",
-        "title": "Turtles All The Way Down",
-        "type": "book"
-    },
-    {
-        "author": "Nancy Farmer",
-        "quote": "Matt had noticed that when he was cruel to someone, he often followed it with more cruel things. You got into that mood. But if you were kind, you felt like doing more kind things. <i>Page 263</i>",
-        "title": "The Lord of Opium",
-        "type": "book"
-    },
-    {
-        "author": "Christopher Hitchens",
-        "quote": "I sympathize afresh with the mighty Voltaire, who, when badgered on his deathbed and urged to renounce the devil, murmured that this was no time to be making enemies.",
-        "title": "Mortality",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Sometimes I think I've felt everything I'm ever gonna feel and from here on out I'm not going to feel anything new - just lesser versions of what I've already felt. <i>Theodore</i>",
-        "title": "Her",
-        "type": "movie"
-    },
-    {
-        "author": "Jen Sincero",
-        "quote": "... try seeing yourself through the eyes of someone who admires you. <i>Page 49</i>",
-        "title": "You are a Badass",
-        "type": "book"
-    },
-    {
-        "author": "Kurt Vonnegut",
-        "quote": "\u201cI\u2019m proud you were a soldier. Do you know that?\u201d \u201cGood.\u201d \u201cWas it awful?\u201d \u201cSometimes.\u201d A crazy thought now occurred to Billy. The truth of it startled him. It would make a good epitaph for Billy Pilgrim\u2014and for me, too. \"Everything was beautiful and nothing hurt.\" <i>Page 155</i>",
-        "title": "Slaughterhouse-Five",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "The key to having fond memories is to remember things differently than they actually were.",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "None",
-        "quote": "It all seems so very arbitrary. I applied for a job at this company because they were hiring. I took a desk at the back because it was empty. But\u2026[chuckles] no matter how you get there or where you end up, human beings have this miraculous gift to make that place home. <i>Creed</i>",
-        "title": "The Office",
-        "type": "television show"
-    },
-    {
-        "author": "John Green",
-        "quote": "You pick your endings, and you beginnings. You get to pick the frame, you know? Maybe you don't get to choose what's in the picture, but you decide on the frame. <i>Page 277</i>",
-        "title": "Turtles All The Way Down",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Nobody exists on purpose. Nobody belongs anywhere. We're all going to die. Come watch TV. <i>Morty</i>",
-        "title": "Rick and Morty",
-        "type": "television show"
-    },
-    {
-        "author": "Nancy Farmer",
-        "quote": "Once, he\u2019d been satisfied by the music alone. Now he had learned about friendship, and it was no longer enough to play without an audience. <i>Page 90</i>",
-        "title": "The Lord of Opium",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Try not to be scared of unhappiness. One day, sadness will rear its ugly head, and on that day, you don't want to be left scared <i>and</i> unhappy.",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "None",
-        "quote": "I thought it was weird when you picked us to make a documentary. But all in all...I think an ordinary paper company like Dunder Mifflin was a great subject for a documentary. There\u2019s a lot of beauty in ordinary things. Isn\u2019t that kind of the point? <i>Pam</i>",
-        "title": "The Office",
-        "type": "television show"
-    },
-    {
-        "author": "John Green",
-        "quote": "Thomas Edison\u2019s last words were: \u201cIt\u2019s very beautiful over there.\u201d I don\u2019t know where there is, but I believe it\u2019s somewhere, and I hope it\u2019s beautiful.",
-        "title": "Looking for Alaska",
-        "type": "book"
-    },
-    {
-        "author": "Kurt Vonnegut",
-        "quote": "Billy had a framed prayer on his office wall which expressed his method for keeping going, even though he was unenthusiastic about living. A lot of patients who saw the prayer on Billy\u2019s wall told him that it helped them to keep going, too. It went like this: GOD GRANT ME THE SERENITY TO ACCEPT THE THINGS I CANNOT CHANGE, COURAGE TO CHANGE THE THINGS I CAN, AND WISDOM ALWAYS TO TELL THE DIFFERENCE. Among the things Billy Pilgrim could not change were the past, the present, and the future. <i>Page 76</i>",
-        "title": "Slaughterhouse-Five",
-        "type": "book"
-    },
-    {
-        "author": "Nancy Farmer",
-        "quote": "\u201cIf there is Paradise, it is here, it is here, it is here...\u201d <i>Page 112</i>",
-        "title": "The Lord of Opium",
-        "type": "book"
-    },
-    {
-        "author": "Kurt Vonnegut",
-        "quote": "\u201cWelcome aboard, Mr. Pilgrim,\u201d said the loudspeaker. \u201cAny questions?\u201d Billy licked his lips, thought a while, inquired at last: \u201cWhy me?\u201d \u201cThat is a very Earthling question to ask, Mr. Pilgrim. Why you? Why us for that matter? Why anything? Because this moment simply is. Have you ever seen bugs trapped in amber?\u201d \u201cYes.\u201d Billy, in fact, had a paperweight in his office which was a blob of polished amber with three ladybugs embedded in it. \u201cWell, here we are, Mr. Pilgrim, trapped in the amber of this moment. There is no why.\u201d <i>Page 97</i>",
-        "title": "Slaughterhouse-Five",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "I'm worried about you Molly, you seem very stressed. <strong>I'm stressed, you're dying. </strong> Yeah well I'm ahead then, stress can ruin every day of your life, dying can only ruin one. <i>Sherlock, <strong>Molly</strong></i>",
-        "title": "Sherlock",
-        "type": "television show"
-    },
-    {
-        "author": "None",
         "quote": "Within each of us there is a silence, a silence as vast as the universe. And when we experience that silence, we remember who we are. <i>Gunilla Norris</i>",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "None",
-        "quote": "The way I see it, every life is a pile of good things and bad things... The good things don't always soften the bad things, but vice versa, the bad things don't necessarily spoil the good things or make them unimportant. <i>The Doctor</i>",
-        "title": "Doctor Who",
-        "type": "television show"
-    },
-    {
-        "author": "None",
-        "quote": "I don't think I believe in 'deep down'. I think that all you are is just the things that you do. <i>Diane</i>",
-        "title": "Bojack Horseman",
-        "type": "television show"
-    },
-    {
-        "author": "None",
-        "quote": "When it comes to human beings, the truth is rarely simple and only sometimes true.",
-        "title": "Miscellaneous",
-        "type": "other"
-    },
-    {
-        "author": "None",
-        "quote": "... sometimes you realize the journey you've been taking has reached its final stop. So, the question becomes: Where do you go next? <i>Ted</i>",
-        "title": "How I Met Your Mother",
-        "type": "television show"
-    },
-    {
-        "author": "Christopher Hitchens",
-        "quote": "\u201cUntil you have done something for humanity,\u201d wrote the great American educator Horace Mann, \u201cyou should be ashamed to die.\u201d",
-        "title": "Mortality",
-        "type": "book"
-    },
-    {
-        "author": "None",
-        "quote": "Everyone must fight an uphill battle in life, that's not what mental illness is. Mental illness is having to free solo a cliff just to get to the base of the hill. <i>Unknown</i>",
         "title": "Miscellaneous",
         "type": "other"
     },
@@ -246,33 +12,27 @@
         "type": "book"
     },
     {
-        "author": "None",
-        "quote": "Listen, Morty, I hate to break it to you but what people call \"love\" is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science. <i>Rick</i>",
-        "title": "Rick and Morty",
-        "type": "television show"
-    },
-    {
-        "author": "John Green",
-        "quote": "The thing about a spiral is, if you follow it inward, it never actually ends. It just keeps tightening, infinitely. <i>Page 7</i>",
-        "title": "Turtles All The Way Down",
-        "type": "book"
-    },
-    {
-        "author": "Haruki Murakami",
-        "quote": "If you only read the books that everyone else is reading, you can only think what everyone else is thinking. <i>Page 42</i>",
-        "title": "Norwegian Wood",
-        "type": "book"
-    },
-    {
         "author": "Christopher Hitchens",
-        "quote": "To the dumb question \u201cWhy me?\u201d the cosmos barely bothers to return the reply: Why not?",
+        "quote": "I sympathize afresh with the mighty Voltaire, who, when badgered on his deathbed and urged to renounce the devil, murmured that this was no time to be making enemies.",
         "title": "Mortality",
         "type": "book"
     },
     {
-        "author": "Nancy Farmer",
-        "quote": "\"How much wickedness could you do in the service of good before it turned into pure evil?\" <i>Page 205</i>",
-        "title": "The Lord of Opium",
+        "author": "Kurt Vonnegut",
+        "quote": "Billy had a framed prayer on his office wall which expressed his method for keeping going, even though he was unenthusiastic about living. A lot of patients who saw the prayer on Billy\u2019s wall told him that it helped them to keep going, too. It went like this: GOD GRANT ME THE SERENITY TO ACCEPT THE THINGS I CANNOT CHANGE, COURAGE TO CHANGE THE THINGS I CAN, AND WISDOM ALWAYS TO TELL THE DIFFERENCE. Among the things Billy Pilgrim could not change were the past, the present, and the future. <i>Page 76</i>",
+        "title": "Slaughterhouse-Five",
+        "type": "book"
+    },
+    {
+        "author": "Mark Manson",
+        "quote": "Happiness is a constant work-in-progress, because solving problems is a constant work-in-progress\u2014the solutions to today\u2019s problems will lay the foundation for tomorrow\u2019s problems, and so on. True happiness occurs only when you find the problems you enjoy having and enjoy solving. <i>Page 31</i>",
+        "title": "The Subtle Art of Not Giving a F*ck",
+        "type": "book"
+    },
+    {
+        "author": "Christopher Hitchens",
+        "quote": "\u201cUntil you have done something for humanity,\u201d wrote the great American educator Horace Mann, \u201cyou should be ashamed to die.\u201d",
+        "title": "Mortality",
         "type": "book"
     },
     {
@@ -283,15 +43,69 @@
     },
     {
         "author": "None",
+        "quote": "... sometimes you realize the journey you've been taking has reached its final stop. So, the question becomes: Where do you go next? <i>Ted</i>",
+        "title": "How I Met Your Mother",
+        "type": "television show"
+    },
+    {
+        "author": "Khaled Hosseini",
+        "quote": "All day, this poem about Kabul has been bouncing around in my head. Saib-e-Tabrizi wrote it back in the seventeenth century, I think. I used to know the whole poem, but all I can remember now is two lines: \u201cOne could not count the moons that shimmer on her roofs, Or the thousand splendid suns that hide behind her walls. <i>Page 172</i>",
+        "title": "A Thousand Splendid Suns",
+        "type": "book"
+    },
+    {
+        "author": "None",
         "quote": "As you come into this world, something else is also born. You begin your life, and it begins a journey towards you. It moves slowly, but it never stops. Wherever you go, whatever path you take, it will follow. Never faster, never slower, always coming. You will run. It will walk. You will rest. It will not. One day, you will linger in the same place too long. You will sit too still or sleep too deep, and when, too late, you rise to go, you will notice a second shadow next to yours. Your life will then be over. <i>The Doctor</i>",
         "title": "Doctor Who",
         "type": "television show"
     },
     {
-        "author": "Khaled Hosseini",
-        "quote": "They would make new lives for themselves\u2014peaceful, solitary lives\u2014and there the weight of all that they\u2019d endured would lift from them, and they would be deserving of all the happiness and simple prosperity they would find. <i>Page 315</i>",
-        "title": "A Thousand Splendid Suns",
+        "author": "None",
+        "quote": "We're not doomed. In the great, grand scheme of things, we're just tiny specks that will one day be forgotten. So it doesn't matter what we did in the past, or how we'll be remembered. The only thing that matters is right now, this moment, this one spectacular moment we are sharing together. <i>Bojack Horseman</i>",
+        "title": "Bojack Horseman",
+        "type": "television show"
+    },
+    {
+        "author": "None",
+        "quote": "It all seems so very arbitrary. I applied for a job at this company because they were hiring. I took a desk at the back because it was empty. But\u2026[chuckles] no matter how you get there or where you end up, human beings have this miraculous gift to make that place home. <i>Creed</i>",
+        "title": "The Office",
+        "type": "television show"
+    },
+    {
+        "author": "J. D. Vance",
+        "quote": "I don't believe in epiphanies. I don't believe in transformative moments, as transformation is harder than a moment. I've seen far too many people wash away in a genuine desire to change only to lose their mettle when they realized how difficult change actually is. <i>Page 173</i>",
+        "title": "Hillbilly Elegy",
         "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "I thought it was weird when you picked us to make a documentary. But all in all...I think an ordinary paper company like Dunder Mifflin was a great subject for a documentary. There\u2019s a lot of beauty in ordinary things. Isn\u2019t that kind of the point? <i>Pam</i>",
+        "title": "The Office",
+        "type": "television show"
+    },
+    {
+        "author": "Nancy Farmer",
+        "quote": "Once, he\u2019d been satisfied by the music alone. Now he had learned about friendship, and it was no longer enough to play without an audience. <i>Page 90</i>",
+        "title": "The Lord of Opium",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "I'm worried about you Molly, you seem very stressed. <strong>I'm stressed, you're dying. </strong> Yeah well I'm ahead then, stress can ruin every day of your life, dying can only ruin one. <i>Sherlock, <strong>Molly</strong></i>",
+        "title": "Sherlock",
+        "type": "television show"
+    },
+    {
+        "author": "None",
+        "quote": "The worst thing you can do with your life is spend it with the wrong human being. <i>Daniel Sloss</i>",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "None",
+        "quote": "BoJack, when I was your age, I got sad. A lot. I didn't come from such a great home, but one day, I started running, and that seemed to make sense, so then I just kept running. BoJack, when you get sad, you run straight ahead and you keep running forward, no matter what. There are people in your life who are gonna try to hold you back, slow you down, but you don't let them. Don't you stop running and don't you ever look behind you. There's nothing for you behind you. All that exists is what's ahead. <i>Secretariat</i>",
+        "title": "Bojack Horseman",
+        "type": "television show"
     },
     {
         "author": "Kurt Vonnegut",
@@ -300,9 +114,231 @@
         "type": "book"
     },
     {
+        "author": "None",
+        "quote": "I don't think I believe in 'deep down'. I think that all you are is just the things that you do. <i>Diane</i>",
+        "title": "Bojack Horseman",
+        "type": "television show"
+    },
+    {
+        "author": "None",
+        "quote": "Everyone must fight an uphill battle in life, that's not what mental illness is. Mental illness is having to free solo a cliff just to get to the base of the hill. <i>Unknown</i>",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "Christopher Hitchens",
+        "quote": "To the dumb question \u201cWhy me?\u201d the cosmos barely bothers to return the reply: Why not?",
+        "title": "Mortality",
+        "type": "book"
+    },
+    {
+        "author": "John Green",
+        "quote": "Anyone can look at you. It's quite rare to find someone who sees the same world you see. <i>Page 9</i>",
+        "title": "Turtles All The Way Down",
+        "type": "book"
+    },
+    {
+        "author": "Mitch Albom",
+        "quote": "Once you learn how to die, you learn how to live. <i>Page 82</i>",
+        "title": "Tuesdays with Morrie",
+        "type": "book"
+    },
+    {
+        "author": "Jen Sincero",
+        "quote": "... try seeing yourself through the eyes of someone who admires you. <i>Page 49</i>",
+        "title": "You are a Badass",
+        "type": "book"
+    },
+    {
+        "author": "Mitch Albom",
+        "quote": "The culture we have does not make people feel good about themselves. And you have to be strong enough to say if the culture doesn't work, don't buy it. <i>Page 42</i>",
+        "title": "Tuesdays with Morrie",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "The key to having fond memories is to remember things differently than they actually were.",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "Nancy Farmer",
+        "quote": "\u201cI think that people have an instinct for a family. You look until you find a mother, a father, a sister, a brother. They don\u2019t have to be blood relatives. They just have to love you. And when you find them, you don\u2019t have to look anymore.\u201d <i>Page 152</i>",
+        "title": "The Lord of Opium",
+        "type": "book"
+    },
+    {
+        "author": "Mitch Albom",
+        "quote": "...the culture doesn't encourage you to think about such things until you're about to die. We're so wrapped up with egotistical things, career, family, having enough money, meeting the mortgage, getting a new car, fixing the radiator when it breaks - we're involved in trillions of little acts just to keep going. So we don't get into the habit of standing back and looking at our lives and saying, Is this all? Is this all I want? Is something missing? <i>Page 64.</i>",
+        "title": "Tuesdays with Morrie",
+        "type": "book"
+    },
+    {
+        "author": "Nancy Farmer",
+        "quote": "\u201cIf there is Paradise, it is here, it is here, it is here...\u201d <i>Page 112</i>",
+        "title": "The Lord of Opium",
+        "type": "book"
+    },
+    {
+        "author": "W. G. Sebald and Michael Hulse",
+        "quote": "They just want to be in a place where they have the world behind them, and before them nothing but emptiness. <i>Page 52</i>",
+        "title": "The Rings of Saturn",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "Sometimes I think I've felt everything I'm ever gonna feel and from here on out I'm not going to feel anything new - just lesser versions of what I've already felt. <i>Theodore</i>",
+        "title": "Her",
+        "type": "movie"
+    },
+    {
+        "author": "None",
+        "quote": "Despite knowing the journey and where it leads, I embrace it. And I welcome every moment of it. <i>Louise</i>",
+        "title": "Arrival",
+        "type": "movie"
+    },
+    {
+        "author": "Kurt Vonnegut",
+        "quote": "\u201cI\u2019m proud you were a soldier. Do you know that?\u201d \u201cGood.\u201d \u201cWas it awful?\u201d \u201cSometimes.\u201d A crazy thought now occurred to Billy. The truth of it startled him. It would make a good epitaph for Billy Pilgrim\u2014and for me, too. \"Everything was beautiful and nothing hurt.\" <i>Page 155</i>",
+        "title": "Slaughterhouse-Five",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "Listen, Morty, I hate to break it to you but what people call \"love\" is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science. <i>Rick</i>",
+        "title": "Rick and Morty",
+        "type": "television show"
+    },
+    {
+        "author": "None",
+        "quote": "Are you falling in love with her? <strong>Does that make me a freak?</strong> No, no. I think it's - I think anybody that falls in love is a freak. It's a crazy thing to do in the first place. It's kind of a form of socially acceptable insanity. <i>Amy. <strong>Theodore</strong></i>",
+        "title": "Her",
+        "type": "movie"
+    },
+    {
+        "author": "None",
+        "quote": "Well, look around. Art. It seems to me there's so much more to the world than the average eye is allowed to see. I believe, if you look hard, there are more wonders in this universe than you could ever have dreamed of. <i>Vincent Van Gogh</i>",
+        "title": "Doctor Who",
+        "type": "television show"
+    },
+    {
+        "author": "Kurt Vonnegut",
+        "quote": "The most important thing I learned on Tralfamadore was that when a person dies he only appears to die. He is still very much alive in the past, so it is very silly for people to cry at his funeral. All moments, past, present, and future, always have existed, always will exist. The Tralfamadorians can look at all the different moments just the way we can look at a stretch of the Rocky Mountains, for instance. They can see how permanent all the moments are, and they can look at any moment that interests them. It is just an illusion we have here on Earth that one moment follows another one, like beads on a string, and that once a moment is gone it is gone forever. \u201cWhen a Tralfamadorian sees a corpse, all he thinks is that the dead person is in bad condition in that particular moment, but that the same person is just fine in plenty of other moments. Now, when I myself hear that somebody is dead, I simply shrug and say what the Tralfamadorians say about dead people, which is \u2018So it goes.\u2019 <i>Page 33</i>",
+        "title": "Slaughterhouse-Five",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "Nobody exists on purpose. Nobody belongs anywhere. We're all going to die. Come watch TV. <i>Morty</i>",
+        "title": "Rick and Morty",
+        "type": "television show"
+    },
+    {
+        "author": "None",
+        "quote": "When it comes to human beings, the truth is rarely simple and only sometimes true.",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "Kurt Vonnegut",
+        "quote": "\u201cWelcome aboard, Mr. Pilgrim,\u201d said the loudspeaker. \u201cAny questions?\u201d Billy licked his lips, thought a while, inquired at last: \u201cWhy me?\u201d \u201cThat is a very Earthling question to ask, Mr. Pilgrim. Why you? Why us for that matter? Why anything? Because this moment simply is. Have you ever seen bugs trapped in amber?\u201d \u201cYes.\u201d Billy, in fact, had a paperweight in his office which was a blob of polished amber with three ladybugs embedded in it. \u201cWell, here we are, Mr. Pilgrim, trapped in the amber of this moment. There is no why.\u201d <i>Page 97</i>",
+        "title": "Slaughterhouse-Five",
+        "type": "book"
+    },
+    {
+        "author": "Exurb1a",
+        "quote": "In the beginning there was Nothing but Nothing is unstable so Something came about.",
+        "title": "The Bridge to Lucy Dunne",
+        "type": "book"
+    },
+    {
+        "author": "John Green",
+        "quote": "Most adults are just hollowed out. You watch them try to fill themselves up with booze or money or God or fame or whatever the worship, and it all rots them from the inside until nothing is left but the money or booze or God they thought would save them. <i>Page 145</i>",
+        "title": "Turtles All The Way Down",
+        "type": "book"
+    },
+    {
+        "author": "Mark Manson",
+        "quote": "We all have our chosen methods to numb the pain of our problems, and in moderate doses there is nothing wrong with this. But the longer we avoid and the longer we numb, the more painful it will be when we finally do confront our issues. <i>Page 33</i>",
+        "title": "The Subtle Art of Not Giving a F*ck",
+        "type": "book"
+    },
+    {
+        "author": "John Green",
+        "quote": "Thomas Edison\u2019s last words were: \u201cIt\u2019s very beautiful over there.\u201d I don\u2019t know where there is, but I believe it\u2019s somewhere, and I hope it\u2019s beautiful.",
+        "title": "Looking for Alaska",
+        "type": "book"
+    },
+    {
+        "author": "Kurt Vonnegut",
+        "quote": "Trout, incidentally, had written a book about a money tree. It had twenty-dollar bills for leaves. Its flowers were government bonds. Its fruit was diamonds. It attracted human beings who killed each other around the roots and made very good fertilizer. So it goes. <i>Page 212</i>",
+        "title": "Slaughterhouse-Five",
+        "type": "book"
+    },
+    {
+        "author": "Mitch Albom",
+        "quote": "I may be dying, but I am surrounded by loving, caring souls. How many people can say that?> <i>Page 36</i>",
+        "title": "Tuesdays with Morrie",
+        "type": "book"
+    },
+    {
+        "author": "Nancy Farmer",
+        "quote": "\"How much wickedness could you do in the service of good before it turned into pure evil?\" <i>Page 205</i>",
+        "title": "The Lord of Opium",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "The way I see it, every life is a pile of good things and bad things... The good things don't always soften the bad things, but vice versa, the bad things don't necessarily spoil the good things or make them unimportant. <i>The Doctor</i>",
+        "title": "Doctor Who",
+        "type": "television show"
+    },
+    {
+        "author": "Haruki Murakami",
+        "quote": "If you only read the books that everyone else is reading, you can only think what everyone else is thinking. <i>Page 42</i>",
+        "title": "Norwegian Wood",
+        "type": "book"
+    },
+    {
+        "author": "John Green",
+        "quote": "You pick your endings, and you beginnings. You get to pick the frame, you know? Maybe you don't get to choose what's in the picture, but you decide on the frame. <i>Page 277</i>",
+        "title": "Turtles All The Way Down",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "Try not to be scared of unhappiness. One day, sadness will rear its ugly head, and on that day, you don't want to be left scared <i>and</i> unhappy.",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "Khaled Hosseini",
+        "quote": "They would make new lives for themselves\u2014peaceful, solitary lives\u2014and there the weight of all that they\u2019d endured would lift from them, and they would be deserving of all the happiness and simple prosperity they would find. <i>Page 315</i>",
+        "title": "A Thousand Splendid Suns",
+        "type": "book"
+    },
+    {
+        "author": "Nancy Farmer",
+        "quote": "Matt had noticed that when he was cruel to someone, he often followed it with more cruel things. You got into that mood. But if you were kind, you felt like doing more kind things. <i>Page 263</i>",
+        "title": "The Lord of Opium",
+        "type": "book"
+    },
+    {
         "author": "W. G. Sebald and Michael Hulse",
         "quote": "If we view ourselves from a great height, it is frightening to realize how little we know about our species, our purpose and our end, I thought, as we crossed the coastline and flew out over the jelly-green sea. <i>Page 92</i>",
         "title": "The Rings of Saturn",
+        "type": "book"
+    },
+    {
+        "author": "None",
+        "quote": "If you are depressed, you are living in the past. If you are anxious, you are living in the future. If you are at peace, you are living in the present. <i>Lao Tzu</i>",
+        "title": "Miscellaneous",
+        "type": "other"
+    },
+    {
+        "author": "John Green",
+        "quote": "The thing about a spiral is, if you follow it inward, it never actually ends. It just keeps tightening, infinitely. <i>Page 7</i>",
+        "title": "Turtles All The Way Down",
         "type": "book"
     }
 ]
