@@ -5,244 +5,270 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-    <head>
-        <title>Ben Greenawald</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="assets/css/main.css" />
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <style>
-            #navbar {
-                background-color: #5e8f92;
-            }
 
-            #optiongroup {
-                background-color: #131011;
-            }
+<head>
+    <title>Ben Greenawald</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <style>
+        #navbar {
+            background-color: #5e8f92;
+        }
 
+        #optiongroup {
+            background-color: #131011;
+        }
+
+        img {
+            float: right;
+            width: 25%;
+            margin: 10px 10px 10px 10px;
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
             img {
-                float: right;
-                width: 25%;
-                margin: 10px 10px 10px 10px;
+                width: 50%;
+                height: auto;
+                object-fit: contain;
             }
-            
-            @media screen and (max-width: 480px) {
-                h1 {
-                    text-align: center;
-                }
-            }
-            
-            @media screen and (max-width: 480px) {
-                img {
-                    width: 50%;
-                    height: auto;
-                    object-fit: contain;
-                }
-    
-        </style>
+    </style>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-            gtag('config', 'UA-115980248-1');
-        </script>
-    </head>
-    <body>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-        <!-- Sidebar -->
-        <section id="sidebar">
+        gtag('config', 'UA-115980248-1');
+    </script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+        <div class="inner">
+            <nav>
+                <ul>
+                    <li><a href="#intro">Welcome</a></li>
+                    <li><a href="#one">This Site</a></li>
+                    <li><a href="#two">Get In Touch</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Wrapper -->
+    <div id="wrapper">
+
+        <!-- Intro -->
+
+        <section id="intro" class="wrapper style1 fullscreen fade-up">
             <div class="inner">
-                <nav>
-                    <ul>
-                        <li><a href="#intro">Welcome</a></li>
-                        <li><a href="#one">This Site</a></li>
-                        <li><a href="#two">Get In Touch</a></li>
-                    </ul>
-                </nav>
+
+
+                <h1>The home page of<br> Benjamin H. Greenawald </h1>
+
+                <ul class="actions">
+                    <li><a href="./content/data_scientist.html" class="button scrolly">Data Professional</a></li>
+                    <li><a href="content/software_developer.html" class="button scrolly">Software Developer</a></li>
+                    <li><a href="content/human_being.html" class="button scrolly">Human Being</a></li>
+                    <li><a href="search.html" class="button scrolly">Blogger</a></li>
+                </ul>
+
+
+                <div>
+                    <select id="navbar"
+                        onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                        <option value="" disabled selected>Navigate the Site</option>
+                        <optgroup id="optiongroup" label="About Me">
+                            <option value="content/data_scientist.html">Data Scientist</option>
+                            <option value="content/software_developer.html">Software Developer</option>
+                            <option value="content/human_being.html">Human Being</option>
+                        </optgroup>
+                        <optgroup id="optiongroup" label="Writing">
+                            <option value="search.html">Blog Main Page</option>
+                            <option value="content/writing.html">Writing</option>
+                        </optgroup>
+                        <optgroup id="optiongroup" label="Music">
+                            <option value="content/lyrics.html">Lyrics</option>
+                            <option value="content/compositions.html">Compositions</option>
+                            <option value="content/guitar.html">Guitar Practice Routine</option>
+                        </optgroup>
+                        <optgroup id="optiongroup" label="Miscellaneous">
+                            <option value="content/favorite_quotes.html">Favorite Quotes</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <h2><i>Random Quote of the Day</i></h2>
+                <p id="quote"></p>
+
             </div>
+
+
         </section>
 
-        <!-- Wrapper -->
-        <div id="wrapper">
+        <!-- One  -->
+        <section id="one" class="wrapper style2">
+            <div class="inner">
+                <!--<p><img src = "images/lnkedinpic.png" align=right style="padding:5px;"></p>-->
+                <h2>What this site is</h2>
 
-            <!-- Intro -->
-
-            <section id="intro" class="wrapper style1 fullscreen fade-up">
-                <div class="inner">
-
-
-                    <h1>The home page of<br> Benjamin H. Greenawald </h1>
-                    
-                    <ul class="actions">
-                        <li><a href="./content/data_scientist.html" class="button scrolly">Data Scientist</a></li>
-                        <li><a href="content/software_developer.html" class="button scrolly">Software Developer</a></li>
-                        <li><a href="content/human_being.html" class="button scrolly">Human Being</a></li>
-                        <li><a href="search.html" class="button scrolly">Blogger</a></li>
-                    </ul>
-
-                    
-                    <div>
-                        <select id="navbar" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                            <option value="" disabled selected>Navigate the Site</option>
-                            <optgroup id="optiongroup" label="About Me">
-                                <option value="content/data_scientist.html">Data Scientist</option>
-                                <option value="content/software_developer.html">Software Developer</option>
-                                <option value="content/human_being.html">Human Being</option>
-                            </optgroup>
-                            <optgroup id="optiongroup" label="Writing">
-                                <option value="search.html">Blog Main Page</option>
-                                <option value="content/writing.html">Writing</option>
-                            </optgroup>
-                            <optgroup id="optiongroup" label="Music">
-                                <option value="content/lyrics.html">Lyrics</option>
-                                <option value="content/compositions.html">Compositions</option>
-                                <option value="content/guitar.html">Guitar Practice Routine</option>
-                            </optgroup>
-                            <optgroup id="optiongroup" label="Miscellaneous">
-                                <option value="content/favorite_quotes.html">Favorite Quotes</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <br>        
-                    <br>
-                    <br>
-                    <h2><i>Random Quote of the Day</i></h2>
-                    <p id="quote"></p>
-
-                </div>
-
-
-            </section>
-
-            <!-- One  -->
-            <section id="one" class="wrapper style2">
-                <div class="inner">
-                    <!--<p><img src = "images/lnkedinpic.png" align=right style="padding:5px;"></p>-->
-                    <h2>What this site is</h2>
-
-                    I want to begin by giving you an idea of why I am making this site. The ultimate goal of this site is three fold: <img src="images/me.jpg">
-                    <span><ol>
+                I want to begin by giving you an idea of why I am making this site. The ultimate goal of this site is
+                three fold: <img src="images/me.jpg">
+                <span>
+                    <ol>
                         <li>
-                            <strong>Create a central hub for me.</strong> As I grow older and my digital presence increases, it is increasingly difficult to keep a consistent and up to date picture of myself across various platforms. This site is meant to serve as the most up to date and thorough resource for the various goings on in my life.
+                            <strong>Create a central hub for me.</strong> As I grow older and my digital presence
+                            increases, it is increasingly difficult to keep a consistent and up to date picture of
+                            myself across various platforms. This site is meant to serve as the most up to date and
+                            thorough resource for the various goings on in my life.
                         </li>
                         <li>
-                            <strong>Keep my web development skills sharp(ish).</strong> I have been studying computer science and developing software for over 4 years, and the prospect of front-end software development still makes me cringe. If you've ever wondered what my Achilles heel is, you're looking at it. Me from 5 years ago would never have imagined that my Kryptonite would be Internet markup language, but here we are. That being said, I acknowledge that the skill is valuable, so I am using this site as a means of facing my fear of the front end, in a nice, static setting.
+                            <strong>Keep my web development skills sharp(ish).</strong> I have been studying computer
+                            science and developing software for over 4 years, and the prospect of front-end software
+                            development still makes me cringe. If you've ever wondered what my Achilles heel is, you're
+                            looking at it. Me from 5 years ago would never have imagined that my Kryptonite would be
+                            Internet markup language, but here we are. That being said, I acknowledge that the skill is
+                            valuable, so I am using this site as a means of facing my fear of the front end, in a nice,
+                            static setting.
                         </li>
                         <li>
-                            <strong>Open sourcing myself.</strong> I create a fair amount of media in various forms, most of which I keep
-                            to myself. But in an effort to both share more and create more, I want to put my content out there. It doesn't really
-                            matter if it's any good or if anyone ever sees it (and part of me hopes nobody does), but just sharing it feels important.
+                            <strong>Open sourcing myself.</strong> I create a fair amount of media in various forms,
+                            most of which I keep
+                            to myself. But in an effort to both share more and create more, I want to put my content out
+                            there. It doesn't really
+                            matter if it's any good or if anyone ever sees it (and part of me hopes nobody does), but
+                            just sharing it feels important.
                         </li>
-                        
-                        </ol>
-                        With that in mind, I now encourage you to explore this site and get to know a little more about me.
 
-                        For a good place to start, read my first <a href="blog/2017/introduction.html">blog post</a>, which goes into a little more detail of who I am and what this site is all about.
-                    </span>
-                </div>
-            </section>
-            </section>
+                    </ol>
+                    With that in mind, I now encourage you to explore this site and get to know a little more about me.
+
+                    For a good place to start, read my first <a href="blog/2017/introduction.html">blog post</a>, which
+                    goes into a little more detail of who I am and what this site is all about.
+                </span>
+            </div>
+        </section>
+        </section>
 
         <!-- Two -->
         <section id="two" class="wrapper style1">
             <div class="inner">
                 <h2>Get in Touch!</h2>
                 <p>
-                    If you want to know more about me or just connect with a like minded human, feel free to reach out via email or the social media platforms listed below!
+                    If you want to know more about me or just connect with a like minded human, feel free to reach out
+                    via email or the social media platforms listed below!
                 </p>
                 <div class="split style1">
                     <object data="Resume.pdf" type="application/pdf" width="750px" height="750px">
                         <embed src="Resume.pdf" type="application/pdf">
-                        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="Resume.pdf">Download PDF</a>.</p>
+                        <p>This browser does not support PDFs. Please download the PDF to view it: <a
+                                href="Resume.pdf">Download PDF</a>.</p>
                         </embed>
                     </object>
-                <section>
-                    <ul class="contact">
-                        <!--<li>
+                    <section>
+                        <ul class="contact">
+                            <!--<li>
 <h3>Address</h3>
 <span>1308 Wertland St. Unit 001<br />
 Charlottesville, VA 22903<br />
 USA</span>
 </li>-->
-                        <li>
-                            <h3>Email</h3>
-                            <a href="mailto:bgreenawald@gmail.com">bgreenawald@gmail.com</a>
-                        </li>
-                        <li>
-                            <h3>Social</h3>
-                            <ul class="icons">
-                                <li><a href="https://www.linkedin.com/in/benjamin-greenawald-761634112/" class="fa-github"><span class="label">GitHub</span></a></li>
-                                <li><a href="https://github.com/bgreenawald" class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
-                                <li><a href="https://www.facebook.com/ben.greenawald" class="fa-facebook"><span class="label">Facebook</span></a></li>
+                            <li>
+                                <h3>Email</h3>
+                                <a href="mailto:bgreenawald@gmail.com">bgreenawald@gmail.com</a>
+                            </li>
+                            <li>
+                                <h3>Social</h3>
+                                <ul class="icons">
+                                    <li><a href="https://www.linkedin.com/in/benjamin-greenawald-761634112/"
+                                            class="fa-github"><span class="label">GitHub</span></a></li>
+                                    <li><a href="https://github.com/bgreenawald" class="fa-linkedin"><span
+                                                class="label">LinkedIn</span></a></li>
+                                    <li><a href="https://www.facebook.com/ben.greenawald" class="fa-facebook"><span
+                                                class="label">Facebook</span></a></li>
 
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
         </section>
 
-<!-- Footer -->
-<footer id="footer" class="wrapper alt">
-    <div class="inner">
-        <ul class="menu">
-            <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
-            <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-            <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
-        </ul>
-    </div>
-</footer>
+        <!-- Footer -->
+        <footer id="footer" class="wrapper alt">
+            <div class="inner">
+                <ul class="menu">
+                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                    <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+                </ul>
+            </div>
+        </footer>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/skel.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="assets/js/main.js"></script>
 
-<script>
-function diff_date(date1, limit){
-    var date1 = new Date(date1);
-    var date2 = new Date();
-    var timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
-    return diffDays % limit;
-}      
-
-function load_quotes(){
-    $.get("quotes.json", function(data){
-        var index = diff_date("11/17/2018", data.length);
-        var quote = data[index];
-        var quote_html = quote.quote;
-        
-        if(quote.title != "Miscellaneous"){
-            if(quote.type != "other"){
-                quote_html += " | From the " + quote.type + "<i> " + quote.title + "</i>";
-            } else {
-                quote_html += " | From <i> " + quote.title + "</i>";                
+        <script>
+            function diff_date(date1, limit) {
+                var date1 = new Date(date1);
+                var date2 = new Date();
+                var timeDiff = Math.abs(date2.getTime() - date1.getTime());
+                var diffDays = Math.floor(timeDiff / (1000 * 3600 * 24));
+                return diffDays % limit;
             }
-        }
-        
-        // Add the author if present
-        if(quote.author != 'None') {
-            quote_html += " by " + quote.author;
-        }
 
-        $("#quote").html(quote_html);
-    });
-    
-}
-    
-load_quotes();
-</script>
+            function load_quotes() {
+                $.get("quotes.json", function (data) {
+                    var index = diff_date("11/17/2018", data.length);
+                    var quote = data[index];
+                    var quote_html = quote.quote;
+
+                    if (quote.title != "Miscellaneous") {
+                        if (quote.type != "other") {
+                            quote_html += " | From the " + quote.type + "<i> " + quote.title + "</i>";
+                        } else {
+                            quote_html += " | From <i> " + quote.title + "</i>";
+                        }
+                    }
+
+                    // Add the author if present
+                    if (quote.author != 'None') {
+                        quote_html += " by " + quote.author;
+                    }
+
+                    $("#quote").html(quote_html);
+                });
+
+            }
+
+            load_quotes();
+        </script>
 </body>
+
 </html>
