@@ -3421,6 +3421,7 @@ Variables
 			-ms-flex: 1;
 			flex: 1;
 			text-align: right;
+			margin: 10px;
 		}
 
 			#header > nav > ul {
