@@ -3940,3 +3940,16 @@ Variables
 			}
 
 		}
+
+
+/* Custom styling */
+
+.inner-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.play {
+	margin: 10px;
+}
