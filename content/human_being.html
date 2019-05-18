@@ -23,6 +23,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
             gtag('config', 'UA-115980248-1');
         </script>
+
     </head>
     <body>
 
@@ -87,8 +88,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 
             <!-- Main -->
-            <section id="main" class="wrapper">
-                <div class="inner">
+            <section id="main" class="wrapper style1">
+                <div class="inner" style="padding: 4em 2em 1em 2em;">
                     <h2>Current Favorites</h2>
                     <p>These are lists of things in various categories that I have enjoyed recently (past year or so).
                     </p>
@@ -97,20 +98,20 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <span class="icon major fa-video-camera"></span>
                             <h3>Top 5 Recent Movies</h3>
                             <ol>
+                                <li>Avengers Endgame <i>The Russo Brothers</i></li>
                                 <li>Spider-Man: Into the Spider-Verse <i>Peter Ramsey, Bob Persichetti, Rodney Rothman</i></li>
                                 <li>The Edge of Seventeen <i>Kelly Fremon Craig</i></li>
                                 <li>Annihilation <i>Alex Garland</i></li>
                                 <li>Fyre <i>Chris Smith</i></li>
-                                <li>Searching <i>Aneesh Chaganty</i></li>
                             </ol>
                         </section>
                         <section>
                             <span class="icon major fa-group"></span>
                             <h3>Top 5 Current Artists</h3>
                             <ol>
+                                <li>Elephante</li>
                                 <li>Billie Eilish</li>
                                 <li>Yours Truly</li>
-                                <li>Ariana Grande</li>
                                 <li>Glades</li>
                                 <li>Chelsea Cutler</li>
                             </ol>
@@ -119,11 +120,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                             <span class="icon major fa-music"></span>
                             <h3>Top 5 Current Songs</h3>
                             <ol>
+                                <li>Drink About (original and acoustic) <i>Seeb, Dagny</i></li>
                                 <li>Circles <i>Yours Truly</i></li>
                                 <li>School <i>BLYNE, B O K E H</i></li>
                                 <li>I Love You <i>Billie Eilish</i></li>
                                 <li>Better Not <i>Louis the Child ft. Wafia</i></li>
-                                <li>in my head and bad idea <i>Ariana Grande</i></li>
                             </ol>
                         </section>
                         <section>
@@ -151,7 +152,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         <section></section>
                     </div>
                 </div>
-                <div class="inner">
+                <div class="inner" style="padding: 2em 2em 1em 2em;">
                     <h2>All Time Favorites</h2>
                     <p>
                         These are lists of things I consider to be my all time favorites in various categories. They are ordered, but the ordering is more or less arbitrary.
@@ -230,8 +231,175 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                         </section>
                     </div>
                 </div>
+                <div class="inner" style="padding: 2em 2em 1em 2em;">
+                    <h2>Spotify Listening Trends</h2>
+                    <p>
+                        These are my top Spotify tracks, updated weekly.<br>
+                        <span id="date-update"></span>
+                    </p>
+
+                    <div class="features">
+                        <section>
+                            <h3>Top Tracks</h3>
+                            <select class="spotify" name="track-range" id="track-range" onchange="render_tracks(data)">
+                                <option value="short_term" selected>Short Term (~4 weeks)</option>
+                                <option value="medium_term">Medium Term (~6 months)</option>
+                                <option value="long_term">Long Term (all time)</option>
+                            </select>
+                            <div style="margin: 10px 10px 10px 0px">
+                                <a class="paginate" href="#" onclick="render_tracks(data, 0);return false;">1-10</a>
+                                <a class="paginate" href="#" onclick="render_tracks(data, 10);return false;">11-20</a>
+                                <a class="paginate" href="#" onclick="render_tracks(data, 20);return false;">21-30</a>
+                                <a class="paginate" href="#" onclick="render_tracks(data, 30);return false;">31-40</a>
+                                <a class="paginate" href="#" onclick="render_tracks(data, 40);return false;">41-50</a>
+                            </div>
+                            <ol id="tracks"></ol>
+                        </section>
+
+                        <section>
+                            <h3>Top Artists</h3>
+                            <select class="spotify" name="artist-range" id="artist-range" onchange="render_artists(data)">
+                                <option value="short_term" selected>Short Term (~4 weeks)</option>
+                                <option value="medium_term">Medium Term (~6 months)</option>
+                                <option value="long_term">Long Term (all time)</option>
+                            </select>
+                            <div style="margin: 10px 10px 10px 0px">
+                                <a class="paginate" href="#" onclick="render_artists(data, 0);return false;">1-10</a>
+                                <a class="paginate" href="#" onclick="render_artists(data, 10);return false;">11-20</a>
+                                <a class="paginate" href="#" onclick="render_artists(data, 20);return false;">21-30</a>
+                                <a class="paginate" href="#" onclick="render_artists(data, 30);return false;">31-40</a>
+                                <a class="paginate" href="#" onclick="render_artists(data, 40);return false;">41-50</a>
+                            </div>
+                            <ol id="artists"></ol>
+                        </section>
+
+                        <section>
+                            <h3>Top Genres</h3>
+                            Shown are the percentage of artists in my top 50 that are of each genre. Only genres with 10% or greater representation are shown.
+                            <select class="spotify" name="genre-range" id="genre-range" onchange="render_frequency(data)" style="margin: 10px 0px 15px 0px">
+                                <option value="short_term" selected>Short Term (~4 weeks)</option>
+                                <option value="medium_term">Medium Term (~6 months)</option>
+                                <option value="long_term">Long Term (all time)</option>
+                            </select>
+                            <ol id="genre"></ol>
+                        </section>
+
+                        <section></section>
+                    </div>
+                </div>
             </section>
         </div>
+        <script>
+            // Miscellaneous Javascript functions
+            function capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        </script>
+
+        <script>
+            // Rendering functions for Spotify data
+            function render_artists(data, lower=0) {
+                var term = document.getElementById("artist-range").value;
+                var artists = data["artists"][term]["items"];
+
+                var artist_list = document.getElementById("artists");
+                artist_list.innerHTML = "";
+
+                for (i = lower; i < lower + 10; i++) {
+                    var elem = artists[i];
+
+                    // Add artists name to list
+                    var node = document.createElement("li");
+                    node.innerText = elem["name"];
+                    node.value = i + 1;
+                    artist_list.appendChild(node);
+                }
+            }
+
+            function render_tracks(data, lower=0) {
+                var term = document.getElementById("track-range").value;
+
+                var tracks = data["tracks"][term]["items"];
+
+                var tracks_list = document.getElementById("tracks");
+                tracks_list.innerHTML = "";
+                for (i = lower; i < lower + 10; i++) {
+                    // Extract information from the track
+                    var elem = tracks[i];
+                    var name = elem["name"];
+                    var track_artists = elem["artists"].map(x => x["name"]).join(", ");
+
+                    // Add information to HTML list
+                    var node = document.createElement("li");
+                    node.innerHTML = name + " " + track_artists.italics();
+                    node.value = i + 1;
+                    tracks_list.appendChild(node);
+                }
+            }
+
+            function render_frequency(data) {
+                var term = document.getElementById("genre-range").value;
+                var artists = data["artists"][term]["items"];
+
+                var genre_list = document.getElementById("genre");
+                genre_list.innerHTML = "";
+
+                var genre_freq = {};
+
+                // Create frequency dictionary of genres
+                for (i = 0; i < artists.length; i++) {
+                    var elem = artists[i];
+
+                    // Add artists name to list
+                    //for(var j = 0; j < elem["genres"].length; j++) {
+                    for (const genre of Object.values(elem["genres"])) {
+                        if (genre_freq.hasOwnProperty(genre)) {
+                            genre_freq[genre] += 1;
+                        } else {
+                            genre_freq[genre] = 1;
+                        }
+                    }
+                }
+
+                // Turn into percentages
+                for (key in genre_freq) {
+                    genre_freq[key] = genre_freq[key] / artists.length
+                }
+
+                // Sort for the highest percentages
+                var sorted_genres = Object.keys(genre_freq).sort(function(a,b){return genre_freq[b]-genre_freq[a]})
+
+                // Add to the list any genres with a 10% or greater percentage
+                for (const genre of sorted_genres) {
+                    if(genre_freq[genre] >= 0.1) {
+                        var text = capitalizeFirstLetter(genre) + ": " + ((genre_freq[genre] * 100) | 0) + "%";
+
+                        // Add information to HTML list
+                        var node = document.createElement("li");
+                        node.innerText = text;
+                        genre_list.appendChild(node);
+                    }
+                }
+            }
+
+            function render_list(data) {
+                // Update the date
+                var date = document.getElementById("date-update");
+                date.innerHTML = ("Last updated: " + data["date_updated"]).italics();
+                render_artists(data);
+                render_tracks(data);
+                render_frequency(data);
+            }
+
+            let url = "https://s3.amazonaws.com/bhg5yd-personal-site/spotify.json";
+            var data = {};
+            fetch(url)
+                .then(response => response.json())
+                .then(json => data = json)
+                .then(data => render_list(data))
+                .catch(error => console.log(`Failed because: ${error}`));
+
+        </script>
 
         <!-- Footer -->
         <footer id="footer" class="wrapper alt">

@@ -3953,3 +3953,11 @@ Variables
 .play {
 	margin: 10px;
 }
+
+a.paginate {
+	margin: 5px;
+}
+
+select.spotify {
+	background-color: var(--main-color2);
+}
