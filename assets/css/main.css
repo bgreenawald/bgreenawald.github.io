@@ -3252,12 +3252,20 @@ Variables
 					padding: 4em 4em 2em 4em ;
 				}
 
+				.wrapper > .home {
+					margin-top: 10em;
+				}
+
 			}
 
 			@media screen and (max-width: 1280px) {
 
 				.wrapper > .inner {
 					width: 100%;
+				}
+
+				.wrapper > .home {
+					margin-top: 0em;
 				}
 
 			}
