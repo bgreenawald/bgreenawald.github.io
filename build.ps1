@@ -1,31 +1,21 @@
-﻿param([string]$m = "")
-
-# If the commit message is null, exit script
-if($m -eq ""){
-    Write-Host "Must enter a commit message";
-    exit;
-}
+﻿$cur_path = Convert-Path Get-Location;
 
 # Remove current pdf
-if(Test-Path Resume_2018.pdf){
-    Remove-Item Resume_2018.pdf
+if(Test-Path Resume.pdf){
+    Remove-Item Resume.pdf;
 }
 # Change to job search directory
-cd "C:\Users\bgree\Documents\Job-Search"
+Set-Location "C:\Users\bgree\Documents\Job-Search"
 
 # Pull the current version of the resume
 git pull
 
 # Copy it over
-Copy-Item Ben_Greenawald_resume.pdf C:\xampp\htdocs\bgreenawald.github.io\Resume.pdf
+Copy-Item Ben_Greenawald_resume.pdf $cur_path.ToString() + "\Resume.pdf"
 
 # Change back
-cd "C:\xampp\htdocs\bgreenawald.github.io\"
+Set-Location $cur_path
 
 # Run the blog build script
 python generate.py
 
-# Update git
-git add .
-git commit -m "'$m'"
-git push
