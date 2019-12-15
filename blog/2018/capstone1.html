@@ -5,243 +5,162 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-    <head>
-        <title>Ben Greenawald</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="../../assets/css/main.css" />
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
 
-            gtag('config', 'UA-115980248-1');
-        </script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+<head>
+    <title>Ben Greenawald</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-        <!-- Header -->
-        <header id="header">
-        </header>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-        <!-- Wrapper -->
-        <div id="wrapper">
+        gtag('config', 'UA-115980248-1');
+    </script>
+</head>
 
-            <!-- Main -->
-            <section id="main" class="wrapper style2">
-                <div class="inner">
-                    <h1 class="major"><!-- titleBegin -->Capstone Semester One Wrap Up (Part 1)<!-- titleEnd --></h1>
-                    <!-- contentBegin -->
-                    <p>One of the principal components (pun intended) of my Master's
-                        program at UVA is the completion of a Capstone research project.
-                        Now that I am halfway through the program, I feel it is a good time
-                        to do an overview of the project, explain what work we have
-                        completed so far, and a few things I've picked up along the way.</p>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-                    <h3>Overview</h3>
+    <!-- Header -->
+    <header id="header">
+    </header>
 
-                    <p>
-                        Our project is titled, "Using Speech to Predict Violence in Value-Based Groups," or something like that. Basically, humans like to collate around common ideas, or "values", in our case. Being that
-                        humans are intrinsically social creatures, this formation of groups
-                        is great!... most of the time. Sometimes, members of these groups,
-                        inspired by ideas within the group, decide to commit acts of violence. Given that new groups like this are popping up all the time in less understood areas of the globe, it would be life-saving to figure out what groups are going
-                        to be violent before we (our military) has to interact with them. That
-                        is the crux of our research.
-                    </p>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-                    <p>
-                        Our capstone is actually the continuation of two years of prior
-                        capstone projects. These capstone project aimed to predict a metric
-                        assigned to groups called "linguistic rigidity." Linguistic rigidity
-                        is given to texts from a given group and aims to quantify the, well,
-                        rigidity of the language a group uses. It's a bit unintuitive but the
-                        idea is that this "linguistic rigidity" is a proxy for the violent potential of a group. These groups showed promising results but
-                        we felt that their analyses had a couple of areas for improvement. The first being
-                        that linguistic rigidity seemed like an unnecessary middleman for
-                        the thing we actually care about, which is predicting group violence.
-                        Second, the analysis was restricted to English. The researchers used
-                        their knowledge of English to help inform the models what to look
-                        for. This is problematic since many of the groups appear in parts of
-                        the globe that do not primarily speak English, thus their analysis is
-                        largely void for the majority of the world.
-                    </p>
-
-                    <p>
-                        Our capstone hopes to address both of these issues. Instead of trying to predict linguistic rigidity, we are going straight to trying to predict
-                        violence. Further, we are conducting our experiment in a "language
-                        agnostic" manner. What this means is that nothing in our analysis is
-                        specific to the language being used. Theoretically, you should be able
-                        to plug in any language into our pipeline and get comparable results.
-                        As a proof of concept, we are conducting our analysis in Arabic,
-                        which none of us speak (well, one of our advisors does, but what are
-                        you gonna do?).
-                    </p>
-
-                    <h3>Definitions, Definitions, Definitions</h3>
-
-                    <p>Before we can get into the collections or our data, we need
-                        to establish some definitions. This has been a first for me since most
-                        of the projects I do are pretty straightforward and objective. But
-                        since this project falls more into the domain of human behavior,
-                        we need to establish some definitions. A fair question would be
-                        how we decided on definitions. The short answer is, we research
-                        how other people defined them and tweak the definitions to be
-                        most sensible for our use case. A fair followup would be, "but
-                        doesn't that introduce some experimenter bias?" Yes, but anyway you define subjective term will introduce bias, so let's accept that and move on.</p>
-
-                    <p>We know we need to find text's from violent and non-violent value
-                        based groups. But what the hell do most of the words in that last sentence mean in a practical sense? In the interest of not dragging on, I'm just going to list the answers to a bunch of preliminary questions we faced.</p>
-                    <ul style="padding: 0em 5em">
-                        <li>
-                            <i>What is violence?</i> We ended up basing our definition
-                            of violence on a few different definitions we found. We define
-                            violence to be any intentional act that has a high probability of causing injury or death to humans or animals.
-                        </li>
-                        <li>
-                            <i>What is a violent group?</i> A violent group is any group who has
-                            members that commit an act of violence as described above and the group takes responsibility for the action.
-                        </li>
-                        <li>
-                            <i>What is a value?</i> Pretty much anything that somebody thinks.
-                        </li>
-                        <li>
-                            <i>What is a value based group?</i> Any group that operates under
-                            a common name and has either an explicit publically available set
-                            of motives/values or whose values are obvious from their behavior.
-                            The group must also have a primary motive outside of making a profit.
-                        </li>
-                        <li>
-                            <i>What is a document?</i> Any media that a group or members of a group put out that can be extracted into a text document. This includes web pages, PDFs, speeches (if we ever figure out a scalable way to do speech to text).</li>
-                        <li>
-                            <i>How are documents labeled?</i> All documents within a group are given the same label. So if ISIS is labeled as violent, all documents from ISIS are considered violent documents
-                        </li>
-                        <li>
-                            <i>Is that realistic?</i> Probably not, but it's a start. Future work, either by us or other researchers, should focus on creating a more
-                            granular definition of violence that can allow documents to be
-                            judged at a more individual level. This will introduce far less bias
-                            as groups change from non-violent to violent, or vice-versa, pretty frequently.
-                        </li>
-                        <li>
-                            <i>What does it mean for an analysis to be language agnostic?</i> The analysis should not do anything that is specific to a language
-                            and cannot be extended to another language. For example, part of speech tagging tools are not language agnostic as they do not
-                            exist readily for all languages. However, stop-word analysis is valid since this really just requires finding what words are used
-                            extremely often, which can be done with any language.
-                        </li>
-                        <li>
-                            <i>Can a person be a group?</i> Yes, after much debate we decided
-                            that an individual person can be a 'value-based group' if they are
-                            expressing values under their name, like religious scholars.
-                        </li>
-                        <li>
-                            <i>How about news organizations?</i> We ended up also letting news
-                            organizations be value-based groups, but only the opinion and op-ed
-                            sections where people are expressing their values.
-                        </li>
-                    </ul>
-
-                    <h3>Getting the Data Otherwise Known as our Entire Semester</h3>
-
-                    <p>
-                        You know that mantra that 90% of a data scientist's work is data
-                        wrangling/preprocessing? Well, I'd like to submit my Fall 2017 into
-                        evidence. I wrote more web scrappers this past semester than I
-                        thought I would in my entire life, but we'll get more into that in
-                        a bit. First, let's talk about how we even found data. Actually, we need to go back even further. How do we even decide what data we needed? Luckily for me, most of the work answering these questions
-                        fell to one of the other members of my team. This member identified
-                        various Arabic speaking groups throughout the globe who seemed
-                        to be large and influential enough to have some sort of website
-                        findable by Google. After identifying these groups, he scoured the
-                        web until he was able to find either official sites for these groups,
-                        or just sites that hosted their content. For example, he found a
-                        site that took newsletters ISIS released and upload those. In
-                        one case, another member of our groups found a University that
-                        had scrapped the dark web for a number of years and hosted a
-                        number of those results for free. We found one forum that fit out
-                        criteria and were able to use it.</p>
-
-                    <p>Then came the web scrapers. Ohhhhh the web scrapers. Given
-                        that I had the most background with programming, I was tasked
-                        with scraping all of the websites. I was given a list of URLs, and
-                        that's it. From there, I had free reign. Now, in order to scrape all
-                        of the blogs and forums in a scalable way, I researched for some
-                        pre-built scraping tools or libraries I could utilize. Now, don't get me
-                        wrong, there are a lot of mature and thorough tools for scraping
-                        websites, Scrapy being an especially good one, but they all ended
-                        up being useless for me. The reason for this is simple: they require
-                        the sites they scrape to be somewhat well written and predictable.
-                        Turns out, terrorists write shitty websites. Who knew?! I don't know
-                        if it's lack of technical prowess or just designing poorly fits in their
-                        evil brand, but the result is the same.  A series of poorly written sites
-                        that require hacked together, custom web scrappers to scrape. Ugh.</p>
-
-                    <p>I ended up going with the tried and true: requests and BeautifulSoup (and in one case, a library to bypass CloudFlare
-                        because terrorists really need DDoS protection). Basically, I
-                        had to look for patterns in the URL, or for embedded URLs in
-                        a webpage, and also some good markers to extract out the
-                        relevant text from the potpourri of text that BeautifulSoup
-                        pulls out. All in all, it was just a huge, tedious, pain in the
-                        butt. I spend about 10 hours over the course of a weekend,
-                        hold up in a library, doing nothing but writing and running
-                        web scrapers. </p>
-
-                    <p>I'm going to stop here for now. But please read on to part 2 to
-                        find out more, including how we preprocessed the data, feature engineering (or
-                        lack thereof), and some preliminary results.</p>
-                    <!-- contentEnd -->
-                    <h3>2/6/2018</h3>
-                    <!-- dateBegin 2/6/2018 dateEnd -->
-                    <!-- pathBegin blog/2018/capstone1.html pathEnd -->
-
-                    <div class="row">
-                        <div class="6u 12u$(medium)">
-                            <ul class="actions">
-                                <li><a href="../2017/resolutions.html" class="button">Previous</a></li>
-                                <li><a href="capstone2.html" class="button">Next</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/capstone1.html" data-width="100%" data-numposts="5"></div>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- Footer -->
-        <footer id="footer" class="wrapper alt">
+        <!-- Main -->
+        <section id="main" class="wrapper style2">
             <div class="inner">
-                <ul class="menu">
-                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                    <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+                <h1 class="major"><!-- titleBegin -->Capstone Semester One Wrap Up (Part 1)<!-- titleEnd --></h1>
+                <!-- contentBegin -->
+                <p>One of the principal components (pun intended) of my Master's program at UVA is the completion of a Capstone research project. Now that I am halfway through the program, I feel it is a good time to do an overview of the project, explain what work we have completed so far, and a few things I've picked up along the way.</p>
+
+                <h3>Overview</h3>
+
+                <p>
+                    Our project is titled, "Using Speech to Predict Violence in Value-Based Groups," or something like that. Basically, humans like to collate around common ideas, or "values", in our case. Being that humans are intrinsically social creatures, this formation of groups is great!... most of the time. Sometimes, members of these groups, inspired by ideas within the group, decide to commit acts of violence. Given that new groups like this are popping up all the time in less understood areas of the globe, it would be life-saving to figure out what groups are going to be violent before we (our military) has to interact with them. That is the crux of our research.
+                </p>
+
+                <p>
+                    Our capstone is actually the continuation of two years of prior capstone projects. These capstone project aimed to predict a metric assigned to groups called "linguistic rigidity." Linguistic rigidity is given to texts from a given group and aims to quantify the, well, rigidity of the language a group uses. It's a bit unintuitive but the idea is that this "linguistic rigidity" is a proxy for the violent potential of a group. These groups showed promising results but we felt that their analyses had a couple of areas for improvement. The first being that linguistic rigidity seemed like an unnecessary middleman for the thing we actually care about, which is predicting group violence. Second, the analysis was restricted to English. The researchers used their knowledge of English to help inform the models what to look for. This is problematic since many of the groups appear in parts of the globe that do not primarily speak English, thus their analysis is largely void for the majority of the world.
+                </p>
+
+                <p>
+                    Our capstone hopes to address both of these issues. Instead of trying to predict linguistic rigidity, we are going straight to trying to predict violence. Further, we are conducting our experiment in a "language agnostic" manner. What this means is that nothing in our analysis is specific to the language being used. Theoretically, you should be able to plug in any language into our pipeline and get comparable results. As a proof of concept, we are conducting our analysis in Arabic, which none of us speak (well, one of our advisors does, but what are you gonna do?).
+                </p>
+
+                <h3>Definitions, Definitions, Definitions</h3>
+
+                <p>Before we can get into the collections or our data, we need to establish some definitions. This has been a first for me since most of the projects I do are pretty straightforward and objective. But since this project falls more into the domain of human behavior, we need to establish some definitions. A fair question would be how we decided on definitions. The short answer is, we research how other people defined them and tweak the definitions to be most sensible for our use case. A fair followup would be, "but doesn't that introduce some experimenter bias?" Yes, but anyway you define subjective term will introduce bias, so let's accept that and move on.</p>
+
+                <p>We know we need to find text's from violent and non-violent value based groups. But what the hell do most of the words in that last sentence mean in a practical sense? In the interest of not dragging on, I'm just going to list the answers to a bunch of preliminary questions we faced.</p>
+                <ul style="padding: 0em 5em">
+                    <li>
+                        <i>What is violence?</i> We ended up basing our definition of violence on a few different definitions we found. We define violence to be any intentional act that has a high probability of causing injury or death to humans or animals.
+                    </li>
+                    <li>
+                        <i>What is a violent group?</i> A violent group is any group who has members that commit an act of violence as described above and the group takes responsibility for the action.
+                    </li>
+                    <li>
+                        <i>What is a value?</i> Pretty much anything that somebody thinks.
+                    </li>
+                    <li>
+                        <i>What is a value based group?</i> Any group that operates under a common name and has either an explicit publically available set of motives/values or whose values are obvious from their behavior. The group must also have a primary motive outside of making a profit.
+                    </li>
+                    <li>
+                        <i>What is a document?</i> Any media that a group or members of a group put out that can be extracted into a text document. This includes web pages, PDFs, speeches (if we ever figure out a scalable way to do speech to text).</li>
+                    <li>
+                        <i>How are documents labeled?</i> All documents within a group are given the same label. So if ISIS is labeled as violent, all documents from ISIS are considered violent documents
+                    </li>
+                    <li>
+                        <i>Is that realistic?</i> Probably not, but it's a start. Future work, either by us or other researchers, should focus on creating a more granular definition of violence that can allow documents to be judged at a more individual level. This will introduce far less bias as groups change from non-violent to violent, or vice-versa, pretty frequently.
+                    </li>
+                    <li>
+                        <i>What does it mean for an analysis to be language agnostic?</i> The analysis should not do anything that is specific to a language and cannot be extended to another language. For example, part of speech tagging tools are not language agnostic as they do not exist readily for all languages. However, stop-word analysis is valid since this really just requires finding what words are used extremely often, which can be done with any language.
+                    </li>
+                    <li>
+                        <i>Can a person be a group?</i> Yes, after much debate we decided that an individual person can be a 'value-based group' if they are expressing values under their name, like religious scholars.
+                    </li>
+                    <li>
+                        <i>How about news organizations?</i> We ended up also letting news organizations be value-based groups, but only the opinion and op-ed sections where people are expressing their values.
+                    </li>
                 </ul>
+
+                <h3>Getting the Data Otherwise Known as our Entire Semester</h3>
+
+                <p>
+                    You know that mantra that 90% of a data scientist's work is data wrangling/preprocessing? Well, I'd like to submit my Fall 2017 into evidence. I wrote more web scrappers this past semester than I thought I would in my entire life, but we'll get more into that in a bit. First, let's talk about how we even found data. Actually, we need to go back even further. How do we even decide what data we needed? Luckily for me, most of the work answering these questions fell to one of the other members of my team. This member identified various Arabic speaking groups throughout the globe who seemed to be large and influential enough to have some sort of website findable by Google. After identifying these groups, he scoured the web until he was able to find either official sites for these groups, or just sites that hosted their content. For example, he found a site that took newsletters ISIS released and upload those. In one case, another member of our groups found a University that had scrapped the dark web for a number of years and hosted a number of those results for free. We found one forum that fit out criteria and were able to use it.</p>
+
+                <p>Then came the web scrapers. Ohhhhh the web scrapers. Given that I had the most background with programming, I was tasked with scraping all of the websites. I was given a list of URLs, and that's it. From there, I had free reign. Now, in order to scrape all of the blogs and forums in a scalable way, I researched for some pre-built scraping tools or libraries I could utilize. Now, don't get me wrong, there are a lot of mature and thorough tools for scraping websites, Scrapy being an especially good one, but they all ended up being useless for me. The reason for this is simple: they require the sites they scrape to be somewhat well written and predictable. Turns out, terrorists write shitty websites. Who knew?! I don't know if it's lack of technical prowess or just designing poorly fits in their evil brand, but the result is the same. A series of poorly written sites that require hacked together, custom web scrappers to scrape. Ugh.</p>
+
+                <p>I ended up going with the tried and true: requests and BeautifulSoup (and in one case, a library to bypass CloudFlare because terrorists really need DDoS protection). Basically, I had to look for patterns in the URL, or for embedded URLs in a webpage, and also some good markers to extract out the relevant text from the potpourri of text that BeautifulSoup pulls out. All in all, it was just a huge, tedious, pain in the butt. I spend about 10 hours over the course of a weekend, hold up in a library, doing nothing but writing and running web scrapers. </p>
+
+                <p>I'm going to stop here for now. But please read on to part 2 to find out more, including how we preprocessed the data, feature engineering (or lack thereof), and some preliminary results.</p>
+                <!-- contentEnd -->
+                <h3>2/6/2018</h3>
+                <!-- dateBegin 2/6/2018 dateEnd -->
+                <!-- pathBegin blog/2018/capstone1.html pathEnd -->
+
+                <div class="row">
+                    <div class="6u 12u$(medium)">
+                        <ul class="actions">
+                            <li><a href="../2017/resolutions.html" class="button">Previous</a></li>
+                            <li><a href="capstone2.html" class="button">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/capstone1.html" data-width="100%" data-numposts="5"></div>
             </div>
-        </footer>
+        </section>
 
-        <!-- Scripts -->
-        <script src="../../assets/js/jquery.min.js"></script>
-        <script>
-            $(function(){$('#header').load('../../header2.html');});
-        </script>
-        <script src="../../assets/js/jquery.scrollex.min.js"></script>
-        <script src="../../assets/js/jquery.scrolly.min.js"></script>
-        <script src="../../assets/js/skel.min.js"></script>
-        <script src="../../assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="../../assets/js/main.js"></script>
+    </div>
 
-    </body>
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#header').load('../../header2.html');
+        });
+    </script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/skel.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../../assets/js/main.js"></script>
+
+</body>
+
 </html>

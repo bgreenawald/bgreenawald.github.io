@@ -5,113 +5,123 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-    <head>
-        <title>Ben Greenawald</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="../../assets/css/main.css" />
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
 
-            gtag('config', 'UA-115980248-1');
-        </script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+<head>
+    <title>Ben Greenawald</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-        <!-- Header -->
-        <header id="header">
-        </header>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-        <!-- Wrapper -->
-        <div id="wrapper">
+        gtag('config', 'UA-115980248-1');
+    </script>
+</head>
 
-            <!-- Main -->
-            <section id="main" class="wrapper style2">
-                <div class="inner">
-                    <h1 class="major"><!-- titleBegin --><i>projmanr</i> State of Development v0.2.1<!-- titleEnd --></h1>
-                    <!-- contentBegin -->
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-                    <p>First things first, the Github URL for this project is <a href="https://github.com/bgreenawald/projmanr">https://github.com/bgreenawald/projmanr</a> and for an overview of the project with screenshots, visit the <a href="../../content/software_developer.html">software developer</a> page.</p>
-                    
-                    <h2>Background</h2>
+    <!-- Header -->
+    <header id="header">
+    </header>
 
-                    <p>I wanted to write a quick post talking about the history and current state of development for my R package, <i>projmanr</i>. <i>projmanr</i> started last summer as an independent study project for my Data Science Masters. I had opted out of an introduction to programming class and needed something to fill the space. Wanting to help sure up my R chops, I took on a project with a professor in the UVA Darden School of Business name Yael. Her idea was to create an R package to perform some of the simple tasks that a project manager might need (initially just calculating the critical path for a set of tasks and generating a Gantt chart). Even though I knew nothing of project management, she assured me that it would be easy enough to get up to speed and publishing an R package would be a great way to improve my R programming. </p>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-                    <p> At this point, you may be wondering "why R?". I wondered the same thing myself. Yael said that part of it was that R was her primary language of programming, but also that R is a growing choice for project managers (PMs) due to the fact that it is free and one of the more attainable languages for non-programmers. Everything sounded reasonable, so I was ready to dive in. Now we only had about 3 weeks until the official end of the independent study (this was a summer session), so out timetable was tight. The logic to calculate the critical path was straightforward and the creation of the Gantt chart used some modified code found online. But even though the two main features of the package were relatively simple, the actual creation of the package was not.</p>
-
-                    <p>The creation of this package definitely came complete with a few hurdles. The first was how to represent objects in R. For those unaccustomed to project management, the most granular data object is a `task`. A task is just a single part of a larger project. For the software devs out there, a task is really just a feature. A project is made up of a series of tasks, all of which have a duration and dependencies. The most logical way to programmatically represent a `task` was with an object. But here's the catch, R's implementation of objects is clunky at best. R natively supports S3 and S4 classes, but I found them extremely unintuitive to use. I decided to use the R6 library to represent my tasks. While still definitely not at the level of object-oriented languages, it did get the job done.</p>
-
-                    <p>The next big hurdle was changing my paradigm from `code that only I would see/use` to go that was actually going to be published. This meant, yes, actually writing robust tests. Now the CS department at UVA gave me more than enough background on how to write good tests. But the truth is, code that is written for college courses rarely actually gets the testing it deserves. Especially since much of my background is with data science, where most of the code you write is exploratory scripts that, let's be honest, often aren't tested at all. After hunkering down and knocking out the tests, I thought we had a pretty robust package (I later found out that one of the parameters in the primary function of the package didn't actually do anything. But hey, it's all a learning experience).</p>
-
-                    <p>The final hurdle was taking the code we had written and turning it into a proper R package. R packages are all published on the 'comprehensive R archive network,' or CRAN, and there are some very rigid sets of rules that must be followed to publish on CRAN. I highly recommend Hadley Wickham's "R Packages: Organize, Test, Document, and Share Your Code" for all you aspiring R devs out there. It is a free book that takes you through everything you need to know to create R packages. But even with the step by step directions from the book, publishing to CRAN is still no trivial task. When we finally thought we were submission ready, we still got rejected twice. The first time was because I messed up the licensing, and the second was because the reviewer disagreed with one of my adjective choices in the package description (I actually found the second rejection pretty amusing). At last, we finally got <i>projmanr</i> published to CRAN!</p>
-
-                    <h2>Current State of Development</h2>
-                    <p>Even though the independent study ended, we had many ideas to expand the package. We were even looking at adding some additional developers to help out. That being said, life got in the way. We both ended up having extremely busy semesters and school finally let out, I found out that Yael had taken a new job teaching up at Harvard! So that leaves just me working on the project.</p>
-
-                    <p> That being said, I'm happy to announce that I recently made the first major release for <i>projmanr</i> since it's initial publication (we had one minor release awhile back patching a few bugs). The biggest addition is the implementation of uncertainty for given tasks. In the initial release, you had to specify an exact value for how long each task would take (task 1 will take exactly 4 days). But this is highly unrealistic as things change in the real world all of the time! So now you can say specify a distribution over the end time for a given task. For example, I think the end time for this task will be normally distributed with a mean of 4 days and a standard deviation of 2 days. This allows you to run Monte Carlo simulations on the total end time for a project, given that some tasks are uncertain. This is actually a pretty exciting feature. Such functionality exists in most PM software, but we were able to use Rcpp (a c++ interface for R) so run the simulation extremely fast. We get substantial speed gains over `At Risk,` the Monte Carlo add-on for Excel. We also calculate the critical index for every task in the simulation. Finally, we added some increased customization options for the Gantt chart.</p>
-
-                    <h2>The Future of <i>projmanr</i></h2>
-
-                    <p>Now that we've covered the past and present of <i>projmanr</i>, what's next? Well, that's where I have hit a bit of a wall. Like I said, I know almost nothing about project management, so the development workflow up until now was to have Yael tell me something that PMs need to do, and then me find a way to implement it. But with Yael starting a new job, she will no longer be able to assist me. Further, once I find and start my new job, I will have less time to contribute to the project. So the future of <i>projmanr</i> comes as a call for help. I encourage PMs to download and use the package and post any ideas you have to the Github page (you can also contact me directly, but it's easier to just open an issue on Github to keep things organized). Further, if you are an R developer and want to contribute, there are already a couple of issues open on Github that you are welcome to take a whirl at. I have thoroughly enjoyed working on this package and hope that with the help of <i>projmanr</i> users, we can continue to grow it.</p>
-                    
-                    
-                    <!-- contentEnd -->
-                    <h3>7/30/2018</h3>
-                    <!-- dateBegin 7/30/2018 dateEnd -->
-                    <!-- pathBegin blog/2018/projmanr.html pathEnd -->
-
-                    <div class="row">
-                        <div class="6u 12u$(medium)">
-                            <ul class="actions">
-                                <li><a href="../2018/python-sets.html" class="button">Previous</a></li>
-                                <li><a href="../2019/grocery-list.html" class="button">Next</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/projmanr.html" data-width="100%" data-numposts="5"></div>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- Footer -->
-        <footer id="footer" class="wrapper alt">
+        <!-- Main -->
+        <section id="main" class="wrapper style2">
             <div class="inner">
-                <ul class="menu">
-                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                    <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
-                </ul>
+                <h1 class="major"><!-- titleBegin --><i>projmanr</i> State of Development v0.2.1<!-- titleEnd --></h1>
+                <!-- contentBegin -->
+
+                <p>First things first, the Github URL for this project is <a href="https://github.com/bgreenawald/projmanr">https://github.com/bgreenawald/projmanr</a> and for an overview of the project with screenshots, visit the <a href="../../content/software_developer.html">software developer</a> page.</p>
+
+                <h2>Background</h2>
+
+                <p>I wanted to write a quick post talking about the history and current state of development for my R package, <i>projmanr</i>. <i>projmanr</i> started last summer as an independent study project for my Data Science Masters. I had opted out of an introduction to programming class and needed something to fill the space. Wanting to help sure up my R chops, I took on a project with a professor in the UVA Darden School of Business name Yael. Her idea was to create an R package to perform some of the simple tasks that a project manager might need (initially just calculating the critical path for a set of tasks and generating a Gantt chart). Even though I knew nothing of project management, she assured me that it would be easy enough to get up to speed and publishing an R package would be a great way to improve my R programming. </p>
+
+                <p> At this point, you may be wondering "why R?". I wondered the same thing myself. Yael said that part of it was that R was her primary language of programming, but also that R is a growing choice for project managers (PMs) due to the fact that it is free and one of the more attainable languages for non-programmers. Everything sounded reasonable, so I was ready to dive in. Now we only had about 3 weeks until the official end of the independent study (this was a summer session), so out timetable was tight. The logic to calculate the critical path was straightforward and the creation of the Gantt chart used some modified code found online. But even though the two main features of the package were relatively simple, the actual creation of the package was not.</p>
+
+                <p>The creation of this package definitely came complete with a few hurdles. The first was how to represent objects in R. For those unaccustomed to project management, the most granular data object is a `task`. A task is just a single part of a larger project. For the software devs out there, a task is really just a feature. A project is made up of a series of tasks, all of which have a duration and dependencies. The most logical way to programmatically represent a `task` was with an object. But here's the catch, R's implementation of objects is clunky at best. R natively supports S3 and S4 classes, but I found them extremely unintuitive to use. I decided to use the R6 library to represent my tasks. While still definitely not at the level of object-oriented languages, it did get the job done.</p>
+
+                <p>The next big hurdle was changing my paradigm from `code that only I would see/use` to go that was actually going to be published. This meant, yes, actually writing robust tests. Now the CS department at UVA gave me more than enough background on how to write good tests. But the truth is, code that is written for college courses rarely actually gets the testing it deserves. Especially since much of my background is with data science, where most of the code you write is exploratory scripts that, let's be honest, often aren't tested at all. After hunkering down and knocking out the tests, I thought we had a pretty robust package (I later found out that one of the parameters in the primary function of the package didn't actually do anything. But hey, it's all a learning experience).</p>
+
+                <p>The final hurdle was taking the code we had written and turning it into a proper R package. R packages are all published on the 'comprehensive R archive network,' or CRAN, and there are some very rigid sets of rules that must be followed to publish on CRAN. I highly recommend Hadley Wickham's "R Packages: Organize, Test, Document, and Share Your Code" for all you aspiring R devs out there. It is a free book that takes you through everything you need to know to create R packages. But even with the step by step directions from the book, publishing to CRAN is still no trivial task. When we finally thought we were submission ready, we still got rejected twice. The first time was because I messed up the licensing, and the second was because the reviewer disagreed with one of my adjective choices in the package description (I actually found the second rejection pretty amusing). At last, we finally got <i>projmanr</i> published to CRAN!</p>
+
+                <h2>Current State of Development</h2>
+                <p>Even though the independent study ended, we had many ideas to expand the package. We were even looking at adding some additional developers to help out. That being said, life got in the way. We both ended up having extremely busy semesters and school finally let out, I found out that Yael had taken a new job teaching up at Harvard! So that leaves just me working on the project.</p>
+
+                <p> That being said, I'm happy to announce that I recently made the first major release for <i>projmanr</i> since it's initial publication (we had one minor release awhile back patching a few bugs). The biggest addition is the implementation of uncertainty for given tasks. In the initial release, you had to specify an exact value for how long each task would take (task 1 will take exactly 4 days). But this is highly unrealistic as things change in the real world all of the time! So now you can say specify a distribution over the end time for a given task. For example, I think the end time for this task will be normally distributed with a mean of 4 days and a standard deviation of 2 days. This allows you to run Monte Carlo simulations on the total end time for a project, given that some tasks are uncertain. This is actually a pretty exciting feature. Such functionality exists in most PM software, but we were able to use Rcpp (a c++ interface for R) so run the simulation extremely fast. We get substantial speed gains over `At Risk,` the Monte Carlo add-on for Excel. We also calculate the critical index for every task in the simulation. Finally, we added some increased customization options for the Gantt chart.</p>
+
+                <h2>The Future of <i>projmanr</i></h2>
+
+                <p>Now that we've covered the past and present of <i>projmanr</i>, what's next? Well, that's where I have hit a bit of a wall. Like I said, I know almost nothing about project management, so the development workflow up until now was to have Yael tell me something that PMs need to do, and then me find a way to implement it. But with Yael starting a new job, she will no longer be able to assist me. Further, once I find and start my new job, I will have less time to contribute to the project. So the future of <i>projmanr</i> comes as a call for help. I encourage PMs to download and use the package and post any ideas you have to the Github page (you can also contact me directly, but it's easier to just open an issue on Github to keep things organized). Further, if you are an R developer and want to contribute, there are already a couple of issues open on Github that you are welcome to take a whirl at. I have thoroughly enjoyed working on this package and hope that with the help of <i>projmanr</i> users, we can continue to grow it.</p>
+
+                <!-- contentEnd -->
+                <h3>7/30/2018</h3>
+                <!-- dateBegin 7/30/2018 dateEnd -->
+                <!-- pathBegin blog/2018/projmanr.html pathEnd -->
+
+                <div class="row">
+                    <div class="6u 12u$(medium)">
+                        <ul class="actions">
+                            <li><a href="../2018/python-sets.html" class="button">Previous</a></li>
+                            <li><a href="../2019/grocery-list.html" class="button">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2018/projmanr.html" data-width="100%" data-numposts="5"></div>
             </div>
-        </footer>
+        </section>
 
-        <!-- Scripts -->
-        <script src="../../assets/js/jquery.min.js"></script>
-        <script>
-            $(function(){$('#header').load('../../header2.html');});
-        </script>
-        <script src="../../assets/js/jquery.scrollex.min.js"></script>
-        <script src="../../assets/js/jquery.scrolly.min.js"></script>
-        <script src="../../assets/js/skel.min.js"></script>
-        <script src="../../assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="../../assets/js/main.js"></script>
+    </div>
 
-    </body>
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#header').load('../../header2.html');
+        });
+    </script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/skel.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../../assets/js/main.js"></script>
+
+</body>
+
 </html>

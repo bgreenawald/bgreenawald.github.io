@@ -5,122 +5,133 @@ html5up.net | @ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-    <head>
-        <title>Ben Greenawald</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="../../assets/css/main.css" />
-        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-        <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+<head>
+    <title>Ben Greenawald</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="../../assets/css/main.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
-            gtag('config', 'UA-115980248-1');
-        </script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s); js.id = id;
-                js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-        <!-- Header -->
-        <header id="header">
-        </header>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
 
-        <!-- Wrapper -->
-        <div id="wrapper">
+        gtag('config', 'UA-115980248-1');
+    </script>
+</head>
 
-            <!-- Main -->
-            <section id="main" class="wrapper style1">
-                <div class="inner">
-                    <h1 class="major"><!-- titleBegin -->Grocery List Generator<!-- titleEnd --></h1>
-                    <!-- contentBegin -->
-                    <p>For me, the most enticing aspect of coding it the ability the build things that make your, or someone else's life easier. Sometimes I get lost in the minutiae of making my code beautiful and efficient that I forget that coding is really about making stuff and solving problems (even silly ones). My most recent foray into this lesson involved the simple grocery list, and my lack of desire to make one every week. So, naturally, I decided to make an app for my phone that auto-generates one for me. But to understand how we got here, we have to go back a little.</p>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 
-                    <p>Like most people in their early twenties, I recently had a somatic reckoning, realizing that my metabolism had humbled substantially since my teenage years. Consequently, I could no longer eat with no regard and still have my body look like I wanted it to. So I began meal prepping every week. I chose a couple of healthy meals that I actually wanted to eat, and would make them for the whole week. After a satisfactory trial period, and a fair bit of tweaking, I decided to make this my long term nutrition plan.</p>
+    <!-- Header -->
+    <header id="header">
+    </header>
 
-                    <p>Since I now had a very regular diet, I decided to do something I've long been curious about: find out exactly what my daily nutrition looks like. Specifically, how many calories do I ingest daily, and what is my daily distribution of macros? In order to do this, I sat myself down one weekend and listed out all the ingredients that go into my new diet and found out the nutrition information for each one. After an hour or so of tedious Google Sheets data entry and aggregation, I had a complete spreadsheet of my daily nutritional activity.</p>
+    <!-- Wrapper -->
+    <div id="wrapper">
 
-                    <p>While this was interesting in and of itself, I immediately saw greater potential for this spreadsheet. I now had a complete list of my weekly food needs, which is not far from a grocery list. Simply adding a boolean column that indicated whether I needed a given ingredient on a given week would essentially give me my grocery list. This way, I could determine my grocery list each week in a few short minutes.</p>
-
-                    <p>In hindsight, I could've stopped the project right there. It would be easy enough to just pull the spreadsheet up on my phone and use that as my actual list. <i>But that's not fun at all.</i> No, I wanted to autogenerate this into a proper grocery list. I turned to a list app I already frequently use, Google Keep, as my new go-to grocery store app. At this point, my goal was simply to write a program (in Python, of course) that would read in from my Google Sheet, figure out what ingredients I needed based on my 'Need' column, and write those items to a Google Keep Note.</p>
-
-                    <p>Google has some notoriously good APIs for many of their products, including Sheets. After getting a set of API credentials, I turned to the fantastic Python library <i>gspread</i>, which made reading my Sheet into a <i>pandas</i> dataframe relatively pain-free. Some trivial filtering generated the list of items I needed each week. The writing to a Keep note ended up being nearly as pain-free. While Google does not support an official API for Keep, the Python library <i>gkeepapi</i> worked splendidly. Following the examples in the documentation made developing the desired functionality a breeze.</p>
-
-                    <p>This really should've been where the project ended. Throughout the week, I would update the Sheet as I ran out of ingredients, and before I went to the grocery store on the weekend, I would run my program and my completed list would be accessible in my phone via the Keep app. But just a couple week later, I ran into my first hiccup. I decided to do a spontaneous grocery store run after work instead of over the weekend. This meant I didn't have access to my personal computer to execute my program. I could've easily just accepted this one edge case, but no. As a 21st human being, I demand that my grocery list be autogenerated no matter what the circumstance. I had no choice, I had to turn this into a mobile app.</p>
-
-                    <p>In theory, this new objective should've been just as easy as the other parts. I have some background in Android development, and this app only had to be a single button that I could push to generate my list. I already knew the basic architecture for my app. I would simply package up my program and deploy it as a Lambda function on AWS. Upon pushing the generate button in my app, the lambda function would be called and I would never have to manually create a grocery list again.</p>
-
-                    <p>Alas, this part of the project ended up taking disproportionately long. It ended up shining a spotlight on one of my biggest flaws: sometimes I get so fixated on how I think things should be that I can waste an exorbitant amount of time forcing them to be that way, rather than stepping back and seeing if there is a simpler the solution. The problem at hand dealt with the execution of the Lambda function from my app. Basically, I really wanted Java and Android to work as cleanly with AWS as Python. In Python, using the <i>boto3</i> library, you can just create a Lambda client and execute Lambda functions to your heart's content in a single line of code. I <i>realllyyyy</i> thought it would be this easy with Java and Android. To my discontent, after testing out various versions of both the AWS Java SDK and the AWS mobile SDK, and crashing my Gradle build more time than I cared to admit, I was lost. There just did not seem to be a solution as clean and intuitive as Python, and no amount of force was going to make it that way. Hell, by the end of this rabbit hole, I was exploring the AWS method for giving a mobile device temporary credentials to access cloud resources, just to execute my damn grocery list Lambda function.</p>
-
-                    <p>This one small roadblock almost made me nix this part of the project. But like most people who develop as a hobby, I'm nothing if not persistent. I began thinking about other AWS services that could trigger my Lambda function. Maybe I could have my Lambda subscribed to an SNS topic that my app could push to. Or maybe I could create some sort of queue with SQS. But, like most issues that arise in development projects, there was a nearly trivial solution waiting to be found. In this instance, that solution was API Gateway. I had somehow forgotten that one of the most popular triggers for Lambda functions were requests sent to API Gateway. And if there's one thing every modern programming language can do well, its send HTTP requests to an API. After discovering this, I got to embrace the immensely enjoyable experience of resetting my Android project, knowing that this time I wouldn't have to touch the Gradle configuration at all. And after that reset, everything fell into place.</p>
-
-                    <p>My final architecture for this project ended up as follows. I start off going into my Google Sheets sheet and updating my grocery list for the week by just putting a 1 or 0 beside each ingredient. Then, I go to an Android app on my phone that has a single button. Upon pushing that button, the app sends an asynchronous HTTP request to API Gateway. API Gateway triggers the Lambda function containing all the application code. That code reads from my Google Sheet and filters the ingredients to get only those that I need. The code then creates a list in Google Keep and populates it with my ingredients. Upon completion, the API Gateway returns a success code to the app, which displays a little message. And then I can access my new grocery list from anywhere.</p>
-
-                    <p>Before wrapping up, let me just list out a few more gotchas I ran into in implementing this project.</p>
-        
-                    <ul style="padding: 0em 5em">
-                        <li>This is an obvious issue looking back, but it took me a while to figure it out since AWS didn't give the most descriptive error message. The packaged function for the project ended up being pretty large, so I decided to follow the best practice and send it to S3 and have Lambda read from there. However, I kept running into an issue where I would try and associate my upload code to Lambda and it would fail, saying something along the lines of 'Lambda can't find your main method'. What this ended up actually being was that Lambda didn't have access to the bucket containing my code. This can be resolved either by making the bucket public (not recommended since the code contains some credentials) or giving the IAM role associated with the Lambda function read only access to S3 (I chose the latter.</li>
-
-                        <li>I use a variety of phone cleaning apps, which remove junk files from your phone, to keep my phone running smoothly. However, since my app isn't an official app, it kept getting targeted by the cleaning apps for deletion. So when deploying custom Android apps on your phone, make sure any phone cleaner's you used don't delete them.</li>
-
-                        <li>If you ever find yourself in a situation where you've been working out of a private repo, but want to make the repo public and you need to remove sensitive data from your repo history, look into <i>BFG Repo Cleaner</i>.</li>
-                    </ul>
-
-                    <p>All in all, this ended up just being a fun little project to help automate one tedious aspect of my life. It ultimately helped demonstrate that coding has application <i>everywhere</i> and that projects are rarely ever done. There's always more tweaks and adjustments you can add to make the project more awesome. As always, the code is available on <a href="https://github.com/bgreenawald/Grocery-List-Generator">Github</a>.</p>
-
-                    <!-- contentEnd -->
-
-                    <!-- dateBegin 2/9/2019 dateEnd -->
-                    <!-- pathBegin blog/2019/grocery-list.html pathEnd -->
-
-                    <div class="row">
-                        <div class="6u 12u$(medium)">
-                            <ul class="actions">
-                                <li><a href="../2018/projmanr.html" class="button">Previous</a></li>
-                                <li><a href="./nlplayground.html" class="button">Next</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2019/grocery-list.html" data-width="100%" data-numposts="5"></div>
-                </div>
-            </section>
-
-        </div>
-
-        <!-- Footer -->
-        <footer id="footer" class="wrapper alt">
+        <!-- Main -->
+        <section id="main" class="wrapper style1">
             <div class="inner">
-                <ul class="menu">
-                    <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
-                    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                    <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+                <h1 class="major"><!-- titleBegin -->Grocery List Generator<!-- titleEnd --></h1>
+                <!-- contentBegin -->
+                <p>For me, the most enticing aspect of coding it the ability the build things that make your, or someone else's life easier. Sometimes I get lost in the minutiae of making my code beautiful and efficient that I forget that coding is really about making stuff and solving problems (even silly ones). My most recent foray into this lesson involved the simple grocery list, and my lack of desire to make one every week. So, naturally, I decided to make an app for my phone that auto-generates one for me. But to understand how we got here, we have to go back a little.</p>
+
+                <p>Like most people in their early twenties, I recently had a somatic reckoning, realizing that my metabolism had humbled substantially since my teenage years. Consequently, I could no longer eat with no regard and still have my body look like I wanted it to. So I began meal prepping every week. I chose a couple of healthy meals that I actually wanted to eat, and would make them for the whole week. After a satisfactory trial period, and a fair bit of tweaking, I decided to make this my long term nutrition plan.</p>
+
+                <p>Since I now had a very regular diet, I decided to do something I've long been curious about: find out exactly what my daily nutrition looks like. Specifically, how many calories do I ingest daily, and what is my daily distribution of macros? In order to do this, I sat myself down one weekend and listed out all the ingredients that go into my new diet and found out the nutrition information for each one. After an hour or so of tedious Google Sheets data entry and aggregation, I had a complete spreadsheet of my daily nutritional activity.</p>
+
+                <p>While this was interesting in and of itself, I immediately saw greater potential for this spreadsheet. I now had a complete list of my weekly food needs, which is not far from a grocery list. Simply adding a boolean column that indicated whether I needed a given ingredient on a given week would essentially give me my grocery list. This way, I could determine my grocery list each week in a few short minutes.</p>
+
+                <p>In hindsight, I could've stopped the project right there. It would be easy enough to just pull the spreadsheet up on my phone and use that as my actual list. <i>But that's not fun at all.</i> No, I wanted to autogenerate this into a proper grocery list. I turned to a list app I already frequently use, Google Keep, as my new go-to grocery store app. At this point, my goal was simply to write a program (in Python, of course) that would read in from my Google Sheet, figure out what ingredients I needed based on my 'Need' column, and write those items to a Google Keep Note.</p>
+
+                <p>Google has some notoriously good APIs for many of their products, including Sheets. After getting a set of API credentials, I turned to the fantastic Python library <i>gspread</i>, which made reading my Sheet into a <i>pandas</i> dataframe relatively pain-free. Some trivial filtering generated the list of items I needed each week. The writing to a Keep note ended up being nearly as pain-free. While Google does not support an official API for Keep, the Python library <i>gkeepapi</i> worked splendidly. Following the examples in the documentation made developing the desired functionality a breeze.</p>
+
+                <p>This really should've been where the project ended. Throughout the week, I would update the Sheet as I ran out of ingredients, and before I went to the grocery store on the weekend, I would run my program and my completed list would be accessible in my phone via the Keep app. But just a couple week later, I ran into my first hiccup. I decided to do a spontaneous grocery store run after work instead of over the weekend. This meant I didn't have access to my personal computer to execute my program. I could've easily just accepted this one edge case, but no. As a 21st human being, I demand that my grocery list be autogenerated no matter what the circumstance. I had no choice, I had to turn this into a mobile app.</p>
+
+                <p>In theory, this new objective should've been just as easy as the other parts. I have some background in Android development, and this app only had to be a single button that I could push to generate my list. I already knew the basic architecture for my app. I would simply package up my program and deploy it as a Lambda function on AWS. Upon pushing the generate button in my app, the lambda function would be called and I would never have to manually create a grocery list again.</p>
+
+                <p>Alas, this part of the project ended up taking disproportionately long. It ended up shining a spotlight on one of my biggest flaws: sometimes I get so fixated on how I think things should be that I can waste an exorbitant amount of time forcing them to be that way, rather than stepping back and seeing if there is a simpler the solution. The problem at hand dealt with the execution of the Lambda function from my app. Basically, I really wanted Java and Android to work as cleanly with AWS as Python. In Python, using the <i>boto3</i> library, you can just create a Lambda client and execute Lambda functions to your heart's content in a single line of code. I <i>realllyyyy</i> thought it would be this easy with Java and Android. To my discontent, after testing out various versions of both the AWS Java SDK and the AWS mobile SDK, and crashing my Gradle build more time than I cared to admit, I was lost. There just did not seem to be a solution as clean and intuitive as Python, and no amount of force was going to make it that way. Hell, by the end of this rabbit hole, I was exploring the AWS method for giving a mobile device temporary credentials to access cloud resources, just to execute my damn grocery list Lambda function.</p>
+
+                <p>This one small roadblock almost made me nix this part of the project. But like most people who develop as a hobby, I'm nothing if not persistent. I began thinking about other AWS services that could trigger my Lambda function. Maybe I could have my Lambda subscribed to an SNS topic that my app could push to. Or maybe I could create some sort of queue with SQS. But, like most issues that arise in development projects, there was a nearly trivial solution waiting to be found. In this instance, that solution was API Gateway. I had somehow forgotten that one of the most popular triggers for Lambda functions were requests sent to API Gateway. And if there's one thing every modern programming language can do well, its send HTTP requests to an API. After discovering this, I got to embrace the immensely enjoyable experience of resetting my Android project, knowing that this time I wouldn't have to touch the Gradle configuration at all. And after that reset, everything fell into place.</p>
+
+                <p>My final architecture for this project ended up as follows. I start off going into my Google Sheets sheet and updating my grocery list for the week by just putting a 1 or 0 beside each ingredient. Then, I go to an Android app on my phone that has a single button. Upon pushing that button, the app sends an asynchronous HTTP request to API Gateway. API Gateway triggers the Lambda function containing all the application code. That code reads from my Google Sheet and filters the ingredients to get only those that I need. The code then creates a list in Google Keep and populates it with my ingredients. Upon completion, the API Gateway returns a success code to the app, which displays a little message. And then I can access my new grocery list from anywhere.</p>
+
+                <p>Before wrapping up, let me just list out a few more gotchas I ran into in implementing this project.</p>
+
+                <ul style="padding: 0em 5em">
+                    <li>This is an obvious issue looking back, but it took me a while to figure it out since AWS didn't give the most descriptive error message. The packaged function for the project ended up being pretty large, so I decided to follow the best practice and send it to S3 and have Lambda read from there. However, I kept running into an issue where I would try and associate my upload code to Lambda and it would fail, saying something along the lines of 'Lambda can't find your main method'. What this ended up actually being was that Lambda didn't have access to the bucket containing my code. This can be resolved either by making the bucket public (not recommended since the code contains some credentials) or giving the IAM role associated with the Lambda function read only access to S3 (I chose the latter.</li>
+
+                    <li>I use a variety of phone cleaning apps, which remove junk files from your phone, to keep my phone running smoothly. However, since my app isn't an official app, it kept getting targeted by the cleaning apps for deletion. So when deploying custom Android apps on your phone, make sure any phone cleaner's you used don't delete them.</li>
+
+                    <li>If you ever find yourself in a situation where you've been working out of a private repo, but want to make the repo public and you need to remove sensitive data from your repo history, look into <i>BFG Repo Cleaner</i>.</li>
                 </ul>
+
+                <p>All in all, this ended up just being a fun little project to help automate one tedious aspect of my life. It ultimately helped demonstrate that coding has application <i>everywhere</i> and that projects are rarely ever done. There's always more tweaks and adjustments you can add to make the project more awesome. As always, the code is available on <a href="https://github.com/bgreenawald/Grocery-List-Generator">Github</a>.</p>
+
+                <!-- contentEnd -->
+
+                <!-- dateBegin 2/9/2019 dateEnd -->
+                <!-- pathBegin blog/2019/grocery-list.html pathEnd -->
+
+                <div class="row">
+                    <div class="6u 12u$(medium)">
+                        <ul class="actions">
+                            <li><a href="../2018/projmanr.html" class="button">Previous</a></li>
+                            <li><a href="./nlplayground.html" class="button">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="fb-comments" data-href="https://bgreenawald.github.io/blog/2019/grocery-list.html" data-width="100%" data-numposts="5"></div>
             </div>
-        </footer>
+        </section>
 
-        <!-- Scripts -->
-        <script src="../../assets/js/jquery.min.js"></script>
-        <script>
-            $(function(){$('#header').load('../../header2.html');});
-        </script>
-        <script src="../../assets/js/jquery.scrollex.min.js"></script>
-        <script src="../../assets/js/jquery.scrolly.min.js"></script>
-        <script src="../../assets/js/skel.min.js"></script>
-        <script src="../../assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="../../assets/js/main.js"></script>
+    </div>
 
-    </body>
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/jquery.min.js"></script>
+    <script>
+        $(function() {
+            $('#header').load('../../header2.html');
+        });
+    </script>
+    <script src="../../assets/js/jquery.scrollex.min.js"></script>
+    <script src="../../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../../assets/js/skel.min.js"></script>
+    <script src="../../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../../assets/js/main.js"></script>
+
+</body>
+
 </html>
