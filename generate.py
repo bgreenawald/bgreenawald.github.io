@@ -39,17 +39,17 @@ for subdir, dirs, files in os.walk("blog"):
             file_name.close()
 
 # Write the file to the json object
-with open("data.json", "w+") as file:
+with open("data/data.json", "w+") as file:
     file.write(json.dumps(dicts, sort_keys=True, indent=4, separators=(',', ': ')))
 
-    
+
 """
 Write all of the quotes to JSON for random quotes.
 """
 # Read in all of the quotes from local.
 with open("content/favorite_quotes.html", "r", encoding='utf-8') as file:
     quote_text = file.read()
-    
+
 # Parse the quote with Beautiful Soup
 quote_body = BeautifulSoup(quote_text, 'html.parser').body
 
@@ -75,19 +75,19 @@ for section in quote_body.find_all('section')[1:]:
             cur_quote["title"] = title
             cur_quote["author"] = author
             cur_quote["type"] = content_type.replace("_", " ")
-            
+
             # Clean up the quote and store
             str_quote = " ".join([str(x) for x in quote.contents])
             str_quote = str_quote.replace("\n", "")
             str_quote = re.sub(remove_multiple_spaces, " ", str_quote)
             cur_quote["quote"] = str_quote.strip()
-            
+
             all_quotes.append(cur_quote)
 
 # Shuffle all quotes
 shuffle(all_quotes)
 
 # Dump the quotes
-with open("quotes.json", "w+") as file:
+with open("data/quotes.json", "w+") as file:
     file.write(json.dumps(all_quotes, sort_keys=True, indent=4, separators=(',', ': ')))
 

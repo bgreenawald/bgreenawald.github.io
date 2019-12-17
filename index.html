@@ -168,10 +168,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     via email or the social media platforms listed below!
                 </p>
                 <div class="split style1">
-                    <object data="Resume.pdf" type="application/pdf" width="750px" height="750px">
-                        <embed src="Resume.pdf" type="application/pdf">
+                    <object data="data/Resume.pdf" type="application/pdf" width="750px" height="750px">
+                        <embed src="data/Resume.pdf" type="application/pdf">
                         <p>This browser does not support PDFs. Please download the PDF to view it: <a
-                                href="Resume.pdf">Download PDF</a>.</p>
+                                href="data/Resume.pdf">Download PDF</a>.</p>
                         </embed>
                     </object>
                     <section>
@@ -230,7 +230,7 @@ USA</span>
             }
 
             function load_quotes() {
-                $.get("quotes.json", function (data) {
+                $.get("data/quotes.json", function (data) {
                     var index = diff_date("11/17/2018", data.length);
                     var quote = data[index];
                     var quote_html = quote.quote;
