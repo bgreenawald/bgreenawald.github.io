@@ -103,58 +103,27 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                     <section>
                         <span class="icon major fa-video-camera"></span>
                         <h3>Top 5 Recent Movies</h3>
-                        <ol>
-                            <li>Jojo Rabbit <i>Taika Waititi</i></li>
-                            <li>1917 <i>Sam Mendes</i></li>
-                            <li>Knives Out <i>Rian Johnson</i></li>
-                            <li>Parasite <i>Bong Joon Ho</i></li>
-                            <li>Short Term 12 <i>Destin Daniel Cretton</i></li>
-                        </ol>
+                        <ol id="current_movies"></ol>
                     </section>
                     <section>
                         <span class="icon major fa-group"></span>
                         <h3>Top 5 Current Artists</h3>
-                        <ol>
-                            <li>Charlotte Lawrence</li>
-                            <li>Doja Cat</li>
-                            <li>Caroline Polacheck</li>
-                            <li>Charli XCX</li>
-                            <li>Seeb</li>
-                        </ol>
+                        <ol id="current_artists"></ol>
                     </section>
                     <section>
                         <span class="icon major fa-music"></span>
                         <h3>Top 5 Current Songs</h3>
-                        <ol>
-                            <li>Around U <i>MUNA</i></li>
-                            <li>Either <i>Poo Bear, Zara Larsson</i></li>
-                            <li>Stole Your Car <i>Charlotte Lawrence</i></li>
-                            <li>Streets <i>Doja Cat</i></li>
-                            <li>Fine Line <i>Harry Styles</i></li>
-                            <li>Pang, I Give Up <i>Caroline Polacheck</i></li>
-                        </ol>
+                        <ol id="current_songs"></ol>
                     </section>
                     <section>
                         <span class="icon major fa-book"></span>
                         <h3>Top 5 Recent Books</h3>
-                        <ol>
-                            <li>The Alchemist <i>Paulo Coelho</i></li>
-                            <li>You Look Like a Thing and I Love You <i>Janelle Shane</i></li>
-                            <li>HEY, U UP? <i>Brian Murphy and Emily Axford</i></li>
-                            <li>Strange the Dreamer/Muse of Nightmares <i>Laini Taylor</i></li>
-                            <li>Mortality <i>Christopher Hitchens</i></li>
-                        </ol>
+                        <ol id="current_books"></ol>
                     </section>
                     <section>
                         <span class="icon major fa-tv"></span>
                         <h3>Top 5 Favorite Recent TV Shows</h3>
-                        <ol>
-                            <li>Mr. Robot</li>
-                            <li>Silicon Valley</li>
-                            <li>The Dragon Prince</li>
-                            <li>The End of the F***ing World</li>
-                            <li>Undone</li>
-                        </ol>
+                        <ol id="current_shows"></ol>
                     </section>
                     <section></section>
                 </div>
@@ -314,14 +283,109 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </div>
         </section>
     </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="wrapper alt">
+        <div class="inner">
+            <ul class="menu">
+                <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <sript src="http://code.jquery.com/jquery-latest.js">
+        </script>
+        <script>
+            $(function() {
+                $('#header').load('../header1.html');
+            });
+        </script>
+        <script src="../assets/js/jquery.scrollex.min.js"></script>
+        <script src="../assets/js/jquery.scrolly.min.js"></script>
+        <script src="../assets/js/skel.min.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+        <script src="../assets/js/main.js"></script>
+
     <script>
         // Miscellaneous Javascript functions
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
-    </script>
 
-    <script>
+        function sortByKey(array, key, desc=false) {
+            return array.sort(function(a, b) {
+                var x = a[key]; var y = b[key];
+                if (desc) {
+                    return ((x < y) ? 1 : ((x > y) ? -1 : 0));
+                } else {
+                    return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+                }
+            });
+        }
+
+
+        // Loading short term favorites
+        function load_favorites() {
+            $.get("../data/current_favorites.json", function (data) {
+                // Load movies
+                var movies = data["movies"];
+                movies = sortByKey(movies, "date_added", true);
+                var movie_list = document.getElementById("current_movies");
+                for (var i = 0; i < 5; i++) {
+                    var elem = document.createElement("li");
+                    elem.innerHTML = `${movies[i].name} <i>${movies[i].director}</i>`;
+                    movie_list.appendChild(elem);
+                }
+
+                // Load artists
+                var artists = data["artists"];
+                artists = sortByKey(artists, "date_added", true);
+                var artist_list = document.getElementById("current_artists");
+                for (var i = 0; i < 5; i++) {
+                    var elem = document.createElement("li");
+                    elem.innerHTML = `${artists[i].name}`;
+                    artist_list.appendChild(elem);
+                }
+
+                // Load songs
+                var songs = data["songs"];
+                songs = sortByKey(songs, "date_added", true);
+                var song_list = document.getElementById("current_songs");
+                for (var i = 0; i < 5; i++) {
+                    var elem = document.createElement("li");
+                    elem.innerHTML = `${songs[i].name} <i>${songs[i].artist}</i>`;
+                    song_list.appendChild(elem);
+                }
+
+                // Load books
+                var books = data["books"];
+                books = sortByKey(books, "date_added", true);
+                var book_list = document.getElementById("current_books");
+                for (var i = 0; i < 5; i++) {
+                    var elem = document.createElement("li");
+                    elem.innerHTML = `${books[i].name} <i>${books[i].author}</i>`;
+                    book_list.appendChild(elem);
+                }
+
+                // Load shows
+                var shows = data["shows"];
+                shows = sortByKey(shows, "date_added", true);
+                var show_list = document.getElementById("current_shows");
+                for (var i = 0; i < 5; i++) {
+                    var elem = document.createElement("li");
+                    elem.innerHTML = `${shows[i].name} <i>${shows[i].creator}</i>`;
+                    show_list.appendChild(elem);
+                }
+
+
+            })
+        }
+
         // Rendering functions for Spotify data
         function render_artists(data, lower = 0) {
             var term = document.getElementById("artist-range").value;
@@ -424,34 +488,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             .then(json => data = json)
             .then(data => render_list(data))
             .catch(error => console.log(`Failed because: ${error}`));
+
+        load_favorites();
     </script>
-
-    <!-- Footer -->
-    <footer id="footer" class="wrapper alt">
-        <div class="inner">
-            <ul class="menu">
-                <li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</i></li>
-                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                <li>Logo created with <a href="https://logomakr.com/">Logomakr</a></li>
-            </ul>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="../assets/js/jquery.min.js"></script>
-    <sript src="http://code.jquery.com/jquery-latest.js">
-        </script>
-        <script>
-            $(function() {
-                $('#header').load('../header1.html');
-            });
-        </script>
-        <script src="../assets/js/jquery.scrollex.min.js"></script>
-        <script src="../assets/js/jquery.scrolly.min.js"></script>
-        <script src="../assets/js/skel.min.js"></script>
-        <script src="../assets/js/util.js"></script>
-        <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-        <script src="../assets/js/main.js"></script>
 
 </body>
 
