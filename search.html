@@ -7,237 +7,260 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Blog Main</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-			<style>
-				#result {
-				position: absolute;
-				 width: 100%;
-				 max-width: 85%;
-				 cursor: pointer;
-				 overflow-y: auto;
-				 overflow-x: auto;
-				 max-height:100%;
-				 box-sizing: border-box;
-				 z-index: 1001;
-				 display: block;
-				}
-				select.decorated option:hover {
-    				box-shadow: 0 0 10px 100px rgb(55, 65, 68) inset;
-				}
-			</style>
-					<!-- Global site tag (gtag.js) - Google Analytics -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
-			<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
 
-			gtag('config', 'UA-115980248-1');
-			</script>
-	</head>
-	<body onload="inOrder()">
+<head>
+	<title>Blog Main</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	<style>
+		#result {
+			position: absolute;
+			width: 100%;
+			max-width: 85%;
+			cursor: pointer;
+			overflow-y: auto;
+			overflow-x: auto;
+			max-height: 100%;
+			box-sizing: border-box;
+			z-index: 1001;
+			display: block;
+		}
 
-		<!-- Header -->
-			<header id="header">
-				<a href="index.html" class="title">Ben Greenawald</a>
-					<nav>
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="search.html">Blog</a></li>
-							<li>
-								<select id="searchbar" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);" style="background-color: #171313;">
-									<option value="" disabled selected>Navigate the Site</option>
-									<optgroup id="optiongroup" label="About Me">
-											<option value="content/data_scientist.html">Data Professional</option>
-											<option value="content/software_developer.html">Software Developer</option>
-											<option value="content/human_being.html">Human Being</option>
-										</optgroup>
-										<optgroup id="optiongroup" label="Writing">
-											<option value="search.html">Blog Main Page</option>
-											<option value="content/writing.html">Writing</option>
-										</optgroup>
-										<optgroup id="optiongroup" label="Music">
-											<option value="content/lyrics.html">Lyrics</option>
-											<option value="content/compositions.html">Compositions</option>
-											<option value="content/guitar.html">Guitar Practice Routine</option>
-										</optgroup>
-										<optgroup id="optiongroup" label="Miscellaneous">
-											<option value="content/favorite_quotes.html">Favorite Quotes</option>
-										</optgroup>
-								</select>
-							</li>
-						</ul>
+		select.decorated option:hover {
+			box-shadow: 0 0 10px 100px rgb(55, 65, 68) inset;
+		}
+	</style>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115980248-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115980248-1');
+	</script>
+</head>
+
+<body>
+
+	<!-- Header -->
+	<header id="header">
+		<a href="index.html" class="title">Ben Greenawald</a>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="search.html">Blog</a></li>
+				<li>
+					<select id="searchbar"
+						onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+						style="background-color: #171313;">
+						<option value="" disabled selected>Navigate the Site</option>
+						<optgroup id="optiongroup" label="About Me">
+							<option value="content/data_scientist.html">Data Professional</option>
+							<option value="content/software_developer.html">Software Developer</option>
+							<option value="content/human_being.html">Human Being</option>
+						</optgroup>
+						<optgroup id="optiongroup" label="Writing">
+							<option value="search.html">Blog Main Page</option>
+							<option value="content/writing.html">Writing</option>
+						</optgroup>
+						<optgroup id="optiongroup" label="Music">
+							<option value="content/lyrics.html">Lyrics</option>
+							<option value="content/compositions.html">Compositions</option>
+							<option value="content/guitar.html">Guitar Practice Routine</option>
+						</optgroup>
+						<optgroup id="optiongroup" label="Miscellaneous">
+							<option value="content/favorite_quotes.html">Favorite Quotes</option>
+						</optgroup>
+					</select>
+				</li>
+			</ul>
+		</nav>
+
+	</header>
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<section class="wrapper style1">
+			<div class="inner">
+
+				<nav id="recent">
+				</nav>
+				<hr>
+
+				<div class="field">
+					<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control"
+						style="background-color: #5e8f92;" />
+				</div>
+				<br>
+				<div class="field">
+					<nav id="result">
 					</nav>
-
-			</header>
-
-		<!-- Wrapper -->
-			<div id="wrapper">
-
-				<section class="wrapper style1">
-					<div class="inner">
-
-                        <nav id="recent">
-						</nav>
-						<hr>
-
-						<div class="field">
-								<input type="text" name="search" id="search" placeholder="Search Blog Posts" class="form-control" style="background-color: #5e8f92;"/>
-							</div>
-							<br>
-							<div class="field">
-                                <nav id="result">
-                                </nav>
-							</div>
-							<br>
-                        <br>
-                        <br>
-                    <br>
-
-					</div>
-				</section>
-
-				<!-- All Blog Posts -->
-
-					<section class = "wrapper style2">
-						<div class = "inner">
-							<h2>All Blog Posts</h2>
-							<ul class="actions small">
-									<li><a onclick="inOrder()" class="button special small">Newest to oldest</a></li>
-									<li><a onclick="reverse()" class="button small">Oldest to newest</a></li>
-								</ul>
-							<nav id = "allPosts">
-							</nav>
-						</div>
-					</section>
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
 
 			</div>
+		</section>
 
-		<!-- Footer -->
-		<footer id="footer" class="wrapper alt">
-				<div class="inner">
-					<ul class="menu">
-						<li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+		<!-- All Blog Posts -->
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-			<!-- Search function -->
-			<script>
-					$(window).load(function(){
-						$('#search').keyup(function(){
-								var searchField = $('#search').val();
-								var regex = new RegExp(searchField, "i");
-								if (searchField != ""){
-									var output = "<ul style='height: 100px; overflow: hidden; overflow-y: scroll;'>";
-									var count = 1;
-									$.getJSON('data/data.json', function(data) {
-										$.each(data, function(key, val){
-											if ((val.name.search(regex) != -1) || (val.content.search(regex) != -1)) {
-												output += '<a href='+val.location+'><li class="list-group-item link-class">'+val.name+'</li></a>';
-											}
-										});
-                                        output += "</ul>";
-										$('#result').html(output);
-									});
-								}
-								else
-								{
-									output = "";
-									$('#result').html(output);
-								}
-						});
+		<section class="wrapper style2">
+			<div class="inner">
+				<h2>All Blog Posts</h2>
+				<ul class="actions small">
+					<li><a onclick="inOrder(site_data)" class="button special small">Newest to oldest</a></li>
+					<li><a onclick="reverse(site_data)" class="button small">Oldest to newest</a></li>
+				</ul>
+				<nav id="allPosts">
+				</nav>
+			</div>
+		</section>
+
+	</div>
+
+	<!-- Footer -->
+	<footer id="footer" class="wrapper alt">
+		<div class="inner">
+			<ul class="menu">
+				<li><i>Maintained by <a href="mailto:bgreenawald@gmail.com">Ben Greenawald</a>.</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
+	<!-- Search function -->
+	<script>
+		let url = "https://s3.amazonaws.com/bhg5yd-personal-site/blog_data.json";
+        var site_data = {};
+        fetch(url)
+            .then(response => response.json())
+            .then(json => site_data = json)
+			.then(site_data => init_load(site_data))
+            .catch(error => console.log(`Failed because: ${error}`));
+
+		function init_load(data) {
+			inOrder(data);
+			recent(data);
+
+			document.getElementById("search").onkeyup = function () {
+				var searchField = $('#search').val();
+				var regex = new RegExp(searchField, "i");
+				if (searchField != "") {
+					var output = "<ul style='height: 100px; overflow: hidden; overflow-y: scroll;'>";
+					var count = 1;
+					$.each(site_data, function (key, val) {
+						if ((val.name.search(regex) != -1) || (val.content.search(
+								regex) != -1)) {
+							output += '<a href=' + val.location +
+								'><li class="list-group-item link-class">' + val.name +
+								'</li></a>';
+						}
 					});
-			</script>
-			<!-- Sort functions -->
-			<script>
-				function compare(a,b){
-						var aParts = a.date.split('/');
-						var bParts = b.date.split('/');
-						var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
-						var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
-
-						if( aDate < bDate){
-							return 1;
-						}
-						if (aDate > bDate){
-							return -1;
-						}
-						return 0;
-					}
-
-					function compareReversed(a,b){
-						var aParts = a.date.split('/');
-						var bParts = b.date.split('/');
-						var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
-						var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
-
-						if( aDate < bDate){
-							return -1;
-						}
-						if (aDate > bDate){
-							return 1;
-						}
-						return 0;
-					}
-			</script>
-			<!-- Load all functions -->
-			<script>
-				function inOrder(){
-					var output = "";
-					output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
-					$.getJSON("data/data.json", function(json){
-						json.sort(compare);
-						$.each(json, function(key, val){
-							output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
-						});
-						document.getElementById("allPosts").innerHTML = output;
-					});
+					output += "</ul>";
+					$('#result').html(output);
+				} else {
+					output = "";
+					$('#result').html(output);
 				}
-				function reverse(){
-					var output = "";
-					output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
-					$.getJSON("data/data.json", function(json){
-						json.sort(compareReversed);
-						$.each(json, function(key, val){
-							output += "<tr><td><a href="+val.location+">"+val.name+"</a></td><td>"+val.date+"</td></tr>";
-						});
-						document.getElementById("allPosts").innerHTML = output;
-					});
+			}
+		}
+
+
+		//Sort functions
+
+		function compare(a, b) {
+			var aParts = a.date.split('/');
+			var bParts = b.date.split('/');
+			var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
+			var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
+
+			if (aDate < bDate) {
+				return 1;
+			}
+			if (aDate > bDate) {
+				return -1;
+			}
+			return 0;
+		}
+
+		function compareReversed(a, b) {
+			var aParts = a.date.split('/');
+			var bParts = b.date.split('/');
+			var aDate = new Date(aParts[2], aParts[0] - 1, aParts[1]);
+			var bDate = new Date(bParts[2], bParts[0] - 1, bParts[1]);
+
+			if (aDate < bDate) {
+				return -1;
+			}
+			if (aDate > bDate) {
+				return 1;
+			}
+			return 0;
+		}
+
+		// Load all functions
+
+		function inOrder(data) {
+			var output = "";
+			output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
+			data.sort(compare);
+			$.each(data, function (key, val) {
+				output += "<tr><td><a href=" + val.location + ">" + val.name + "</a></td><td>" + val
+					.date + "</td></tr>";
+			});
+			document.getElementById("allPosts").innerHTML = output;
+		}
+
+		function reverse(data) {
+			var output = "";
+			output += "<table><tr><th>Title</th><th>Date Published</th></tr>";
+			data.sort(compareReversed);
+			$.each(data, function (key, val) {
+				output += "<tr><td><a href=" + val.location + ">" + val.name + "</a></td><td>" + val
+					.date + "</td></tr>";
+			});
+			document.getElementById("allPosts").innerHTML = output;
+
+		}
+
+		function recent(data) {
+			// Load most recent
+			var outputRec = "";
+			outputRec += "<h2>Recent Posts</h2><ol>";
+
+			data.sort(compare);
+			$.each(data, function (keyRec, valRec) {
+				if (keyRec < 3) {
+					outputRec += "<li><h3><a href = " + valRec.location + ">" + valRec.name + " - " + valRec
+						.date + "</a></h3></li>";
 				}
-				</script>
-			<!-- Load most recent -->
-			<script>
-				var outputRec = "";
-				outputRec += "<h2>Recent Posts</h2><ol>";
-				$.getJSON("data/data.json", function(jsonRec){
-					jsonRec.sort(compare);
-					$.each(jsonRec, function(keyRec, valRec){
-						if(keyRec < 3){
-							outputRec += "<li><h3><a href = "+valRec.location+">"+valRec.name+" - "+valRec.date+"</a></h3></li>";
-						}
-					});
-					outputRec += "</ol><table>";
-					document.getElementById("recent").innerHTML = outputRec;
-				});
-			</script>
-	</body>
+			});
+			outputRec += "</ol><table>";
+			document.getElementById("recent").innerHTML = outputRec;
+		}
+
+	</script>
+</body>
+
 </html>
-

@@ -215,6 +215,14 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="assets/js/main.js"></script>
 
         <script>
+            let url = "https://s3.amazonaws.com/bhg5yd-personal-site/random_quotes.json";
+            var site_data = {};
+            fetch(url)
+                .then(response => response.json())
+                .then(json => site_data = json)
+                .then(site_data => load_quotes(site_data))
+                .catch(error => console.log(`Failed because: ${error}`));
+
             function diff_date(date1, limit) {
                 var date1 = new Date(date1);
                 var date2 = new Date();
@@ -223,31 +231,28 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 return diffDays % limit;
             }
 
-            function load_quotes() {
-                $.get("data/quotes.json", function (data) {
-                    var index = diff_date("11/17/2018", data.length);
-                    var quote = data[index];
-                    var quote_html = quote.quote;
+            function load_quotes(data) {
+                var index = diff_date("11/17/2018", data.length);
+                var quote = data[index];
+                var quote_html = quote.quote;
 
-                    if (quote.title != "Miscellaneous") {
-                        if (quote.type != "other") {
-                            quote_html += " | From the " + quote.type + "<i> " + quote.title + "</i>";
-                        } else {
-                            quote_html += " | From <i> " + quote.title + "</i>";
-                        }
+                if (quote.title != "Miscellaneous") {
+                    if (quote.type != "other") {
+                        quote_html += " | From the " + quote.type + "<i> " + quote.title + "</i>";
+                    } else {
+                        quote_html += " | From <i> " + quote.title + "</i>";
                     }
+                }
 
-                    // Add the author if present
-                    if (quote.author != 'None') {
-                        quote_html += " by " + quote.author;
-                    }
+                // Add the author if present
+                if (quote.author != 'None') {
+                    quote_html += " by " + quote.author;
+                }
 
-                    $("#quote").html(quote_html);
-                });
+                $("#quote").html(quote_html);
 
             }
 
-            load_quotes();
         </script>
 </body>
 

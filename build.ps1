@@ -17,5 +17,5 @@ Copy-Item Ben_Greenawald_resume.pdf $cur_path.ToString() + "\data\Resume.pdf"
 Set-Location $cur_path
 
 # Run the blog build script
-python generate.py
+python script/generate_site_data.py
 
