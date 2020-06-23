@@ -11,7 +11,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/main.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -40,6 +41,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             display: none;
             text-decoration: none;
         }
+
         .back-to-top i {
             font-size: 60px;
         }
@@ -78,7 +80,9 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <h1>Book Quotes</h1>
                 <br>
                 <h3>Jump right to...</h3>
-                <select name="demo-category" id="book-category" onchange="location = this.value;" style="background-color: #052e5a;">
+                <select name="demo-category" id="book-select" onchange="location = this.value;"
+                    style="background-color: #052e5a;">
+                    <option value="">Select Book</option>
                 </select>
 
                 <br>
@@ -93,194 +97,15 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <h1>TV Show Quotes</h1>
                 <br>
                 <h3>Jump right to...</h3>
-                <select name="demo-category" id="demo-category" onchange="location = this.value;" style="background-color: #5e8f92;">
+                <select name="demo-category" id="television-select" onchange="location = this.value;"
+                    style="background-color: #5e8f92;">
                     <option value="">Select Show</option>
-                    <option value="#rick">Rick and Morty</option>
-                    <option value="#office">The Office</option>
-                    <option value="#robot">Mr. Robot</option>
-                    <option value="#mother">How I Met Your Mother</option>
-                    <option value="#russian">Russian Doll</option>
-                    <option value="#bo">Bojack Horseman</option>
-                    <option value="#dragon">The Dragon Prince</option>
-                    <option value="#sherlock">Sherlock</option>
-                    <option value="#doctor">Doctor Who</option>
                 </select>
 
                 <br>
 
-                <section id="rick">
-                    <h2>Rick and Morty</h2>
-                    <ul>
-                        <li class="random">
-                            Nobody exists on purpose. Nobody belongs anywhere. We're all going to die. Come watch TV.
-                            <i>Morty</i>
-                        </li>
-                        <li class="random">
-                            Listen, Morty, I hate to break it to you but what people call "love" is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science. <i>Rick</i>
-                        </li>
-                        <li>
-                            <strong>Dad? I feel like I've spent my life pretending you're a great guy and trying to be
-                                like you.
-                                And the ugly truth has always been..</strong> That I'm not that great a guy and you're exactly like me.
-                            <strong>Am I evil?</strong> Worse. You're smart. When you know nothing matters, the universe is yours. And I've never met a universe that was into it. The universe is basically an animal. It grazes on the ordinary. It creates infinite idiots just to eat them, not unlike your friend Timmy.
-                            <strong>Tommy.</strong> Yeah, it hardly matters now, sweetie. You know, smart people get a chance to climb on top, take reality for a ride, but it'll never stop trying to throw you. And, eventually, it will. There's no other way off. <i>Rick, <strong>Beth</strong></i>
-                        </li>
-                    </ul>
-                </section>
+                <div id="television-quotes"></div>
 
-                <section id="office">
-                    <h2>The Office</h2>
-                    <ul>
-                        <li class="random">
-                            It all seems so very arbitrary. I applied for a job at this company because they were hiring. I took a desk at the back because it was empty. But…[chuckles] no matter how you get there or where you end up, human beings have this miraculous gift to make that place home.
-                            <i>Creed</i>
-                        </li>
-                        <li class="random">
-                            I thought it was weird when you picked us to make a documentary. But all in all...I think an ordinary paper company like Dunder Mifflin was a great subject for a documentary. There’s a lot of beauty in ordinary things. Isn’t that kind of the point? <i>Pam</i>
-                        </li>
-                    </ul>
-
-                </section>
-
-                <section id="robot">
-                    <h2>Mr. Robot</h2>
-                    <ul>
-                        <li>
-                            Is that what God does? He helps? Tell me, why didn't God help my innocent friend who died for no reason while the guilty ran free? Okay. Fine. Forget the one offs. How about the countless wars declared in his name? Okay. Fine. Let's skip the random, meaningless murder for a second, shall we? How about the racist, sexist, phobia soup we've all been drowning in because of him? And I'm not just talking about Jesus. I'm talking about all organized religion. Exclusive groups created to manage control. A dealer getting people hooked on the drug of hope. His followers, nothing but addicts who want their hit of bullshit to keep their dopamine of ignorance. Addicts. Afraid to believe the truth. That there's no order. There's no power. That all religions are just metastasizing mind worms, meant to divide us so it's easier to rule us by the charlatans that wanna run us. All we are to them are paying fanboys of their poorly-written sci-fi franchise. If I don't listen to my imaginary friend, why the fuck should I listen to yours? People think their worship's some key to happiness. That's just how he owns you. Even I'm not crazy enough to believe that distortion of reality. So fuck God. He's not a good enough scapegoat for me. <i>Elliot</i>
-                        </li>
-                        <li>
-                            People walk around, act like they know what hate means. Nah, no one does, until you hate yourself. I mean truly hate yourself. That's power. <i>Fernando Vera</i>
-                        </li>
-                        <li>
-                            People are all just people, right? When it gets down to it, everyone's the same. They love something. They want something. They fear something. Specifics help, but specifics don't change the way that everyone is vulnerable. It just changes the way that we access those vulnerabilities. <i>Mobley</i>
-                        </li>
-                    </ul>
-                </section>
-
-                <section id="mother">
-                    <h2>How I Met Your Mother</h2>
-                    <ul>
-                        <li class="random">
-                            ... sometimes you realize the journey you've been taking has reached its final stop. So, the question becomes: Where do you go next? <i>Ted</i>
-                        </li>
-                    </ul>
-                </section>
-
-                <section id="russian">
-                    <h2>Russian Doll</h2>
-                    <ul>
-                        <li>
-                            You know, I thought if I if I if I worked hard enough, if I if I kept putting the time in, and if I kept my head down, you know, did everything right, I this aching, gnawing feeling of being an absolute failure would just would just go away... And now I'm stuck with a body that is broken and in a world that is is literally falling apart. And a mind that, a mind that wants to kill me. <i>Alan</i>
-                        </li>
-                    </ul>
-                </section>
-
-                <section id="dragon">
-                    <h2>The Dragon Prince</h2>
-                    <ul>
-                        <li>
-                            Life is like a river... You can't see too far ahead... You don't know where the river of life will bend and turn. You don't know where it will go at all... Don't try to control where the river goes. There's one thing you can know and control, yourself. Look at yourself. Who are you, Rayla? What do you stand for? Once you know that, then wherever the river takes you, you'll be right where you were always meant to be. <i>Villads</i>
-                        </li>
-
-                        <li>
-                            Destiny is a book you write yourself. <i>Callum</i>
-                        </li>
-                    </ul>
-                </section>
-
-                <section id="bo">
-                    <h2>Bojack Horseman</h2>
-                    <ul>
-                        <li class="random">
-                            I don't think I believe in 'deep down'. I think that all you are is just the things that you do. <i>Diane</i>
-                        </li>
-                        <li>
-                            You know, sometimes I feel like I was born with a leak, and any goodness I started with just slowly spilled out of me, and now it's all gone. And I'll never get it back in me. It's too late. Life is a series of closing doors, isn't it? <i>Bojack Horseman</i>
-                        </li>
-                        <li>
-                            You were right– I don’t love you. You don’t love me. We’re just two lonely people trying to hate ourselves a little less. Maybe that’s all we’re ever going to be. Maybe that’s all we ever were. <i>Bojack Horseman</i>
-                        </li>
-                        <li>
-                            The universe is a cruel, uncaring void. The key to being happy isn't a search for meaning. It's to keep yourself busy with unimportant nonsense, and eventually you'll be dead. <i>Mr.
-                                PeanutButter</i>
-                        </li>
-                        <li>
-                            That’s the problem with life, you either know what you want, and you don’t get what you want, or you get what you want, and you don’t know what you want. <i>Diane</i>
-                        </li>
-                        <li class="random">
-                            BoJack, when I was your age, I got sad. A lot. I didn't come from such a great home, but one day, I started running, and that seemed to make sense, so then I just kept running. BoJack, when you get sad, you run straight ahead and you keep running forward, no matter what. There are people in your life who are gonna try to hold you back, slow you down, but you don't let them. Don't you stop running and don't you ever look behind you. There's nothing for you behind you. All that exists is what's ahead. <i>Secretariat</i>
-                        </li>
-                        <li>
-                            Your father and I, we, well... you come by it honestly, the ugliness inside you. You were born broken, that's your birthright. And now you can fill your life with projects your books and your movies and your little girlfriends but... that won't make you whole.
-                            <i>Beatrice</i>
-                        </li>
-                        <li>
-                            I don’t understand how people… live. It’s amazing to me that people wake up every morning and say: ‘Yeah, another day, let’s do it.’ How do people do it? I don’t know how. <i>Bojack
-                                Horseman</i>
-                        </li>
-                        <li class="random">
-                            We're not doomed. In the great, grand scheme of things, we're just tiny specks that will one day be forgotten. So it doesn't matter what we did in the past, or how we'll be remembered. The only thing that matters is right now, this moment, this one spectacular moment we are sharing together. <i>Bojack Horseman</i>
-                        </li>
-                        <li>
-                            He’s so stupid he doesn’t realize how miserable he should be. I envy that. <i>Bojack
-                                Horseman</i>
-                        </li>
-                        <li>
-                            It’s not about being happy, that is the thing. I’m just trying to get through each day. I can’t keep asking myself ‘Am I happy?' It just makes me more miserable. I don’t know If I believe in it, real lasting happiness, All those perky, well-adjusted people you see in movies and TV shows ? I don’t think they exist.<i>Diane</i>
-
-                        </li>
-                        <li>
-                            I don’t know what to tell you. I’m happy for the first time in my life and I’m not gonna feel bad about it. It takes a long time to realize how truly miserable you are and even longer to see it doesn’t have to be that way. Only after you give up everything can you begin to find a way to be happy. <i>Fuzzy Whiskers</i>
-                        </li>
-                        <li>
-                            It's so cruel to let people love you. All you're doing is promising you'll one day break their hearts. <i>Mr. PeanutButter</i>
-                        </li>
-                        <li>
-                            Settle. Because otherwise you’re just gonna get older and harder, and more alone. And you’re gonna do everything you can to fill that hole, with friends, and your career, and meaningless sex, but the hole doesn’t get filled. One day, you’re gonna look around and you’re going to realize that everybody loves you, but nobody likes you. And that is the loneliest feeling in the world. <i>Bojack Horseman</i>
-                        </li>
-
-                    </ul>
-
-                </section>
-
-                <section id="sherlock">
-                    <h2>Sherlock</h2>
-                    <ul>
-                        <li class="random">
-                            I'm worried about you Molly, you seem very stressed. <strong>I'm stressed, you're dying.
-                            </strong> Yeah well I'm ahead then, stress can ruin every day of your life, dying can only ruin one. <i>Sherlock, <strong>Molly</strong></i>
-                        </li>
-                        <li>
-                            (on Mary) She taught me to be the man she already thought I was. Get yourself a piece of that....... Who you thougth I was is the man I want to be. <strong>Well then, John Watson,
-                                get the hell on with it.</strong> <i>John, <strong>Mary</strong></i>
-                        </li>
-                        <li>
-                            Taking your own life. Interesting expression — Taking it from who? Once it’s over, It’s not you who’ll miss it. Your own death is something that happens to everybody else. Your life is not your own. Keep your hands off it. <i>Sherlock</i>
-                        </li>
-                    </ul>
-
-                </section>
-
-                <section id="doctor">
-                    <h2>Doctor Who</h2>
-                    <ul>
-                        <li>
-                            (right before her death) <strong>Don't run. Stay with me.</strong> Nah. In the end, we all do this alone. <i><strong>The Doctor</strong>, Clara</i>
-                        </li>
-
-                        <li class="random">
-                            As you come into this world, something else is also born. You begin your life, and it begins a journey towards you. It moves slowly, but it never stops. Wherever you go, whatever path you take, it will follow. Never faster, never slower, always coming. You will run. It will walk. You will rest. It will not. One day, you will linger in the same place too long. You will sit too still or sleep too deep, and when, too late, you rise to go, you will notice a second shadow next to yours. Your life will then be over. <i>The Doctor</i>
-                        </li>
-
-                        <li class="random">
-                            Well, look around. Art. It seems to me there's so much more to the world than the average eye is allowed to see. I believe, if you look hard, there are more wonders in this universe than you could ever have dreamed of. <i>Vincent Van Gogh</i>
-                        </li>
-
-                        <li class="random">
-                            The way I see it, every life is a pile of good things and bad things... The good things don't always soften the bad things, but vice versa, the bad things don't necessarily spoil the good things or make them unimportant. <i>The Doctor</i>
-                        </li>
-                    </ul>
-                </section>
             </div>
         </section>
 
@@ -290,154 +115,34 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 <h1>Movie Quotes</h1>
                 <br>
                 <h3>Jump right to...</h3>
-                <select name="demo-category" id="demo-category" onchange="location = this.value;" style="background-color: #052e5a;">
+                <select name="demo-category" id="movie-select" onchange="location = this.value;"
+                    style="background-color: #052e5a;">
                     <option value="">Select Movie</option>
-                    <option value="#her">Her</option>
-                    <option value="#arrival">Arrival</option>
-                    <option value="#seventeen">The Edge of Seventeen</option>
                 </select>
 
                 <br>
 
-                <section id="her">
-                    <h2>Her</h2>
-                    <ul>
-                        <li class="random">
-                            Sometimes I think I've felt everything I'm ever gonna feel and from here on out I'm not going to feel anything new - just lesser versions of what I've already felt. <i>Theodore</i>
-                        </li>
+                <div id="movie-quotes"></div>
 
-                        <li class="random">
-                            Are you falling in love with her? <strong>Does that make me a freak?</strong> No, no. I think it's - I think anybody that falls in love is a freak. It's a crazy thing to do in the first place. It's kind of a form of socially acceptable insanity. <i>Amy.
-                                <strong>Theodore</strong></i>
-                        </li>
-
-                        <li>
-                            You know I can feel the fear that you carry around. I wish there was something I could do to help you let go of it, because if you could I don't think you'd feel so alone anymore.
-                            <i>Theodore</i>
-                        </li>
-
-                        <li>
-                            ...none of us are the same as we were a moment ago and we shouldn't try to be. It's just too painful. <i>Samantha</i>
-                        </li>
-
-                    </ul>
-                </section>
-                <section id="arrival">
-                    <h2>Arrival</h2>
-                    <ul>
-                        <li class="random">
-                            Despite knowing the journey and where it leads, I embrace it. And I welcome every moment of it. <i>Louise</i>
-                        </li>
-
-                    </ul>
-                </section>
-                <section id="seventeen">
-                    <h2>The Edge of Seventeen</h2>
-                    <ul>
-                        <li>I had the worst thought. I've got to spend the rest of my life with myself. <i>Nadine</i>
-                        </li>
-                        <li>Here's what I do when I'm feeling down. I get very quiet and very still. And I say to myself... Everyone in the world is as miserable and empty as I am. They're just better pretending. Try it sometime. Might bring you some peace. <i>Mona</i></li>
-                        <li>I think some deranged part of me likes thinking I'm the only one with real problems. Like that makes me special. You know, ever since we were little, I would get this feeling like... Like I'm floating outside of my body, looking down at myself... And I hate what I see... How I'm acting, the way I sound. And I don't know how to change it. And I'm so scared... That the feeling is never gonna go away. <i>Nadine</i></li>
-                    </ul>
-                </section>
             </div>
         </section>
 
         <!--Self-->
-        <section id="self" class="wrapper style2">
+        <section id="self" class="wrapper style1">
             <div class="inner">
                 <h1>(Shameless) Self Quotes</h1>
                 <br>
-                <section>
-                    <ul>
-                        <li>
-                            Empty happiness is the true nature of sadness.
-                        </li>
-                        <li class="random">
-                            When it comes to human beings, the truth is rarely simple and only sometimes true.
-                        </li>
-                        <li class="random">
-                            Try not to be scared of unhappiness. One day, sadness will rear its ugly head, and on that day, you don't want to be left scared <i>and</i> unhappy.
-                        </li>
-                        <li class="random">
-                            The key to having fond memories is to remember things differently than they actually were.
-                        </li>
-                        <li>
-                            My greatest fear is that the sum of my life will be a series of erroneous decisions and forgone opportunities.
-                        </li>
-                        <li>
-                            The truth is like an onion. The more layers you peel off, the more prone you are to tears. Thus it is necesary to get to the core of the truth with as few layers as possible.
-                        </li>
-                        <li class="random">
-                            Everyone must fight an uphill battle in life, that's not what mental illness is. Mental illness is having to free solo a cliff just to get to the base of the hill.
-                        </li>
-                    </ul>
-                </section>
+                <div id="self-quotes"></div>
 
             </div>
         </section>
 
         <!--Other-->
-        <section id="other" class="wrapper style1">
+        <section id="other" class="wrapper style2">
             <div class="inner">
                 <h1>Other Quotes</h1>
                 <br>
-                <section>
-                    <ul>
-                        <li class="random">
-                            If you are depressed, you are living in the past. If you are anxious, you are living in the future. If you are at peace, you are living in the present. <i>Lao Tzu</i>
-                        </li>
-
-                        <li>
-                            We tiptoe through life hoping to safely make it to death. <i>Unknown</i>
-                        </li>
-
-                        <li class="random">
-                            Within each of us there is a silence, a silence as vast as the universe. And when we experience that silence, we remember who we are. <i>Gunilla Norris</i>
-                        </li>
-
-                        <li class="random">
-                            The worst thing you can do with your life is spend it with the wrong human being. <i>Daniel
-                                Sloss</i>
-                        </li>
-
-                        <li class="random">
-                            Where can I go to get further from myself? <i>Daniela Andrade</i>
-                        </li>
-
-                        <li class="random">
-                            If you have been told that someone speaks ill of you, do not defend yourself: instead reply, ‘if they knew the rest of my faults they wouldn’t have mentioned only those.’ <i>Epictetus</i>
-                        </li>
-
-                        <li class="random">
-                            You could leave life right now. Let that determine what you do and say and think. <i>Marcus Aurelius</i>
-                        </li>
-
-                        <li class="random">
-                            You've got it made if you can experience delight over a glass of water. <i>Bill Irvine</i>
-                        </li>
-
-                        <li class="random">
-                            The stove is the shrine where I convene with my ancestors. <i>Adam Ragusea</i>
-                        </li>
-
-                        <li>
-                            Of the seven deadly sins, only envy is no fun at all. <i>Joseph Epstein</i>
-                        </li>
-
-                        <li>
-                            Lose your shit tomorrow. Today's no day to fall apart. <i>Buddy Deiker (Ozark)</i>
-                        </li>
-                        <li class="random">
-                            And I urge you to please notice when you are happy, and exclaim or murmur or think at some point, 'If this isn't nice, I don't know what is. <i>Kurt Vonnegut</i>
-                        </li>
-                        <li class="random">
-                            Be careful of what you're saying because your subconcious is listening. <i>Muchelle B</i>
-                        </li>
-                    </ul>
-
-                    <br>
-                </section>
+                <div id="other-quotes"></div>
             </div>
         </section>
 
@@ -459,7 +164,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <sript src="http://code.jquery.com/jquery-latest.js">
         </script>
         <script>
-            $(function() {
+            $(function () {
                 $('#header').load('../header1.html');
             });
         </script>
@@ -469,16 +174,17 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         <script src="../assets/js/util.js"></script>
         <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
         <script src="../assets/js/main.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
         </script>
         <script>
-            jQuery(document).ready(function() {
+            jQuery(document).ready(function () {
 
                 var offset = 250;
 
                 var duration = 300;
 
-                jQuery(window).scroll(function() {
+                jQuery(window).scroll(function () {
 
                     if (jQuery(this).scrollTop() > offset) {
 
@@ -492,7 +198,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                 });
 
-                jQuery('.back-to-top').click(function(event) {
+                jQuery('.back-to-top').click(function (event) {
 
                     event.preventDefault();
 
@@ -508,66 +214,100 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </script>
 
         <script>
-            function load_books(data) {
+            function load_media(data, type, category_id, quote_id) {
                 // Load options and add default
-                var book_options = document.getElementById("book-category");
-                book_options.options.add(new Option("Select Book", ""));
+                var options = document.getElementById(category_id);
 
                 // Load book quotes element
-                var book_quotes = document.getElementById("book-quotes");
+                var quotes = document.getElementById(quote_id);
 
                 // Load and iterate book data
-                var books = data["book"];
-                var book_section;
-                books.forEach(book => {
-                    book_section = document.createElement("section");
+                var media = data[type];
+                var section;
+                media.forEach(current_media => {
+                    section = document.createElement("section");
                     // Add the book option
-                    book_options.options.add(new Option(book["title"], `#${book["id"]}`));
+                    options.options.add(new Option(current_media["title"], `#${current_media["id"]}`));
 
                     // Create section for the book
-                    book_section.id = book["id"];
-                    console.log(book);
+                    section.id = current_media["id"];
 
                     // Extract out title and author
-                    if (book.hasOwnProperty("title")) {
-                        var book_title = document.createElement("h2");
-                        book_title.innerText = book["title"];
-                        book_section.appendChild(book_title);
+                    if (current_media.hasOwnProperty("title")) {
+                        var current_media_title = document.createElement("h2");
+                        current_media_title.innerText = current_media["title"];
+                        section.appendChild(current_media_title);
                     }
 
-                    if (book.hasOwnProperty("author")) {
-                        var book_author = document.createElement("h3");
-                        book_author.innerHTML = `<i>${book["author"]}</i>`;
-                        book_section.appendChild(book_author);
+                    if (current_media.hasOwnProperty("author")) {
+                        var current_media_author = document.createElement("h3");
+                        current_media_author.innerHTML = `<i>${current_media["author"]}</i>`;
+                        section.appendChild(current_media_author);
 
                     }
 
                     // Add each quote
-                    var book_list = document.createElement("ul");
-                    book["quotes"].forEach(quote => {
+                    var media_list = document.createElement("ul");
+                    current_media["quotes"].forEach(quote => {
                         // Create the quote text
                         if (quote.hasOwnProperty("additional_information")) {
-                            var quote_text = `${quote["quote"]} <i>${quote["additional_information"]}</i>`;
+                            var quote_text =
+                                `${quote["quote"]} <i>${quote["additional_information"]}</i>`;
                         } else {
                             var quote_text = quote["quote"];
                         }
 
-                        var book_quote = document.createElement("li");
+                        var quote = document.createElement("li");
                         if (quote["random"]) {
-                            book_quote.className = "random";
+                            quote.className = "random";
                         }
 
-                        book_quote.innerHTML = quote_text;
+                        quote.innerHTML = quote_text;
 
-                        book_list.appendChild(book_quote);
+                        media_list.appendChild(quote);
                     })
-                    book_section.appendChild(book_list);
-                    book_quotes.appendChild(book_section);
+                    section.appendChild(media_list);
+                    quotes.appendChild(section);
                 })
             }
 
+            function load_quote_list(data, type, quote_id) {
+                // Load book quotes element
+                var quotes = document.getElementById(quote_id);
+
+                // Load and iterate book data
+                var section = document.createElement("section");
+
+                // Add each quote
+                var media_list = document.createElement("ul");
+                data[type][0]["quotes"].forEach(quote => {
+                    // Create the quote text
+                    if (quote.hasOwnProperty("additional_information")) {
+                        var quote_text =
+                            `${quote["quote"]} <i>${quote["additional_information"]}</i>`;
+                    } else {
+                        var quote_text = quote["quote"];
+                    }
+
+                    var quote = document.createElement("li");
+                    if (quote["random"]) {
+                        quote.className = "random";
+                    }
+
+                    quote.innerHTML = quote_text;
+
+                    media_list.appendChild(quote);
+                })
+                section.appendChild(media_list);
+                quotes.appendChild(section);
+            }
+
             function load(data) {
-                load_books(data);
+                load_media(data, "book", "book-select", "book-quotes");
+                load_media(data, "movie", "movie-select", "movie-quotes");
+                load_media(data, "television_show", "television-select", "television-quotes");
+                load_quote_list(data, "self", "self-quotes");
+                load_quote_list(data, "other", "other-quotes");
             }
 
 
@@ -577,7 +317,6 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 .then(response => response.json())
                 .then(json => data = json)
                 .then(data => load(data));
-
         </script>
 
 </body>

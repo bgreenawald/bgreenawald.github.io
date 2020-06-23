@@ -1,2 +1,2 @@
 .vscode/
-site_data/
+site_data/*.json
