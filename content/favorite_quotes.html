@@ -223,6 +223,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                 // Load and iterate book data
                 var media = data[type];
+                media.sort((a, b) => (a.title > b.title) ? 1 : -1);
                 var section;
                 media.forEach(current_media => {
                     section = document.createElement("section");
@@ -248,6 +249,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                     // Add each quote
                     var media_list = document.createElement("ul");
+                    var current_media_quotes = current_media["quotes"]
                     current_media["quotes"].forEach(quote => {
                         // Create the quote text
                         if (quote.hasOwnProperty("additional_information")) {
@@ -280,7 +282,8 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
                 // Add each quote
                 var media_list = document.createElement("ul");
-                data[type][0]["quotes"].forEach(quote => {
+                var current_media_quotes = data[type][0]["quotes"].sort((a, b) => (a.title > b.title) ? 1 : -1);
+                current_media_quotes.forEach(quote => {
                     // Create the quote text
                     if (quote.hasOwnProperty("additional_information")) {
                         var quote_text =
@@ -311,7 +314,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             }
 
 
-            url = "https://s3.amazonaws.com/bhg5yd-personal-site/temp_quotes.json";
+            url = "https://s3.amazonaws.com/bhg5yd-personal-site/quotes.json";
             data = {};
             fetch(url)
                 .then(response => response.json())
