@@ -56,13 +56,17 @@ def create_random_quotes():
         type_ = type_ if type_ != "self" else "other"
 
         for media in all_quotes[content_type]:
-            for quote in media["quotes"]:
+            if type_ == "other":
+                content = media
+            else:
+                content = all_quotes[content_type][media]
+            for quote in content["quotes"]:
                 # Skip any quotes not marked random
                 if not quote["random"]:
                     continue
                 cur_quote = {}
-                cur_quote["author"] = media.get("author", "None")
-                cur_quote["title"] = media["title"]
+                cur_quote["author"] = content.get("author", "None")
+                cur_quote["title"] = content["title"]
                 if "additional_information" in quote:
                     quote_text = f"{quote['quote']} <i>{quote['additional_information']}</i>"
                 else:

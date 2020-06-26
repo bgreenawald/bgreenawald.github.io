@@ -222,10 +222,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
                 var quotes = document.getElementById(quote_id);
 
                 // Load and iterate book data
-                var media = data[type];
-                media.sort((a, b) => (a.title > b.title) ? 1 : -1);
+                var media = Object.entries(data[type]);
+                media.sort((a, b) => (a[1]["title"] > b[1]["title"]) ? 1 : -1);
                 var section;
-                media.forEach(current_media => {
+                media.forEach(cur_elem => {
+                    var current_media = cur_elem[1];
                     section = document.createElement("section");
                     // Add the book option
                     options.options.add(new Option(current_media["title"], `#${current_media["id"]}`));
