@@ -46,7 +46,7 @@ def create_blog_data():
 
 def create_random_quotes():
     # Create the quotes for the homepage
-    with open("site_data/quotes.json", "r") as file:
+    with open("site_data/quotes.json", "r", encoding="utf-8") as file:
         all_quotes = json.loads(file.read())
 
     # Iterate over all types
